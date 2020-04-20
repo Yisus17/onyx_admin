@@ -17,8 +17,8 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Mercedes Rodriguez** - *Base and following features* - [PurpleBooth](https://github.com/meshe03)
-* **Jesús Arévalo** - *Initial work* - [PurpleBooth](https://github.com/Yisus17)
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+* **Mercedes Rodriguez** - *Base and following features* - [Meche's profile](https://github.com/meshe03)
+* **Jesús Arévalo** - *Initial work* - [Yisus's profile](https://github.com/Yisus17)
+
 
 
