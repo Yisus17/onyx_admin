@@ -3,25 +3,38 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header"><h3>Dashboard</h3></div>
 
                 <div class="card-body">
                     @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
                     @endif
 
-                    <a href="{{ url('/products') }}">
-                    <div class="card" style="width: 18rem;">
-                        <img src="{{ asset('img/product-card.jpg') }}" class="card-img-top" alt="Product manager">
-                        <div class="card-body">
-                            <p class="card-text">Click here to manage your products</p>
-                        </div>
+                    <div class="row">
+                        <div class="col-md-4 col-sm-12"><a href="{{ url('/products') }}">
+                                <div class="card dashboard-card">
+                                    <img src="{{ asset('img/products-card.png') }}" class="card-img-top" alt="Product manager">
+                                    <div class="card-body">
+                                        <p class="card-text">Click here to manage your products</p>
+                                    </div>
+                                </div>
+                            </a></div>
+                        <div class="col-md-4 col-sm-12"><a href="{{ url('/clients') }}">
+                                <div class="card dashboard-card">
+                                    <img src="{{ asset('img/clients-card.png') }}" class="card-img-top" alt="Product manager">
+                                    <div class="card-body">
+                                        <p class="card-text">Click here to manage your clients</p>
+                                    </div>
+                                </div>
+                            </a></div>
+
+                        
                     </div>
-                    </a>
+
 
 
                 </div>

@@ -31,3 +31,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/products', 'ProductController');
 Route::get('product-list-excel', 'ProductController@exportExcel')->name('products.pdf');
 
+Route::resource('/clients', 'ClientController');

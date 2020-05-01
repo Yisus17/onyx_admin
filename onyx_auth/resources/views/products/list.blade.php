@@ -4,23 +4,23 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <span>Products for {{auth()->user()->name}}</span>
                     <a href="/products/create" class="btn btn-primary btn-sm">New Product</a>
                 </div>
 
-                <div class="card-body">      
+                <div class="card-body">
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Bought Date</th>
-                            <th scope="col">Actions</th>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Bought Date</th>
+                                <th scope="col">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -35,22 +35,20 @@
                                     <form action="{{ route('products.destroy',$item->id) }}" method="POST">
                                         @method('DELETE')
                                         @csrf
-                                        <a href="{{route('products.show', $item->id)}}" class="btn btn-primary btn-sm" title="Edit item"><i class="fas fa-eye" ></i></a>
-                                        <a href="{{route('products.edit', $item)}}" class="btn btn-success btn-sm" title="Edit item"><i class="fas fa-edit" ></i></a>
-                                        <button type="submit" class="btn btn-danger btn-sm" title="Delete item"><i class="fa fa-minus-circle" ></i></button>
+                                        <a href="{{route('products.show', $item->id)}}" class="btn btn-primary btn-sm" title="Edit item"><i class="fas fa-eye"></i></a>
+                                        <a href="{{route('products.edit', $item)}}" class="btn btn-success btn-sm" title="Edit item"><i class="fas fa-edit"></i></a>
+                                        <button type="submit" class="btn btn-danger btn-sm" title="Delete item"><i class="fa fa-minus-circle"></i></button>
                                     </form>
 
                                 </td>
-                                
-                                
 
-                                </tr>
+                            </tr>
                             @endforeach
                         </tbody>
                     </table>
-                    {{$products->links()}}  
+                    {{$products->links()}}
                 </div>
-                <a href="{{route('products.pdf')}}" class="btn btn-success btn-sm" title="Export"><i class="fas fa-file-excel" ></i></a>
+                <a href="{{route('products.pdf')}}" class="btn btn-success btn-sm" title="Export"><i class="fas fa-file-excel"></i></a>
             </div>
         </div>
     </div>
