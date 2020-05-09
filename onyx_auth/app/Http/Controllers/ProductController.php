@@ -6,11 +6,9 @@ use Illuminate\Http\Request;
 use App\Product;
 use Maatwebsite\Excel\Facade\Excel;
 
-class ProductController extends Controller
-{
+class ProductController extends Controller{
 
-    public function __construct()
-    {
+    public function __construct(){
         $this->middleware('auth');
     }
 
@@ -19,13 +17,9 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $products =  Product::paginate(5);
+    public function index(){
+        $products =  Product::paginate(20);
         return view('products.list', compact('products'));
-       
-       
-        //return compact('products'); //Esto sirve para un API
     }
 
     /**
@@ -33,8 +27,7 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create(){
         return view('products.create');
     }
 
@@ -44,8 +37,7 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request){
        
         $request->validate([
             'name'=>'required',
@@ -61,9 +53,7 @@ class ProductController extends Controller
         $product->bought_at = $request->bought_at;
 
         $product->save();
-
-        return back()->with('message', 'Success');
-
+        return back()->with('message', 'Product created successfully');
     }
 
     /**
@@ -72,8 +62,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id){
         $product =  Product::findOrFail($id);
         return view('products.show', compact('product'));
     }
@@ -84,8 +73,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
+    public function edit($id){
         $product =  Product::findOrFail($id);
         return view('products.edit', compact('product'));
     }
@@ -97,9 +85,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-
+    public function update(Request $request, $id){
         $request->validate([
             'name'=>'required',
             'description'=>'required',
@@ -115,7 +101,7 @@ class ProductController extends Controller
 
         $productToUpdate->save();
 
-        return back()->with('message', 'Success');
+        return back()->with('message', 'Product updated successfully');
     }
 
     /**
@@ -124,17 +110,13 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id){
         $productToDelete=Product::findOrFail($id);
-        
         $productToDelete->delete();
-
-        return back()->with('message', 'Success');
+        return back()->with('message', 'Product deleted successfully');
     }
 
     public function exportExcel(Request $request){
         return $request;
-
     }
 }

@@ -11,7 +11,7 @@
 
                 <div class="card-body">
                     @include('partials.session_message')
-                    @include('clients.partials.errors')
+                    @include('partials.errors')
 
                     {!! Form::open(['route' => 'clients.store']) !!}
                         @include('clients.partials.form')

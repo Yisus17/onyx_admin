@@ -11,7 +11,7 @@
 
                 <div class="card-body">
                     @include('partials.session_message')
-                    @include('clients.partials.errors')
+                    @include('partials.errors')
 
                     {!! Form::model($client, ['route' => ['clients.update', $client->id], 'method' => 'PUT']) !!}
                         @include('clients.partials.form')

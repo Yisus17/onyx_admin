@@ -11,36 +11,13 @@
                 </div>
 
                 <div class="card-body">
-                    @if ( session('message') )
-                    <div class="alert alert-success">{{ session('message') }}</div>
-                    @endif
+                    @include('partials.session_message')
+                    @include('partials.errors')
 
-                    @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-
-                    </div>
-                    @endif
-
-                    <form action="{{ route('products.update', $product->id) }}" method="POST">
-                        @method('PUT')
-                        @csrf
-                        <input type="text" name="name" placeholder="Name" class="form-control mb-2" value="{{$product->name}}" />
-                        <input type="text" name="description" placeholder="Description" class="form-control mb-2" value="{{$product->description}}" />
-                        <input type="number" name="price" placeholder="Price" class="form-control mb-2" min="1" step="any" value="{{$product->price}}" />
-                        <input type="date" name="bought_at" placeholder="Bought Date" class="form-control mb-2" value="{{$product->bought_at}}" />
-                        <button class="btn btn-primary " type="submit">Edit</button>
-                        <a href="/products" class="btn btn-secondary">Back</a>
-                    </form>
+                    {!! Form::model($product, ['route' => ['products.update', $product->id], 'method' => 'PUT']) !!}
+                        @include('products.partials.form')
+                    {!! Form::close() !!}
                 </div>
-
             </div>
         </div>
     </div>

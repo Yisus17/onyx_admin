@@ -16,7 +16,7 @@
                     <p class="card-text">Phone: {{$client->phone}}</p>
                     <p class="card-text">Email: {{$client->email}}</p>
                     <a href="{{route('clients.edit', $client)}}" class="btn btn-primary">Edit</a>
-                    <a href="{{ URL::previous() }}" class="btn btn-secondary">Back</a>
+                    <a href="/clients" class="btn btn-secondary">Back</a>
                 </div>
 
             </div>

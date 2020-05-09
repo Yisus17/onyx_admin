@@ -32,7 +32,7 @@
                                 <td>{{ $item->price }}</td>
                                 <td>{{ $item->bought_at }}</td>
                                 <td>
-                                    <form action="{{ route('products.destroy',$item->id) }}" method="POST">
+                                    <form action="{{ route('products.destroy',$item->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this product?');">
                                         @method('DELETE')
                                         @csrf
                                         <a href="{{route('products.show', $item->id)}}" class="btn btn-primary btn-sm" title="Edit item"><i class="fas fa-eye"></i></a>

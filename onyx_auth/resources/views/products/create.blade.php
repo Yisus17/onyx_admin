@@ -10,11 +10,9 @@
                     <span>Create Product for {{auth()->user()->name}}</span>
                 </div>
 
-
                 <div class="card-body">
-                    @if ( session('message') )
-                    <div class="alert alert-success">{{ session('message') }}</div>
-                    @endif
+                    @include('partials.session_message')
+                    @include('partials.errors')
 
                     @if ($errors->any())
                     <div class="alert alert-danger">
@@ -30,15 +28,9 @@
                     </div>
                     @endif
 
-                    <form method="POST" action="/products">
-                        @csrf
-                        <input type="text" name="name" placeholder="Name" class="form-control mb-2" value="{{old('name')}}" />
-                        <input type="text" name="description" placeholder="Description" class="form-control mb-2" value="{{old('description')}}"/>
-                        <input type="number" name="price" placeholder="Price" class="form-control mb-2" min="1" value="{{old('price')}}" />
-                        <input type="date" name="bought_at" placeholder="Bought Date" class="form-control mb-2" value="{{old('bought_at')}}"/>
-                        <button class="btn btn-primary " type="submit">Create</button>
-                        <a href="/products" class="btn btn-secondary">Back</a>
-                    </form>
+                    {!! Form::open(['route' => 'products.store']) !!}
+                        @include('products.partials.form')
+                    {!! Form::close() !!}
                 </div>
 
             </div>
