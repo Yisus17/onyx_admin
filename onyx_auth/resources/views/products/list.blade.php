@@ -18,6 +18,7 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Description</th>
+                                <th scope="col">Category</th>
                                 <th scope="col">Price</th>
                                 <th scope="col">Bought Date</th>
                                 <th scope="col">Actions</th>
@@ -29,6 +30,7 @@
                                 <th scope="row">{{ $item->id }}</th>
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->description }}</td>
+                                <td>{{ $item->category->name }}</td>
                                 <td>{{ $item->price }}</td>
                                 <td>{{ $item->bought_at }}</td>
                                 <td>

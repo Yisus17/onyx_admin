@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use App\Category;
 use Maatwebsite\Excel\Facade\Excel;
 
 class ProductController extends Controller{
@@ -28,7 +29,8 @@ class ProductController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function create(){
-        return view('products.create');
+        $categories = Category::all();
+        return view('products.create', compact('categories'));
     }
 
     /**
@@ -51,6 +53,9 @@ class ProductController extends Controller{
         $product->description = $request->description;
         $product->price = $request->price;
         $product->bought_at = $request->bought_at;
+
+        $category = Category::find($request->category_id);
+        $product->category()->associate($category);
 
         $product->save();
         return back()->with('message', 'Product created successfully');
@@ -75,7 +80,8 @@ class ProductController extends Controller{
      */
     public function edit($id){
         $product =  Product::findOrFail($id);
-        return view('products.edit', compact('product'));
+        $categories = Category::all();
+        return view('products.edit', compact('product', 'categories'));
     }
 
     /**
@@ -98,6 +104,9 @@ class ProductController extends Controller{
         $productToUpdate->description = $request->description;
         $productToUpdate->price = $request->price;
         $productToUpdate->bought_at = $request->bought_at;
+
+        $category = Category::find($request->category_id);
+        $productToUpdate->category()->associate($category);
 
         $productToUpdate->save();
 
