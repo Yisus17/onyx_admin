@@ -50,7 +50,6 @@
                     </table>
                     {{$products->links()}}
                 </div>
-                <a href="{{route('products.pdf')}}" class="btn btn-success btn-sm" title="Export"><i class="fas fa-file-excel"></i></a>
             </div>
         </div>
     </div>
