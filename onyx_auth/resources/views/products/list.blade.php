@@ -15,24 +15,24 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Name</th>
+                                <th scope="col">Código</th>
+                                <th scope="col">Modelo</th>
                                 <th scope="col">Description</th>
-                                <th scope="col">Category</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Bought Date</th>
-                                <th scope="col">Actions</th>
+                                <th scope="col">Categoría</th>
+                                <th scope="col">Precio de compra</th>
+                                <th scope="col">Fecha de compra</th>
+                                <th scope="col">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($products as $item)
                             <tr>
-                                <th scope="row">{{ $item->id }}</th>
-                                <td>{{ $item->name }}</td>
+                                <th scope="row">{{ $item->code }}</th>
+                                <td>{{ $item->model }}</td>
                                 <td>{{ $item->description }}</td>
                                 <td>{{ $item->category->name }}</td>
-                                <td>{{ $item->price }}</td>
-                                <td>{{ $item->bought_at }}</td>
+                                <td>{{ $item->purchase_price }}</td>
+                                <td>{{ $item->purchase_date }}</td>
                                 <td>
                                     <form action="{{ route('products.destroy',$item->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this product?');">
                                         @method('DELETE')

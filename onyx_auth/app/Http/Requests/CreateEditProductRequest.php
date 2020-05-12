@@ -24,10 +24,16 @@ class CreateEditProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required', 
+            'code' => 'required', 
+            'brand' => 'required', 
+            'model' => 'required', 
             'description' => 'required', 
-            'price' => 'required|numeric', 
-            'bought_at' => 'required|date'
+            'type' => 'required', 
+            'purchase_price' => 'required|numeric', 
+            'status' => 'required', 
+            'bought_by' => 'required', 
+            'purchase_date' => 'required|date', 
+            'years_old' => 'required|numeric'
         ];
     }
 }
