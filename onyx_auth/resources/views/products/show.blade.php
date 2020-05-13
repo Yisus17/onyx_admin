@@ -25,7 +25,7 @@
                     <p class="card-text">Años de antigüedad: {{$product->years_old}}</p>
                     <p class="card-text">Contable: {{$product->countable ? 'Si' : 'No'}}</p>
                     <a href="{{route('products.edit', $product)}}" class="btn btn-primary">Editar</a>
-                    <a href="{{ URL::previous() }}" class="btn btn-secondary">Volver</a>
+                    <a href="/products" class="btn btn-secondary">Volver</a>
                 </div>
 
             </div>

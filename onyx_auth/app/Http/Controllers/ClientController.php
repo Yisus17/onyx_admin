@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Client;
-
+use App\Http\Requests\CreateEditClientRequest;
 
 class ClientController extends Controller{
 
@@ -22,22 +22,10 @@ class ClientController extends Controller{
         return view('clients.create');
     }
 
-    public function store(Request $request){
-        $request->validate([
-            'name' => 'required',
-            'address' => 'required',
-            'phone' => 'required',
-            'email' => 'required',
-        ]);
-
-        $client = new Client();
-        $client->name = $request->name;
-        $client->address = $request->address;
-        $client->phone = $request->phone;
-        $client->email = $request->email;
-
+    public function store(CreateEditClientRequest $request){
+        $client = new Client($request->all());
         $client->save();
-        return back()->with('message', 'Client created successfully');
+        return back()->with('message', 'Cliente creado exitosamente');
     }
 
 
@@ -53,29 +41,18 @@ class ClientController extends Controller{
     }
 
 
-    public function update(Request $request, $id){
-        $request->validate([
-            'name' => 'required',
-            'address' => 'required',
-            'phone' => 'required',
-            'email' => 'required',
-        ]);
-
+    public function update(CreateEditClientRequest $request, $id){
         $clientToUpdate = Client::findOrFail($id);
-        $clientToUpdate->name = $request->name;
-        $clientToUpdate->address = $request->address;
-        $clientToUpdate->phone = $request->phone;
-        $clientToUpdate->email = $request->email;
-
+        $clientToUpdate->update($request->all());
         $clientToUpdate->save();
 
-        return back()->with('message', 'Client updated successfully');
+        return back()->with('message', 'Cliente editado exitosamente');
     }
 
 
     public function destroy($id){
         $clientToDelete = Client::findOrFail($id);
         $clientToDelete->delete();
-        return back()->with('message', 'Client deleted successfully');
+        return back()->with('message', 'Client eliminado exitosamente');
     }
 }

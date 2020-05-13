@@ -19,7 +19,7 @@
                                 <div class="card dashboard-card">
                                     <img src="{{ asset('img/products-card.png') }}" class="card-img-top" alt="Product manager">
                                     <div class="card-body">
-                                        <p class="card-text">Click here to manage your products</p>
+                                        <p class="card-text">Click aquí para gestionar los productos</p>
                                     </div>
                                 </div>
                             </a></div>
@@ -27,15 +27,12 @@
                                 <div class="card dashboard-card">
                                     <img src="{{ asset('img/clients-card.png') }}" class="card-img-top" alt="Product manager">
                                     <div class="card-body">
-                                        <p class="card-text">Click here to manage your clients</p>
+                                        <p class="card-text">Click aquí para gestionar los clientes</p>
                                     </div>
                                 </div>
                             </a></div>
 
-                        
                     </div>
-
-
 
                 </div>
             </div>

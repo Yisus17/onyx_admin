@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <span>Create Client for {{auth()->user()->name}}</span>
+                    <span>Crear cliente por: {{auth()->user()->name}}</span>
                 </div>
 
                 <div class="card-body">

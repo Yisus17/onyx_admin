@@ -7,26 +7,24 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <span>Clients for {{auth()->user()->name}}</span>
-                    <a href="/clients/create" class="btn btn-primary btn-sm">New Client</a>
+                    <span>Listado de clientes</span>
+                    <a href="/clients/create" class="btn btn-primary btn-sm">Nuevo cliente</a>
                 </div>
 
                 <div class="card-body">      
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Address</th>
-                            <th scope="col">Phone Number</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Dirección</th>
+                            <th scope="col">Teléfono</th>
                             <th scope="col">Email</th>
-                            <th scope="col">Actions</th>
+                            <th scope="col">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($clients as $item)
                                 <tr>
-                                    <th scope="row">{{ $item->id }}</th>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->address }}</td>
                                     <td>{{ $item->phone }}</td>

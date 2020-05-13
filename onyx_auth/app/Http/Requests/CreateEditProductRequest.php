@@ -12,8 +12,7 @@ class CreateEditProductRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
-    {
+    public function authorize(){
         return \Auth::check();
     }
 
@@ -22,8 +21,7 @@ class CreateEditProductRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
-    {
+    public function rules(){
         return [
             'code' => 'required', 
             'brand' => 'required', 
@@ -38,14 +36,12 @@ class CreateEditProductRequest extends FormRequest
         ];
     }
 
-    public function getValidatorInstance()
-    {
+    public function getValidatorInstance(){
         $this->formatPurchaseDate();
         return parent::getValidatorInstance();
     }
 
-    protected function formatPurchaseDate()
-    {
+    protected function formatPurchaseDate(){
         if($this->request->has('purchase_date')){
             $this->merge([
                 'purchase_date' => Carbon::createFromFormat('d/m/Y', $this->request->get('purchase_date'))->format('Y-m-d')

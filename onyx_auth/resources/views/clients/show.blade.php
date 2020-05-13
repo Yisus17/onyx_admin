@@ -7,16 +7,16 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <span>Client Details</span>
+                    <span>Detalles del cliente</span>
                 </div>
 
                 <div class="card-body">
-                    <h5 class="card-title">{{$client->name}}</h5>
-                    <p class="card-text">Address: {{$client->address}}</p>
-                    <p class="card-text">Phone: {{$client->phone}}</p>
+                    <p class="card-text">Nombre (Razón social): {{$client->name}}</p>
+                    <p class="card-text">Dirección: {{$client->address}}</p>
+                    <p class="card-text">Teléfono: {{$client->phone}}</p>
                     <p class="card-text">Email: {{$client->email}}</p>
-                    <a href="{{route('clients.edit', $client)}}" class="btn btn-primary">Edit</a>
-                    <a href="/clients" class="btn btn-secondary">Back</a>
+                    <a href="{{route('clients.edit', $client)}}" class="btn btn-primary">Editar</a>
+                    <a href="/clients" class="btn btn-secondary">Volver</a>
                 </div>
 
             </div>
