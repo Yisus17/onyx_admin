@@ -86,9 +86,16 @@
         </main>
     </div>
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/moment.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.25.3/moment.min.js"></script>
+    <script>
+        $('.datepicker').datepicker({
+            format: "dd/mm/yyyy",
+            autoclose: true
+        });
+    </script>
+    
     @yield('scripts')
 </body>
 </html>

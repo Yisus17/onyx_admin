@@ -31,7 +31,7 @@ class ProductController extends Controller{
         $product->category()->associate($category);
 
         $product->save();
-        return redirect('products')->with('message', 'Product created successfully');
+        return redirect('products')->with('message', 'Product creado exitosamente');
     }
 
     public function show($id){
@@ -54,13 +54,13 @@ class ProductController extends Controller{
         $productToUpdate->category()->associate($category);
 
         $productToUpdate->save();
-        return redirect('products')->with('message', 'Product updated successfully');
+        return redirect('products')->with('message', 'Producto editado exitosamente');
     }
 
     public function destroy($id){
         $productToDelete=Product::findOrFail($id);
         $productToDelete->delete();
-        return back()->with('message', 'Product deleted successfully');
+        return back()->with('message', 'Producto eliminado exitosamente');
     }
 
     public function exportExcel(Request $request){

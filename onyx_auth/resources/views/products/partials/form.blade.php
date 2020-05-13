@@ -61,7 +61,7 @@
 
   <div class="form-group">
     <label for="purchase_date">Fecha de compra</label>
-    <input type="text" name="purchase_date" class="form-control datepicker" value="{{isset($product) ? $product->purchase_date : old('purchase_date')}}"/>
+    <input type="text" id="purchase_date" name="purchase_date" class="form-control datepicker" autocomplete="off"/>
   </div>
 
   <div class="form-group">
@@ -81,21 +81,12 @@
 </div>
 
 @section('scripts')
-<script>
-  $('.datepicker').datepicker({
-    format: {
-      toDisplay: function (date, format, language) {
-          var dateMoment = moment(date, 'YYYY-MM-DD')
-          return dateMoment.format('DD-MM-YYYY');
-      },
-      toValue: function (date, format, language) {
-        console.log(date);
-        var dateMoment = moment(date, 'DD-MM-YYYY')
-        return dateMoment.format('YYYY-MM-DD');
-      }
-    }
-  });
-</script>
+  @if(isset($product) && $product->purchase_date)
+    <script>
+      var purchaseDate = moment('{{$product->purchase_date}}', 'YYYY-MM-DD').format('DD/MM/YYYY');
+      $('#purchase_date').datepicker('setDate', purchaseDate);
+    </script>
+  @endif
 
 @endsection
 

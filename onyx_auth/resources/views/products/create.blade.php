@@ -14,7 +14,7 @@
                     @include('partials.session_message')
                     @include('partials.errors')
 
-                    {!! Form::open(['route' => 'products.store']) !!}
+                    {!! Form::open(['route' => 'products.store', 'id' => 'product_form']) !!}
                         @include('products.partials.form')
                     {!! Form::close() !!}
                 </div>

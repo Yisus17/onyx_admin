@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Carbon\Carbon;
 
 class CreateEditProductRequest extends FormRequest
 {
@@ -35,5 +36,20 @@ class CreateEditProductRequest extends FormRequest
             'purchase_date' => 'date', 
             'years_old' => 'required|numeric'
         ];
+    }
+
+    public function getValidatorInstance()
+    {
+        $this->formatPurchaseDate();
+        return parent::getValidatorInstance();
+    }
+
+    protected function formatPurchaseDate()
+    {
+        if($this->request->has('purchase_date')){
+            $this->merge([
+                'purchase_date' => Carbon::createFromFormat('d/m/Y', $this->request->get('purchase_date'))->format('Y-m-d')
+            ]);
+        }
     }
 }
