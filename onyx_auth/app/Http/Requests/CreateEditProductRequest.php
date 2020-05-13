@@ -13,7 +13,7 @@ class CreateEditProductRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return \Auth::check();
     }
 
     /**
@@ -32,7 +32,7 @@ class CreateEditProductRequest extends FormRequest
             'purchase_price' => 'required|numeric', 
             'status' => 'required', 
             'bought_by' => 'required', 
-            'purchase_date' => 'required|date', 
+            'purchase_date' => 'date', 
             'years_old' => 'required|numeric'
         ];
     }

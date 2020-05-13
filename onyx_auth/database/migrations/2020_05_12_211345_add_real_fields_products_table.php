@@ -22,12 +22,12 @@ class AddRealFieldsProductsTable extends Migration
             $table->string('brand');
             $table->string('model');
             $table->string('type');
-            $table->string('serial');
+            $table->string('serial')->nullable();
             $table->float('purchase_price');
             $table->string('status');
             $table->string('bought_by');
             $table->boolean('countable');
-            $table->date('purchase_date');
+            $table->date('purchase_date')->nullable();
             $table->integer('years_old');
         });
     }

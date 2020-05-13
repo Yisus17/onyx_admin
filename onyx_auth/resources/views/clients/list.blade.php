@@ -32,7 +32,7 @@
                                     <td>{{ $item->phone }}</td>
                                     <td>{{ $item->email }}</td>
                                     <td>
-                                        <form action="{{ route('clients.destroy',$item->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this client?');">
+                                        <form action="{{ route('clients.destroy',$item->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro que deseas eliminar a este cliente?');">
                                             @method('DELETE')
                                             @csrf
                                             <a href="{{route('clients.show', $item->id)}}" class="btn btn-primary btn-sm" title="Edit item"><i class="fas fa-eye" ></i></a>

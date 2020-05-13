@@ -181,5 +181,16 @@ return [
         'title'                 => 'título',
         'username'              => 'usuario',
         'year'                  => 'año',
+        'code'                  => 'código',
+        'brand'                 => 'marca',
+        'model'                 => 'modelo',
+        'type'                  => 'tipo',
+        'purchase_price'        => 'precio de compra',
+        'status'                => 'estado',
+        'bought_by'             => 'comprado por',
+        'countable'             => 'contable',
+        'purchase_date'         => 'fecha de compra',
+        'years_old'             => 'años de antigüedad',
+
     ],
 ];

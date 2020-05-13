@@ -7,7 +7,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <span>Edit Product for {{auth()->user()->name}}</span>
+                    <span>Editar producto por: {{auth()->user()->name}}</span>
                 </div>
 
                 <div class="card-body">

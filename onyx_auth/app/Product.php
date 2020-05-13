@@ -10,6 +10,14 @@ class Product extends Model{
         'type', 'serial', 'purchase_price', 'status', 
         'bought_by', 'countable', 'purchase_date', 'years_old'];
 
+    protected $casts = [
+        'countable' => 'boolean'
+    ];
+
+    protected $dates = ['purchase_date'];
+
+    
+
     public function category(){
     	return $this->belongsTo(Category::class);
     }

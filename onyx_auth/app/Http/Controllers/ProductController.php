@@ -25,12 +25,13 @@ class ProductController extends Controller{
     }
 
     public function store(CreateEditProductRequest $request){
-        $product = new Product($request->all());
+        $product = new Product($request->except(['countable']));
+        $product->countable = (bool) request('countable');
         $category = Category::find($request->category_id);
         $product->category()->associate($category);
 
         $product->save();
-        return back()->with('message', 'Product created successfully');
+        return redirect('products')->with('message', 'Product created successfully');
     }
 
     public function show($id){
@@ -46,14 +47,14 @@ class ProductController extends Controller{
 
     public function update(CreateEditProductRequest $request, $id){
         $productToUpdate =  Product::findOrFail($id);
-        $productToUpdate->update($request->all());
+        $productToUpdate->update($request->except(['countable']));
+        $productToUpdate->countable = (bool) request('countable');
 
         $category = Category::find($request->category_id);
         $productToUpdate->category()->associate($category);
 
         $productToUpdate->save();
-
-        return back()->with('message', 'Product updated successfully');
+        return redirect('products')->with('message', 'Product updated successfully');
     }
 
     public function destroy($id){

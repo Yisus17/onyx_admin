@@ -3,12 +3,13 @@
 @section('content')
 
 <div class="container">
+@include('partials.session_message')
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <span>Products for {{auth()->user()->name}}</span>
-                    <a href="/products/create" class="btn btn-primary btn-sm">New Product</a>
+                    <span>Listado de productos</span>
+                    <a href="/products/create" class="btn btn-primary btn-sm">Nuevo producto</a>
                 </div>
 
                 <div class="card-body">
@@ -17,7 +18,7 @@
                             <tr>
                                 <th scope="col">Código</th>
                                 <th scope="col">Modelo</th>
-                                <th scope="col">Description</th>
+                                <th scope="col">Descripción</th>
                                 <th scope="col">Categoría</th>
                                 <th scope="col">Precio de compra</th>
                                 <th scope="col">Fecha de compra</th>
@@ -31,10 +32,10 @@
                                 <td>{{ $item->model }}</td>
                                 <td>{{ $item->description }}</td>
                                 <td>{{ $item->category->name }}</td>
-                                <td>{{ $item->purchase_price }}</td>
-                                <td>{{ $item->purchase_date }}</td>
+                                <td>{{ $item->purchase_price ? $item->purchase_price.'€' : ''  }}</td>
+                                <td>{{ $item->purchase_date ? $item->purchase_date->format('d/m/Y') : ''}}</td>
                                 <td>
-                                    <form action="{{ route('products.destroy',$item->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this product?');">
+                                    <form action="{{ route('products.destroy',$item->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro que deseas eliminar a este producto?');">
                                         @method('DELETE')
                                         @csrf
                                         <a href="{{route('products.show', $item->id)}}" class="btn btn-primary btn-sm" title="Edit item"><i class="fas fa-eye"></i></a>

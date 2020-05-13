@@ -17,6 +17,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/fontawesome/css/all.css')}}" rel="stylesheet"> <!--icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     
 
@@ -85,7 +86,9 @@
         </main>
     </div>
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/moment.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
     @yield('scripts')
 </body>
 </html>
