@@ -49,3 +49,18 @@ input[type=number] {
 .custom-form .form-group label{
   margin-bottom: 2px;
 }
+
+.custom-form .image-area{
+  text-align: center;
+  border: 2px dashed #ced4da;
+  padding-top: 6px;
+}
+
+.custom-form .image-area input[type="image"]{
+  width: 80px;
+  height: 80px;
+}
+
+.hidden{
+  display: none !important;
+}

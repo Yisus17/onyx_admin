@@ -69,6 +69,37 @@
     <input type="number" name="years_old" class="form-control" min="0" step="1" value="{{isset($product) ? $product->years_old : old('years_old')}}" />
   </div>
 
+  <div class="form-group">
+    <label>Imagen</label>
+
+    <div class="input-group mb-1">
+      <div class="input-group-prepend">
+        <label class="btn btn-outline-secondary">
+          Buscar <input id="product_image" placeholder="Selecciona un archivo" type="file" name="image" hidden>
+        </label>
+        
+      </div>
+      <input 
+        id="product_image_name" 
+        type="text" 
+        class="form-control" 
+        placeholder="Selecciona un archivo"
+        value="{{isset($product) && $product->image_original_name ? $product->image_original_name : ''}}" 
+        readonly>
+      <div class="input-group-append">
+        <label id="reset_product_image" class="btn btn-outline-secondary">Eliminar</label>
+      </div>
+    </div>
+
+    <div class="image-area">
+      <p id="no_image_message" class="{{isset($product) && $product->image_name ? 'hidden' : ''}}">No hay imagen seleccionada</p>
+      <input 
+        type="image" 
+        class="{{isset($product) && $product->image_name ? '' : 'hidden'}}" 
+        id="preview_product_image" src="{{isset($product) && $product->image_name ? url('uploads/products/'.$product->image_name) : ''}}">
+    </div>
+  </div>
+
   <div class="form-group form-check">
     <input type="checkbox" name="countable" class="form-check-input" {{isset($product) && $product->countable ? 'checked="checked"' : ''}}>
     <label class="form-check-label" for="countable">Marcar si este producto es contable</label>
@@ -87,6 +118,34 @@
       $('#purchase_date').datepicker('setDate', purchaseDate);
     </script>
   @endif
+
+  <script>
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          $('#preview_product_image').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+        $('#preview_product_image').removeClass('hidden');
+        $('#no_image_message').addClass('hidden');
+      }
+    }
+
+    $('#product_image').on('change',function(){
+      readURL(this);
+      var fileName = $(this).val().split('\\').pop();
+      $('#product_image_name').val(fileName);
+    })
+
+    $('#reset_product_image').on('click',function(){
+      $('#product_image').val('');
+      $('#product_image_name').val('');
+      $('#preview_product_image').addClass('hidden');
+      $('#no_image_message').removeClass('hidden');
+    })
+</script>
 
 @endsection
 

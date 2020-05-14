@@ -14,7 +14,7 @@
                     @include('partials.session_message')
                     @include('partials.errors')
 
-                    {!! Form::model($product, ['route' => ['products.update', $product->id], 'method' => 'PUT', 'id' => 'product_form']) !!}
+                    {!! Form::model($product, ['route' => ['products.update', $product->id], 'method' => 'PUT', 'id' => 'product_form', 'files' => true]) !!}
                         @include('products.partials.form')
                     {!! Form::close() !!}
                 </div>
