@@ -15,6 +15,11 @@
   </div>
 
   <div class="form-group">
+    <label for="secondary_phone">Teléfono secundario</label>
+    <input type="text" name="secondary_phone" class="form-control" value="{{isset($client) ? $client->secondary_phone : old('secondary_phone')}}" />
+  </div>
+
+  <div class="form-group">
     <label for="email">Email</label>
     <input type="text" name="email" class="form-control" value="{{isset($client) ? $client->email : old('email')}}" />
   </div>

@@ -32,7 +32,8 @@ class CreateEditProductRequest extends FormRequest
             'status' => 'required', 
             'bought_by' => 'required', 
             'purchase_date' => 'date', 
-            'years_old' => 'required|numeric'
+            'years_old' => 'required|numeric',
+            'image' => 'image'
         ];
     }
 
