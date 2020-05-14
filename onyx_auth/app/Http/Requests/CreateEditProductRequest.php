@@ -31,9 +31,10 @@ class CreateEditProductRequest extends FormRequest
             'purchase_price' => 'required|numeric', 
             'status' => 'required', 
             'bought_by' => 'required', 
-            'purchase_date' => 'date', 
+            'purchase_date' => 'nullable|date', 
             'years_old' => 'required|numeric',
-            'image' => 'image'
+            'image' => 'image',
+            'category_id' => 'required'
         ];
     }
 
@@ -43,7 +44,7 @@ class CreateEditProductRequest extends FormRequest
     }
 
     protected function formatPurchaseDate(){
-        if($this->request->has('purchase_date')){
+        if($this->request->get('purchase_date')){
             $this->merge([
                 'purchase_date' => Carbon::createFromFormat('d/m/Y', $this->request->get('purchase_date'))->format('Y-m-d')
             ]);

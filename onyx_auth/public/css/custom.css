@@ -64,3 +64,17 @@ input[type=number] {
 .hidden{
   display: none !important;
 }
+
+.required-field{
+  color: red;
+}
+
+.required-info{
+  text-align: right;
+}
+
+.required-info span{
+  color: red;
+  font-size: 12px;
+  font-style: italic;
+}

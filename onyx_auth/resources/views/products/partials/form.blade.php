@@ -1,36 +1,40 @@
 <div class="custom-form">
+  <div class="form-group required-info">
+    <span>*Campos obligatorios</span>
+  </div>
+
   <div class="form-group">
-    <label for="code">Código</label>
+    <label for="code"><span class="required-field">*</span>Código</label>
     <input type="text" name="code" class="form-control" value="{{isset($product) ? $product->code : old('code')}}" />
   </div>
 
   <div class="form-group">
-    <label for="brand">Marca</label>
+    <label for="brand"><span class="required-field">*</span>Marca</label>
     <input type="text" name="brand" class="form-control" value="{{isset($product) ? $product->brand : old('brand')}}" />
   </div>
 
   <div class="form-group">
-    <label for="model">Modelo</label>
+    <label for="model"><span class="required-field">*</span>Modelo</label>
     <input type="text" name="model" class="form-control" value="{{isset($product) ? $product->model : old('model')}}" />
   </div>
 
   <div class="form-group">
-    <label for="description">Descripción</label>
+    <label for="description"><span class="required-field">*</span>Descripción</label>
     <input type="text" name="description" class="form-control" value="{{isset($product) ? $product->description : old('description')}}"/>
   </div>
 
   <div class="form-group">
-    <label for="category_id">Categoría</label>
+    <label for="category_id"><span class="required-field">*</span>Categoría</label>
     <select name="category_id" class="form-control selectpicker" data-live-search="true">
       <option value="" selected disabled>--Selecciona una opción--</option>
       @foreach($categories as $category)
-        <option value="{{ $category->id }}" {{ isset($product) && ($category->id == $product->category_id) ? 'selected' : '' }}>{{ $category->name }}</option>
+        <option value="{{ $category->id }}" {{ (isset($product) && $category->id == $product->category_id) || old('category_id') == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
       @endforeach
     </select>
   </div>
 
   <div class="form-group">
-    <label for="type">Tipo</label>
+    <label for="type"><span class="required-field">*</span>Tipo</label>
     <input type="text" name="type" class="form-control" value="{{isset($product) ? $product->type : old('type')}}"/>
   </div>
 
@@ -40,7 +44,7 @@
   </div>
 
   <div class="form-group">
-    <label for="purchase_price">Precio de compra</label>
+    <label for="purchase_price"><span class="required-field">*</span>Precio de compra</label>
     <div class="input-group">
       <input type="number" name="purchase_price" class="form-control" min="0" step="0.01" value="{{isset($product) ? $product->purchase_price : old('purchase_price')}}" />
       <div class="input-group-append">
@@ -50,12 +54,12 @@
   </div>
 
   <div class="form-group">
-    <label for="status">Estado</label>
+    <label for="status"><span class="required-field">*</span>Estado</label>
     <input type="text" name="status" class="form-control" value="{{isset($product) ? $product->status : old('status')}}"/>
   </div>
 
   <div class="form-group">
-    <label for="bought_by">Comprado por</label>
+    <label for="bought_by"><span class="required-field">*</span>Comprado por</label>
     <input type="text" name="bought_by" class="form-control" value="{{isset($product) ? $product->bought_by : old('bought_by')}}"/>
   </div>
 
@@ -65,7 +69,7 @@
   </div>
 
   <div class="form-group">
-    <label for="years_old">Años de antigüedad</label>
+    <label for="years_old"><span class="required-field">*</span>Años de antigüedad</label>
     <input type="number" name="years_old" class="form-control" min="0" step="1" value="{{isset($product) ? $product->years_old : old('years_old')}}" />
   </div>
 
@@ -115,6 +119,11 @@
   @if(isset($product) && $product->purchase_date)
     <script>
       var purchaseDate = moment('{{$product->purchase_date}}', 'YYYY-MM-DD').format('DD/MM/YYYY');
+      $('#purchase_date').datepicker('setDate', purchaseDate);
+    </script>
+  @elseif(old('purchase_date'))
+    <script>
+      var purchaseDate = '{{old("purchase_date")}}';
       $('#purchase_date').datepicker('setDate', purchaseDate);
     </script>
   @endif
