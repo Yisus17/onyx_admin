@@ -42,7 +42,7 @@
       e.preventDefault();
       i = i+1;
       var templateBudgetItem = $("#template-budget-item").html();
-      $('.budget-items-container').append('<div class="budget-item m-2" id ="budget-item-'+i+'">'+templateBudgetItem+'</div>');
+      $('.budget-items-container').append('<div class="budget-item" id ="budget-item-'+i+'">'+templateBudgetItem+'</div>');
       $('#budget-item-'+i+' .search-select-bar').selectpicker();
     });
   </script>
