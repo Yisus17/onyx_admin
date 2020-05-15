@@ -191,6 +191,8 @@ return [
         'countable'             => 'contable',
         'purchase_date'         => 'fecha de compra',
         'years_old'             => 'años de antigüedad',
+        'image'                 => 'imagen',
+        'category_id'           => 'categoria',
 
     ],
 ];

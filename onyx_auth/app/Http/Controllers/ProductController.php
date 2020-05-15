@@ -25,8 +25,16 @@ class ProductController extends Controller{
     }
 
     public function store(CreateEditProductRequest $request){
-        $product = new Product($request->except(['countable']));
+        $product = new Product($request->except(['countable', 'image']));
         $product->countable = (bool) request('countable');
+
+        if($request->file('image')){
+            $file = $request->file('image');
+            $file->store('products', ['disk' => 'public_uploads']);
+            $product->image_name = $file->hashName();
+            $product->image_original_name = $file->getClientOriginalName();
+        }
+
         $category = Category::find($request->category_id);
         $product->category()->associate($category);
 
@@ -47,9 +55,16 @@ class ProductController extends Controller{
 
     public function update(CreateEditProductRequest $request, $id){
         $productToUpdate =  Product::findOrFail($id);
-        $productToUpdate->update($request->except(['countable']));
+        $productToUpdate->update($request->except(['countable', 'image']));
         $productToUpdate->countable = (bool) request('countable');
 
+        if($request->file('image')){
+            $file = $request->file('image');
+            $file->store('products', ['disk' => 'public_uploads']);
+            $productToUpdate->image_name = $file->hashName();
+            $productToUpdate->image_original_name = $file->getClientOriginalName();
+        }
+        
         $category = Category::find($request->category_id);
         $productToUpdate->category()->associate($category);
 
