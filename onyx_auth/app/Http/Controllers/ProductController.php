@@ -33,6 +33,9 @@ class ProductController extends Controller{
             $file->store('products', ['disk' => 'public_uploads']);
             $product->image_name = $file->hashName();
             $product->image_original_name = $file->getClientOriginalName();
+        }else{
+            $product->image_name = null;
+            $product->image_original_name = null;
         }
 
         $category = Category::find($request->category_id);
@@ -63,6 +66,9 @@ class ProductController extends Controller{
             $file->store('products', ['disk' => 'public_uploads']);
             $productToUpdate->image_name = $file->hashName();
             $productToUpdate->image_original_name = $file->getClientOriginalName();
+        }else{
+            $productToUpdate->image_name = null;
+            $productToUpdate->image_original_name = null;
         }
         
         $category = Category::find($request->category_id);
