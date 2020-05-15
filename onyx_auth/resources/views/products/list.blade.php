@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container">
-@include('partials.session_message')
+    @include('partials.session_message')
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">

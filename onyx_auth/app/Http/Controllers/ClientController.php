@@ -25,7 +25,7 @@ class ClientController extends Controller{
     public function store(CreateEditClientRequest $request){
         $client = new Client($request->all());
         $client->save();
-        return back()->with('message', 'Cliente creado exitosamente');
+        return redirect('clients')->with('message', 'Cliente creado exitosamente');
     }
 
 
@@ -46,13 +46,13 @@ class ClientController extends Controller{
         $clientToUpdate->update($request->all());
         $clientToUpdate->save();
 
-        return back()->with('message', 'Cliente editado exitosamente');
+        return redirect('clients')->with('message', 'Cliente editado exitosamente');
     }
 
 
     public function destroy($id){
         $clientToDelete = Client::findOrFail($id);
         $clientToDelete->delete();
-        return back()->with('message', 'Client eliminado exitosamente');
+        return redirect('clients')->with('message', 'Client eliminado exitosamente');
     }
 }

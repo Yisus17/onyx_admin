@@ -13,6 +13,7 @@
                         {{ session('status') }}
                     </div>
                     @endif
+                    
 
                     <div class="row">
                         <div class="col-md-4 col-sm-12"><a href="{{ url('/products') }}">
