@@ -32,3 +32,4 @@ Route::resource('/products', 'ProductController');
 Route::get('product-list-excel', 'ProductController@exportExcel')->name('products.pdf');
 
 Route::resource('/clients', 'ClientController');
+Route::resource('/budgets', 'BudgetController');

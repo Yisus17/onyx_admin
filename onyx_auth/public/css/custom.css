@@ -78,3 +78,8 @@ input[type=number] {
   font-size: 12px;
   font-style: italic;
 }
+
+.budget-item{
+  width: 95%;
+  margin-bottom: 5px;
+}
