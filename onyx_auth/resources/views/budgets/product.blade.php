@@ -10,11 +10,10 @@
     </div>
     <div class="card-body">
       <!-- Product -->
-      <div class="row">
+      <div class="row mb-2">
         <div class="form-group col-12">
-          <h5>
-            {{$product->description}}
-          </h5>
+          <label for="description"><span class="required-field">*</span>Descripción</label>
+          <input type="text" name="products[{{$uniqid}}][description]" class="form-control" value="{{$product->description}}"/>
         </div>
       </div>
       <!-- End product -->
@@ -23,23 +22,18 @@
       <div class="row">
         <div class="form-group col-md-6 col-lg-3">
           <label for="quantity"><span class="required-field">*</span>Cantidad</label>
-          <input type="number" name="quantity" min="1" step="1" class="form-control" value="{{old('status')}}"/>
+          <input type="number" name="products[{{$uniqid}}][quantity]" min="1" class="form-control" value=""/>
         </div>
 
         <div class="form-group col-md-6 col-lg-3">
-          <label for="product_discount">Precio compra</label>
-          <div class="input-group">
-            <input type="text" class="form-control" value="{{$product->purchase_price}}" readonly/>
-            <div class="input-group-append">
-              <span class="input-group-text">€</span>
-            </div>
-          </div>
+          <label for="factor"><span class="required-field">*</span>Factor</label>
+          <input type="number" name="products[{{$uniqid}}][factor]" min="0" class="form-control" value=""/>
         </div>
 
         <div class="form-group col-md-6 col-lg-3">
           <label for="product_discount">Precio unitario</label>
           <div class="input-group">
-            <input type="text" class="form-control" value="{{$product->unit_price}}" readonly/>
+            <input type="text" name="products[{{$uniqid}}][unit_price]" class="form-control" value="{{$product->unit_price}}"/>
             <div class="input-group-append">
               <span class="input-group-text">€</span>
             </div>
@@ -49,7 +43,7 @@
         <div class="form-group col-md-6 col-lg-3">
           <label for="product_discount">Descuento</label>
           <div class="input-group">
-            <input type="number" name="product_discount" class="form-control" min="0" max="100" step="1" value="{{old('product_discount')}}" />
+            <input type="number" name="products[{{$uniqid}}][discount]" class="form-control" min="0" max="100" step="1" value="" />
             <div class="input-group-append">
               <span class="input-group-text">%</span>
             </div>

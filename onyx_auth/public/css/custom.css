@@ -91,3 +91,7 @@ input[type=number] {
 .disabled{
   pointer-events: none;
 }
+
+textarea{
+  resize: none !important;
+}

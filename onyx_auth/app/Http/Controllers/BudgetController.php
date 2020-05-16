@@ -22,10 +22,12 @@ class BudgetController extends Controller{
 	public function create(){
 		$clients = Client::all();
 		$products = Product::select('id','code','description')->get();
-		return view('budgets.create', compact('clients', 'products'));
+		$validityOptions = Product::getValidityOptions();
+		return view('budgets.create', compact('clients', 'products', 'validityOptions'));
 	}
 
 	public function store(Request $request){
+		dd($request);
 	}
 
 	public function show(Budget $budget){
