@@ -33,3 +33,4 @@ Route::get('product-list-excel', 'ProductController@exportExcel')->name('product
 
 Route::resource('/clients', 'ClientController');
 Route::resource('/budgets', 'BudgetController');
+Route::post('/budgets/addProduct', 'BudgetController@addProduct');

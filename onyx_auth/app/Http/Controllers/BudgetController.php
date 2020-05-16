@@ -38,4 +38,15 @@ class BudgetController extends Controller{
 
 	public function destroy(Budget $budget){
 	}
+
+	public function addProduct(Request $request){
+		try{
+			$productId = (int)$request->product_id;
+			$product =  Product::findOrFail($productId);
+		} catch(Exception $exception){
+    	return $exception;
+		}
+		
+		return view('budgets.product', compact('product'));
+	}
 }

@@ -1,17 +1,6 @@
 <div class="card ">
   <div class="card-body">
     <!-- Product -->
-    <div class="row mb-2">
-      <div class="form-group col-12">
-        <label for="product_id"><span class="required-field">*</span>Producto</label>
-        <select name="product_id" class="form-control search-select-bar" data-live-search="true">
-          <option value="" selected disabled>--Selecciona una opción--</option>
-          @foreach($products as $product)
-            <option value="{{ $product->id }}">{{ '('.$product->code.') '.$product->description }}</option>
-          @endforeach
-        </select>
-      </div>
-    </div>
     <!-- End product -->
 
     <!-- Product numbers -->

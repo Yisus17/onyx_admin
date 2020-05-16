@@ -1,25 +1,39 @@
 @extends('layouts.app')
 
-<!-- Template budget item -->
-  <div id="template-budget-item" class="hidden">
-    @include('budgets.partials.product')
-  </div>
-<!-- End template budget item -->
-
 @section('content')
 <div class="container">
+  @include('partials.session_message')
   <div class="row justify-content-center">
-    <div class="col-10 custom-form">
-
+    <div class="col-8 custom-form">
       <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
           <span>Crear presupuesto por: {{auth()->user()->name}}</span>
-          <a href="#" id="add-budget-item" class="btn btn-primary btn-sm">Agregar item</a>
         </div>
 
         <div class="card-body">
+
+          <!-- Product selection -->
+          <div class="row mb-3">
+            <div class="form-group col-12">
+              <label for="product_id"><span class="required-field">*</span>Producto</label>
+              <div class="input-group select-add">
+                <select id="product-select" class="form-control selectpicker" data-live-search="true">
+                  <option value="" selected disabled>--Selecciona una opción--</option>
+                  @foreach($products as $product)
+                    <option value="{{ $product->id }}">{{ '('.$product->code.') '.$product->description }}</option>
+                  @endforeach
+                </select>
+                <div class="input-group-addon input-group-button">
+                  <button type="button" id="add-budget-product" class="btn btn-primary disabled">Agregar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End product selection -->
+
+          
           <!-- Budget items -->
-          <div class="row budget-items-container justify-content-center">
+          <div class="row budget-products-container justify-content-center">
           </div>
           <!-- End budget items -->
 
@@ -36,14 +50,45 @@
 @endsection
 
 @section('scripts')
-  <script>
-    var i = 0;
-    $('#add-budget-item').click(function(e){
+  <script type="text/javascript">
+    function checkAddBtn(){
+      if($("#product-select").val()){
+        $("#add-budget-product").removeClass('disabled');
+      }else{
+        $("#add-budget-product").addClass('disabled');
+      }
+    }
+
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
+
+    $('#product-select').change(function(e){
+      checkAddBtn();
+    });
+
+    $('#add-budget-product').click(function(e){
       e.preventDefault();
-      i = i+1;
-      var templateBudgetItem = $("#template-budget-item").html();
-      $('.budget-items-container').append('<div class="budget-item" id ="budget-item-'+i+'">'+templateBudgetItem+'</div>');
-      $('#budget-item-'+i+' .search-select-bar').selectpicker();
+      var productId = $('#product-select').val();
+      if(productId){
+        $.ajax({
+          type:'POST',
+          url:'/budgets/addProduct',
+          data:{product_id: productId},
+          success:function(response){
+            $('.budget-products-container').append(response);
+            $('.delete-budget-product').on('click',function(event){
+              event.preventDefault();
+              $(this).closest('.budget-product').remove();
+            });
+          },
+          error:function(jqXHR, textStatus, errorThrown){
+            alert('Ha ocurrido un error');
+          },
+        });
+      }
     });
   </script>
 @endsection

@@ -79,7 +79,15 @@ input[type=number] {
   font-style: italic;
 }
 
-.budget-item{
-  width: 95%;
-  margin-bottom: 5px;
+
+.input-group.select-add > .form-control:not(:last-child){
+  border-radius: 0.25rem;
+}
+
+.input-group.select-add .input-group-button{
+  margin-left: 5px;
+}
+
+.disabled{
+  pointer-events: none;
 }
