@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Budget;
 use App\Client;
 use App\Product;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class BudgetController extends Controller{
@@ -20,7 +21,7 @@ class BudgetController extends Controller{
 
 	public function create(){
 		$clients = Client::all();
-		$products = Product::all();
+		$products = Product::select('id','code','description')->get();
 		return view('budgets.create', compact('clients', 'products'));
 	}
 
@@ -43,10 +44,11 @@ class BudgetController extends Controller{
 		try{
 			$productId = (int)$request->product_id;
 			$product =  Product::findOrFail($productId);
+			$uniqid = Str::random(9); //Unique id to manipulate events in DOM per product
 		} catch(Exception $exception){
     	return $exception;
 		}
 		
-		return view('budgets.product', compact('product'));
+		return view('budgets.product', compact('product', 'uniqid'));
 	}
 }

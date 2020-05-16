@@ -4,7 +4,7 @@
 <div class="container">
   @include('partials.session_message')
   <div class="row justify-content-center">
-    <div class="col-8 custom-form">
+    <div class="col-md-12 col-lg-8 custom-form">
       <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
           <span>Crear presupuesto por: {{auth()->user()->name}}</span>
@@ -78,10 +78,11 @@
           url:'/budgets/addProduct',
           data:{product_id: productId},
           success:function(response){
+            var uniqueId = $(response).find('.budget-product').attr('id');
             $('.budget-products-container').append(response);
-            $('.delete-budget-product').on('click',function(event){
+            $('#'+uniqueId+" .delete-budget-product").on('click',function(event){
               event.preventDefault();
-              $(this).closest('.budget-product').remove();
+              $(this).closest('.budget-product-container').remove();
             });
           },
           error:function(jqXHR, textStatus, errorThrown){
