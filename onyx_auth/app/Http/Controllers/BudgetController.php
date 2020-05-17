@@ -32,7 +32,12 @@ class BudgetController extends Controller{
 	}
 
 	public function store(CreateEditBudgetRequest $request){
-		dd($request);
+		$budget = new Budget($request->all());
+		
+		$client = Client::find($request->client_id);
+		$budget->client()->associate($client);
+		$budget->save();
+		return redirect('budgets')->with('message', 'Presupuesto creado exitosamente');
 	}
 
 	public function show(Budget $budget){

@@ -5,7 +5,19 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class Budget extends Model{
-	protected $dates = ['delivery_date', 'return_date', 'instalation_date', 'start_date', 'end_date'];
+	protected $fillable = [
+		'delivery_date', 'return_date', 'instalation_date', 
+		'start_date', 'end_date', 'uninstalation_date',
+		'validity', 'description', 'address', 
+		'payment_conditions', 'payment_method', 'notes'];
+
+	protected $dates = [
+		'delivery_date', 'return_date', 
+		'instalation_date', 'start_date', 'end_date', 'uninstalation_date'];
+
+	public function client(){
+		return $this->belongsTo(Client::class);
+	}
 
 	public static function getPaymentConditions(){
 		$paymentConditions = [

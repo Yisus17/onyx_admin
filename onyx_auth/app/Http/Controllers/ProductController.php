@@ -42,7 +42,7 @@ class ProductController extends Controller{
         $product->category()->associate($category);
 
         $product->save();
-        return redirect('products')->with('message', 'Product creado exitosamente');
+        return redirect('products')->with('message', 'Producto creado exitosamente');
     }
 
     public function show($id){
