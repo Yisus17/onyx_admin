@@ -113,5 +113,15 @@
   <textarea class="form-control" name="notes" rows="2"></textarea>
 </div>
 
+@section('scripts')
+  <script>
+    $('#budget-data .datepicker').datepicker({
+      format: "dd/mm/yyyy",
+      autoclose: true,
+      todayHighlight: true
+    });
+  </script>
+@endsection
+
 
 

@@ -12,7 +12,7 @@
 
         <div class="card-body">
           {!! Form::open(['route' => 'budgets.store']) !!}
-            <div class="row mb-2">
+            <div id="budget-data" class="row mb-2">
               <!-- Budget data -->
                 @include('budgets.partials.budget_data_form')
               <!-- End budget data -->

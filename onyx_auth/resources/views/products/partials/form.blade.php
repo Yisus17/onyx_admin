@@ -116,19 +116,13 @@
 </div>
 
 @section('scripts')
-  @if(isset($product) && $product->purchase_date)
-    <script>
-      var purchaseDate = moment('{{$product->purchase_date}}', 'YYYY-MM-DD').format('DD/MM/YYYY');
-      $('#purchase_date').datepicker('setDate', purchaseDate);
-    </script>
-  @elseif(old('purchase_date'))
-    <script>
-      var purchaseDate = '{{old("purchase_date")}}';
-      $('#purchase_date').datepicker('setDate', purchaseDate);
-    </script>
-  @endif
-
   <script>
+    $('#purchase_date').datepicker({
+        format: "dd/mm/yyyy",
+        autoclose: true,
+        todayHighlight: true, 
+        endDate: moment().format('DD/MM/YYYY')
+    });
 
     $('#purchase_date').on("change", function(e) {
       var selectedDate = moment(e.target.value, 'DD/MM/YYYY');
@@ -138,8 +132,6 @@
       }
       $('input[name ="years_old"]').val(yearsOfDiff);
     });
-
-
 
     function readURL(input) {
       if (input.files && input.files[0]) {
@@ -167,6 +159,18 @@
       $('#no_image_message').removeClass('hidden');
     })
 </script>
+
+  @if(isset($product) && $product->purchase_date)
+    <script>
+      var purchaseDate = moment('{{$product->purchase_date}}', 'YYYY-MM-DD').format('DD/MM/YYYY');
+      $('#purchase_date').datepicker('setDate', purchaseDate);
+    </script>
+  @elseif(old('purchase_date'))
+    <script>
+      var purchaseDate = '{{old("purchase_date")}}';
+      $('#purchase_date').datepicker('setDate', purchaseDate);
+    </script>
+  @endif
 
 @endsection
 
