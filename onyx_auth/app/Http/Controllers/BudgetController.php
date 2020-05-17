@@ -7,6 +7,7 @@ use App\Client;
 use App\Product;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateEditBudgetRequest;
 
 class BudgetController extends Controller{
 
@@ -22,11 +23,15 @@ class BudgetController extends Controller{
 	public function create(){
 		$clients = Client::all();
 		$products = Product::select('id','code','description')->get();
+		$paymentConditions = Budget::getPaymentConditions();
+		$paymentMethods = Budget::getPaymentMethods();
 		$validityOptions = Product::getValidityOptions();
-		return view('budgets.create', compact('clients', 'products', 'validityOptions'));
+		return view(
+			'budgets.create', 
+			compact('clients', 'products', 'validityOptions', 'paymentConditions', 'paymentMethods'));
 	}
 
-	public function store(Request $request){
+	public function store(CreateEditBudgetRequest $request){
 		dd($request);
 	}
 
