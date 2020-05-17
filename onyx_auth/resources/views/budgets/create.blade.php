@@ -4,7 +4,7 @@
 <div class="container">
   @include('partials.session_message')
   <div class="row justify-content-center">
-    <div class="col-md-12 col-lg-8 custom-form">
+    <div class="col-10 custom-form">
       <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
           <span>Crear presupuesto por: {{auth()->user()->name}}</span>
@@ -12,9 +12,11 @@
 
         <div class="card-body">
           {!! Form::open(['route' => 'budgets.store']) !!}
-            <!-- Budget data -->
-              @include('budgets.partials.budget_data_form')
-            <!-- End budget data -->
+            <div class="row mb-2">
+              <!-- Budget data -->
+                @include('budgets.partials.budget_data_form')
+              <!-- End budget data -->
+            </div>
 
             <!-- Product selection -->
             <div class="row mb-3">
@@ -22,7 +24,7 @@
                 <hr>
               </div>
               <div class="form-group col-12">
-                <label for="product_id"><span class="required-field">*</span>Producto</label>
+                <label for="product_id"><span class="required-field">*</span>Productos</label>
                 <div class="input-group select-add">
                   <select id="product-select" class="form-control selectpicker" data-live-search="true">
                     <option value="" selected disabled>--Selecciona una opción--</option>
@@ -34,6 +36,7 @@
                     <button type="button" id="add-budget-product" class="btn btn-primary disabled">Agregar</button>
                   </div>
                 </div>
+                <small class="form-text text-muted">Busca productos para agregar al presupuesto</small>
               </div>
             </div>
             <!-- End product selection -->

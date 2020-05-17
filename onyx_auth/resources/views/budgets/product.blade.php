@@ -3,9 +3,9 @@
     <div class="card-header d-flex justify-content-between align-items-center">
       <span>{{$product->code}}</span>
       <button 
-        type="buttom" 
+        type="button" 
         class="btn btn-danger btn-sm rounded-circle delete-budget-product">
-        <i class="fa fa-times"></i>
+          <i class="fa fa-times"></i>
       </button>
     </div>
     <div class="card-body">
@@ -31,7 +31,7 @@
         </div>
 
         <div class="form-group col-md-6 col-lg-3">
-          <label for="product_discount">Precio unitario</label>
+          <label for="product_discount"><span class="required-field">*</span>Precio unitario</label>
           <div class="input-group">
             <input type="text" name="products[{{$uniqid}}][unit_price]" class="form-control" value="{{$product->unit_price}}"/>
             <div class="input-group-append">

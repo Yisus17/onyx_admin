@@ -95,3 +95,16 @@ input[type=number] {
 textarea{
   resize: none !important;
 }
+
+.budget-product-container .card-header{
+  height: 32px;
+}
+
+.budget-product-container .delete-budget-product{
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  text-align: center;
+  font-size: 10px;
+  line-height: 1.42857;
+}
