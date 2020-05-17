@@ -24,7 +24,7 @@
   </div>
 
   <div class="form-group">
-    <label for="category_id"><span class="required-field">*</span>Categoría</label>
+    <label for="category_id"><span class="required-field">*</span>Rubro</label>
     <select name="category_id" class="form-control selectpicker" data-live-search="true">
       <option value="" selected disabled>--Selecciona una opción--</option>
       @foreach($categories as $category)
@@ -70,7 +70,7 @@
 
   <div class="form-group">
     <label for="years_old"><span class="required-field">*</span>Años de antigüedad</label>
-    <input type="number" name="years_old" class="form-control" min="0" step="1" value="{{isset($product) ? $product->years_old : old('years_old')}}" />
+    <input type="number" name="years_old" class="form-control" min="0" step="1" value="{{isset($product) ? $product->years_old : old('years_old')}}" readonly/>
   </div>
 
   <div class="form-group">
@@ -129,6 +129,18 @@
   @endif
 
   <script>
+
+    $('#purchase_date').on("change", function(e) {
+      var selectedDate = moment(e.target.value, 'DD/MM/YYYY');
+      var yearsOfDiff = moment().diff(selectedDate, 'year');
+      if (yearsOfDiff < 0){
+        yearsOfDiff = 0;
+      }
+      $('input[name ="years_old"]').val(yearsOfDiff);
+    });
+
+
+
     function readURL(input) {
       if (input.files && input.files[0]) {
         var reader = new FileReader();

@@ -29,7 +29,7 @@
 												<td>{{$product->description}}</td>
 											</tr>
 											<tr>
-												<th>Categoría</th>
+												<th>Rubro</th>
 												<td>{{$product->category->name}}</td>
 											</tr>
 											<tr>

@@ -93,7 +93,8 @@
     <script>
         $('.datepicker').datepicker({
             format: "dd/mm/yyyy",
-            autoclose: true
+            autoclose: true,
+            todayHighlight: true
         });
     </script>
     

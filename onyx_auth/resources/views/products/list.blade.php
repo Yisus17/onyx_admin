@@ -19,7 +19,7 @@
                                 <th scope="col">Código</th>
                                 <th scope="col">Modelo</th>
                                 <th scope="col">Descripción</th>
-                                <th scope="col">Categoría</th>
+                                <th scope="col">Rubro</th>
                                 <th scope="col">Precio de compra</th>
                                 <th scope="col">Fecha de compra</th>
                                 <th scope="col">Acciones</th>
