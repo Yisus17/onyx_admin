@@ -10,6 +10,7 @@
     </div>
     <div class="card-body">
       <!-- Product -->
+      <input type="text" name="products[{{$uniqid}}][id]" value="{{$product->id}}" hidden/>
       <div class="row mb-2">
         <div class="form-group col-12">
           <label for="description"><span class="required-field">*</span>Descripción</label>

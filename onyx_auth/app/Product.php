@@ -22,8 +22,12 @@ class Product extends Model{
 		return $this->belongsTo(Category::class);
 	}
 
-	public function getUnitPriceAttribute($value){
-		return ($this->purchase_price*$this->unitPricePercentage)/100;
+	public function budgets(){
+    return $this->belongsToMany(Budget::class);
+  }
+
+	public function getUnitPriceAttribute(){
+		return getPercentageValue($this->purchase_price, $this->unitPricePercentage);
 	}
 
 	public static function getValidityOptions(){

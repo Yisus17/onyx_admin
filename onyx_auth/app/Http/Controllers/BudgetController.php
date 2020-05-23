@@ -32,12 +32,45 @@ class BudgetController extends Controller{
 	}
 
 	public function store(CreateEditBudgetRequest $request){
-		$budget = new Budget($request->all());
+
+		//try{
+			$budget = new Budget($request->all());
 		
-		$client = Client::find($request->client_id);
-		$budget->client()->associate($client);
-		$budget->save();
-		return redirect('budgets')->with('message', 'Presupuesto creado exitosamente');
+			$client = Client::find($request->client_id);
+			$budget->client()->associate($client);
+
+			$taxBase = 0; //BAse imponible
+			$taxPercentage = $request->tax_percentage; //IVA
+
+			if($budget->save()){
+				//PRODUCTS
+				$products = $request->products;
+				foreach ($products as $product){
+					$totalProductPrice = calculateProductTotalPrice($product);
+					$budget->products()->attach(
+						$product['id'], 
+						[
+							'description' => $product['description'],
+							'quantity' => $product['quantity'],
+							'factor' => $product['factor'],
+							'unit_price' => $product['unit_price'],
+							'discount' => $product['discount'],
+							'total_price' => $totalProductPrice
+						]
+					);
+
+					$taxBase = $taxBase + $totalProductPrice; // Add total product price to tax base (budget)
+				}
+				$taxTotal = getPercentageValue($taxBase, $taxPercentage);
+				$budget->total = $taxBase + $taxTotal; // Add total to budget
+				$budget->save();
+				return redirect('budgets')->with('message', 'Presupuesto creado exitosamente');
+			}else{
+				App::abort(500, 'Error');
+			}
+		/*} catch(\Throwable $exception){
+			return back()->withErrors(['message', $exception->getMessage()]);
+		}*/
 	}
 
 	public function show(Budget $budget){

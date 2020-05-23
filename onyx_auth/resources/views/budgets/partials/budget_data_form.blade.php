@@ -88,7 +88,7 @@
   </div>
 </div>
 
-<div class="form-group col-6">
+<div class="form-group col-4">
   <label for="payment_conditions"><span class="required-field">*</span>Condiciones de pago</label>
   <select name="payment_conditions" class="form-control">
     <option value="" selected disabled>--Selecciona una opción--</option>
@@ -98,7 +98,7 @@
   </select>
 </div>
 
-<div class="form-group col-6">
+<div class="form-group col-4">
   <label for="payment_method"><span class="required-field">*</span>Método de pago</label>
   <select name="payment_method" class="form-control">
     <option value="" selected disabled>--Selecciona una opción--</option>
@@ -108,13 +108,26 @@
   </select>
 </div>
 
+<div class="form-group col-4">
+  <label for="tax_percentage"><span class="required-field">*</span>IVA</label>
+  <div class="input-group">
+    <input type="number" name="tax_percentage" class="form-control" min="0" max="100" step="1" value="21" />
+    <div class="input-group-append">
+      <span class="input-group-text">%</span>
+    </div>
+  </div>
+</div>
+
 <div class="form-group col-12">
   <label for="notes">Notas</label>
   <textarea class="form-control" name="notes" rows="2"></textarea>
 </div>
 
+
+
 @section('scripts')
-  <script>
+  @parent
+  <script type="text/javascript">
     $('#budget-data .datepicker').datepicker({
       format: "dd/mm/yyyy",
       autoclose: true,

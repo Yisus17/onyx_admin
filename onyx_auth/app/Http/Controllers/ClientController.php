@@ -44,7 +44,6 @@ class ClientController extends Controller{
     public function update(CreateEditClientRequest $request, $id){
         $clientToUpdate = Client::findOrFail($id);
         $clientToUpdate->update($request->all());
-        $clientToUpdate->save();
 
         return redirect('clients')->with('message', 'Cliente editado exitosamente');
     }
