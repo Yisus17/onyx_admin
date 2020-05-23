@@ -9,7 +9,7 @@ class Budget extends Model{
 		'delivery_date', 'return_date', 'instalation_date', 
 		'start_date', 'end_date', 'uninstalation_date',
 		'validity', 'description', 'address', 
-		'payment_conditions', 'payment_method', 'notes'];
+		'payment_conditions', 'payment_method', 'tax_percentage', 'notes'];
 
 	protected $dates = [
 		'delivery_date', 'return_date', 
@@ -21,7 +21,12 @@ class Budget extends Model{
 
 	public function products(){
     return $this->belongsToMany(Product::class);
-  }
+	}
+	
+	public function getTotalWithTax(){
+		$taxTotal = getPercentageValue($this->total, $this->tax_percentage);
+		return $this->total + $taxTotal;
+	}
 
 	public static function getPaymentConditions(){
 		$paymentConditions = [

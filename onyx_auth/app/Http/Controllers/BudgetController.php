@@ -39,8 +39,7 @@ class BudgetController extends Controller{
 			$client = Client::find($request->client_id);
 			$budget->client()->associate($client);
 
-			$taxBase = 0; //BAse imponible
-			$taxPercentage = $request->tax_percentage; //IVA
+			$taxBase = 0; //Base imponible
 
 			if($budget->save()){
 				//PRODUCTS
@@ -61,8 +60,8 @@ class BudgetController extends Controller{
 
 					$taxBase = $taxBase + $totalProductPrice; // Add total product price to tax base (budget)
 				}
-				$taxTotal = getPercentageValue($taxBase, $taxPercentage);
-				$budget->total = $taxBase + $taxTotal; // Add total to budget
+				
+				$budget->total = $taxBase; // Add total to budget
 				$budget->save();
 				return redirect('budgets')->with('message', 'Presupuesto creado exitosamente');
 			}else{

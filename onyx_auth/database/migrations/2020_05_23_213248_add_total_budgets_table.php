@@ -12,6 +12,7 @@ class AddTotalBudgetsTable extends Migration{
 	 */
 	public function up(){
 		Schema::table('budgets', function (Blueprint $table) {
+			$table->float('tax_percentage');
 			$table->float('total')->nullable();
 		});
 	}
@@ -23,6 +24,7 @@ class AddTotalBudgetsTable extends Migration{
 	 */
 	public function down(){
 		Schema::table('budgets', function (Blueprint $table) {
+			$table->dropColumn('tax_percentage');
 			$table->dropColumn('total');
 		});
 	}

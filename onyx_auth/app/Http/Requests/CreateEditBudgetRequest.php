@@ -23,7 +23,8 @@ class CreateEditBudgetRequest extends FormRequest{
 			'end_date' => 'required',
 			'uninstalation_date' => 'required',
 			'payment_conditions' => 'required', 
-			'payment_method' => 'required'
+			'payment_method' => 'required',
+			'tax_percentage' => 'required'
 		];
 	}
 
