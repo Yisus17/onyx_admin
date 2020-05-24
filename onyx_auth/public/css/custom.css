@@ -116,3 +116,27 @@ textarea{
 .table-soft-header{
   background-color: rgba(0,0,0,.05);
 }
+
+.image-dashboard-card{
+  font-size: 70px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.image-dashboard-card.cyan{
+  background-color: #17a2b8;
+}
+
+.image-dashboard-card.yellow{
+  background-color: #d8b579;
+}
+
+.image-dashboard-card.red{
+  background-color: #c65962;
+}
+
+.image-dashboard-card.green{
+  background-color: #54ad68;
+}
+
+
