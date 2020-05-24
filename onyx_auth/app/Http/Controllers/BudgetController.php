@@ -71,6 +71,8 @@ class BudgetController extends Controller{
 
 	public function show($id){
 		$budget = Budget::findOrFail($id);
+
+		//dd($budget->products[0]->pivot);
 		return view('budgets.show', compact('budget'));
 	}
 

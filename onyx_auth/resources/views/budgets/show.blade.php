@@ -7,75 +7,54 @@
 		<div class="col-md-8">
 			<div class="card">
 				<div class="card-header d-flex justify-content-between align-items-center">
-					<span>Detalles del presupuesto #{{$budget->id}}</span>
+					<span>Detalles del presupuesto <b>#{{$budget->id}}</b></span>
 				</div>
 				<div class="card-body">
-					<table class="table table-bordered table-sm">
-						<tbody>
-              <tr class="table-soft-header">
-                <th colspan="4">Fecha de elaboración</th>
-                <th colspan="4">Contacto</th>
-                <th colspan="4">Validez</th>
-              </tr>
-              <tr>
-                <td colspan="4">{{$budget->created_at ? $budget->created_at->format('d/m/Y H:m') : ''}}</td>
-                <td colspan="4">{{$budget->client->name}}</td>
-                <td colspan="4">{{$budget->validity ? findValue(getValidityOptions(), $budget->validity): ''}}</td>
-              </tr>
+          <!-- Budget data -->
+          @include('budgets.partials.budget_data_table')
+          <hr>
 
-              <tr class="table-soft-header">
-                <th colspan="6">Dirección</th>
-                <th colspan="6">Descripción del evento</th>
-              </tr>
-              <tr>
-                <td colspan="6">{{$budget->address}}</td>
-                <td colspan="6">{{$budget->description}}</td>
-              </tr>
+          <!-- Budget products data-->
+          <h5>Productos</h5>
+          @foreach($budget->products as $product)
+            <table class="table table-bordered table-sm">
+              <tbody>
 
-              <tr class="table-soft-header">
-                <th colspan="4">Entrega</th>
-                <th colspan="4">Devolución</th>
-                <th colspan="4">Montaje</th>
-              </tr>
-              <tr>
-                <td colspan="4">{{$budget->delivery_date ? $budget->delivery_date->format('d/m/Y H:m') : ''}}</td>
-                <td colspan="4">{{$budget->return_date ? $budget->return_date->format('d/m/Y H:m') : ''}}</td>
-                <td colspan="4">{{$budget->instalation_date ? $budget->instalation_date->format('d/m/Y H:m') : ''}}</td>
-              </tr>
+                <tr class="table-soft-header">
+                  <th colspan="3">Código</th>
+                  <th colspan="9">Descripción</th>
+                </tr>
+                <tr>
+                  <td colspan="3">{{$product->code}}</th>
+                  <td colspan="9">{{$product->pivot->description}}</th>
+                </tr>
 
-              <tr class="table-soft-header">
-                <th colspan="4">Inicio evento</th>
-                <th colspan="4">Fin evento</th>
-                <th colspan="4">Desmontaje</th>
-              </tr>
-              <tr>
-                <td colspan="4">{{$budget->start_date ? $budget->start_date->format('d/m/Y H:m') : ''}}</td>
-                <td colspan="4">{{$budget->end_date ? $budget->end_date->format('d/m/Y H:m') : ''}}</td>
-                <td colspan="4">{{$budget->uninstalation_date ? $budget->uninstalation_date->format('d/m/Y H:m') : ''}}</td>
-              </tr>
+                <tr class="table-soft-header">
+                  <th colspan="3">Cantidad</th>
+                  <th colspan="3">Factor</th>
+                  <th colspan="3">Precio unitario</th>
+                  <th colspan="3">Descuento</th>
+                </tr>
+                <tr>
+                  <td colspan="3">{{$product->pivot->quantity}}</td>
+                  <td colspan="3">{{$product->pivot->factor}}</td>
+                  <td colspan="3">{{getFormattedPrice($product->pivot->unit_price)}}€</td>
+                  <td colspan="3">{{$product->pivot->discount}}%</td>
+                </tr>
 
-              <tr class="table-soft-header">
-                <th colspan="6">Condiciones de pago</th>
-                <th colspan="6">Método de pago</th>
-              </tr>
-              <tr>
-                <td colspan="6">{{$budget->payment_conditions ? findValue(getPaymentConditions(), $budget->payment_conditions) : '' }}</td>
-                <td colspan="6">{{$budget->payment_method ? findValue(getPaymentMethods(), $budget->payment_method) : ''}}</td>
-              </tr>
+                <tr class="table-soft-header text-right">
+                  <th colspan="12">Base imponible</th>
+                </tr>
+                <tr class="text-right">
+                  <td colspan="12">{{getFormattedPrice($product->pivot->total_price)}}€</th>
+                </tr>
+                
+              </tbody>
+            </table>
+          @endforeach
+          
 
-              <tr class="table-soft-header">
-                <th colspan="4">Total (Base imponible)</th>
-                <th colspan="4">IVA</th>
-                <th colspan="4">Total (IVA incluido)</th>
-              </tr>
-              <tr>
-                <td colspan="4">{{getFormattedPrice($budget->total)}}€</td>
-                <td colspan="4">{{getFormattedPrice($budget->tax_amount)}}€</td>
-                <td colspan="4">{{getFormattedPrice($budget->total_with_tax)}}€</td>
-              </tr>
 
-						</tbody>
-					</table>
 					<a href="{{route('budgets.edit', $budget)}}" class="btn btn-primary">Editar</a>
 					<a href="/budgets" class="btn btn-secondary">Volver</a>
 				</div>
