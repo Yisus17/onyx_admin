@@ -108,3 +108,11 @@ textarea{
   font-size: 10px;
   line-height: 1.42857;
 }
+
+.show-summary span{
+  font-weight: bold;
+}
+
+.table-soft-header{
+  background-color: rgba(0,0,0,.05);
+}

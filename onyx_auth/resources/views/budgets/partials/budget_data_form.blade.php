@@ -12,7 +12,7 @@
   <label for="validity"><span class="required-field">*</span>Validez</label>
   <select name="validity" class="form-control">
     <option value="" selected disabled>--Selecciona una opción--</option>
-    @foreach($validityOptions as $key => $value)
+    @foreach(getValidityOptions() as $key => $value)
       <option value="{{$key}}">{{$value}}</option>
     @endforeach
   </select>
@@ -92,7 +92,7 @@
   <label for="payment_conditions"><span class="required-field">*</span>Condiciones de pago</label>
   <select name="payment_conditions" class="form-control">
     <option value="" selected disabled>--Selecciona una opción--</option>
-    @foreach($paymentConditions as $key => $value)
+    @foreach(getPaymentConditions() as $key => $value)
       <option value="{{$key}}">{{$value}}</option>
     @endforeach
   </select>
@@ -102,7 +102,7 @@
   <label for="payment_method"><span class="required-field">*</span>Método de pago</label>
   <select name="payment_method" class="form-control">
     <option value="" selected disabled>--Selecciona una opción--</option>
-    @foreach($paymentMethods as $key => $value)
+    @foreach(getPaymentMethods() as $key => $value)
       <option value="{{$key}}">{{$value}}</option>
     @endforeach
   </select>

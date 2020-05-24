@@ -11,4 +11,40 @@ function calculateProductTotalPrice($product){
   return $totalProductPrice;
 }
 
+function getPaymentConditions(){
+  $paymentConditions = [
+    'cash' => 'Contado',
+    'advanced' => 'Adelantado',
+    '15d' => 'A 15 días',
+    'reservation_percentage' => 'Porcentaje de reserva mas saldo pendiente a fecha'
+  ];
+  return $paymentConditions;
+}
+
+function getPaymentMethods(){
+  $paymentMethods = [
+    'transfer' => 'Transferencia',
+    'cash' => 'Efectivo'
+  ];
+  return $paymentMethods;
+}
+
+function getValidityOptions(){
+  $validityOptions = [
+    '1d' => '1 día',
+    '1s' => '1 semana',
+    '15d' => '15 días',
+    '1m' => '1 mes'
+  ];
+  return $validityOptions;
+}
+
+function findValue($array, $key){
+  return $array[$key];
+}
+
+function getFormattedPrice($price){
+  return number_format($price, 2, ',', '.');
+}
+
 ?>

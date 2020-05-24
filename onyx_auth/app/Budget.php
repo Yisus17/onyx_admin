@@ -22,27 +22,14 @@ class Budget extends Model{
 	public function products(){
     return $this->belongsToMany(Product::class);
 	}
+
+	public function getTotalWithTaxAttribute(){
+		$taxAmount = getPercentageValue($this->total, $this->tax_percentage);
+		return $this->total + $taxAmount;
+	}
 	
-	public function getTotalWithTax(){
-		$taxTotal = getPercentageValue($this->total, $this->tax_percentage);
-		return $this->total + $taxTotal;
-	}
-
-	public static function getPaymentConditions(){
-		$paymentConditions = [
-			'cash' => 'Contado',
-			'advanced' => 'Adelantado',
-			'15d' => 'A 15 días',
-			'reservation_percentage' => 'Porcentaje de reserva mas saldo pendiente a fecha'
-		];
-		return $paymentConditions;
-	}
-
-	public static function getPaymentMethods(){
-		$paymentMethods = [
-			'transfer ' => 'Transferencia',
-			'cash' => 'Efectivo'
-		];
-		return $paymentMethods;
+	public function getTaxAmountAttribute(){
+		$taxAmount = getPercentageValue($this->total, $this->tax_percentage);
+		return $taxAmount;
 	}
 }

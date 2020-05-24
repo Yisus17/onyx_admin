@@ -29,14 +29,4 @@ class Product extends Model{
 	public function getUnitPriceAttribute(){
 		return getPercentageValue($this->purchase_price, $this->unitPricePercentage);
 	}
-
-	public static function getValidityOptions(){
-		$validityOptions = [
-			'1d' => '1 día',
-			'1s' => '1 semana',
-			'15d' => '15 días',
-			'1m' => '1 mes'
-		];
-		return $validityOptions;
-	}
 }

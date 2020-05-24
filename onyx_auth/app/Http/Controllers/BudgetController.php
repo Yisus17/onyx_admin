@@ -23,12 +23,9 @@ class BudgetController extends Controller{
 	public function create(){
 		$clients = Client::all();
 		$products = Product::select('id','code','description')->get();
-		$paymentConditions = Budget::getPaymentConditions();
-		$paymentMethods = Budget::getPaymentMethods();
-		$validityOptions = Product::getValidityOptions();
 		return view(
 			'budgets.create', 
-			compact('clients', 'products', 'validityOptions', 'paymentConditions', 'paymentMethods'));
+			compact('clients', 'products'));
 	}
 
 	public function store(CreateEditBudgetRequest $request){
@@ -72,7 +69,9 @@ class BudgetController extends Controller{
 		}*/
 	}
 
-	public function show(Budget $budget){
+	public function show($id){
+		$budget = Budget::findOrFail($id);
+		return view('budgets.show', compact('budget'));
 	}
 
 	public function edit(Budget $budget){
