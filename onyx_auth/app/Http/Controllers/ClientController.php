@@ -52,6 +52,6 @@ class ClientController extends Controller{
     public function destroy($id){
         $clientToDelete = Client::findOrFail($id);
         $clientToDelete->delete();
-        return redirect('clients')->with('message', 'Client eliminado exitosamente');
+        return redirect('clients')->with('message', 'Cliente eliminado exitosamente');
     }
 }

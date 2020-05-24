@@ -47,4 +47,8 @@ function getFormattedPrice($price){
   return number_format($price, 2, ',', '.');
 }
 
+function truncateText($text, $numberOfChars){
+  return \Illuminate\Support\Str::limit($text, $numberOfChars, $end='...');
+}
+
 ?>

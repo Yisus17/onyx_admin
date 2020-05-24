@@ -35,7 +35,7 @@
                                             @method('DELETE')
                                             @csrf
                                             <a href="{{route('clients.show', $item->id)}}" class="btn btn-primary btn-sm" title="Edit item"><i class="fas fa-eye" ></i></a>
-                                            <a href="{{route('clients.edit', $item)}}" class="btn btn-success btn-sm" title="Edit item"><i class="fas fa-edit" ></i></a>
+                                            <a href="{{route('clients.edit', $item)}}" class="btn btn-success btn-sm" title="Edit item"><i class="fas fa-edit"></i></a>
                                             <button type="submit" class="btn btn-danger btn-sm" title="Delete item"><i class="fa fa-minus-circle" ></i></button>
                                         </form> 
                                     </td>

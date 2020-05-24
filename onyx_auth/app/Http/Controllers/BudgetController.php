@@ -82,7 +82,10 @@ class BudgetController extends Controller{
 	public function update(Request $request, Budget $budget){
 	}
 
-	public function destroy(Budget $budget){
+	public function destroy($id){
+		$budgetToDelete = Budget::findOrFail($id);
+		$budgetToDelete->delete();
+		return redirect('budgets')->with('message', 'Presupuesto eliminado exitosamente');
 	}
 
 	public function addProduct(Request $request){
