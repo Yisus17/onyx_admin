@@ -2,13 +2,13 @@
   <tbody>
     <!-- HEADER -->
     <tr>
-      <th colspan="12" style="text-align:center; font-size: 20px">Onyx's Gerencia de Proyectos Audiovisuales SL</th>
+      <th colspan="12" style="text-align:center; font-size: 16px">Onyx's Gerencia de Proyectos Audiovisuales SL</th>
     </tr>
     <tr>
-      <td colspan="12" style="text-align:center;font-size: 11px">Calle Belianes 1, 1-4. 28043. Madrid - España</td>
+      <td colspan="12" style="text-align:center;font-size: 8px">Calle Belianes 1, 1-4. 28043. Madrid - España</td>
     </tr>
     <tr>
-      <td colspan="12" style="text-align:center;font-size: 11px">675 27 19 67 | adolfo@onyxs.es | B88095534</td>
+      <td colspan="12" style="text-align:center;font-size: 8px">675 27 19 67 | adolfo@onyxs.es | B88095534</td>
     </tr>
 
     <tr>
