@@ -8,9 +8,8 @@
 			<div class="card">
 				<div class="card-header d-flex justify-content-between align-items-center">
           <span>Detalles del presupuesto <b>#{{$budget->id}}</b></span>
-          <a href="#" class="btn btn-success btn-sm float-right">
+          <a href="{{route('budgets.excelExport', $budget->id)}}" class="btn btn-success btn-sm float-right">
             <span><i class="fas fa-file-excel mr-1"></i> Descargar excel</span>
-          
           </a>
 				</div>
 				<div class="card-body">

@@ -8,6 +8,8 @@ use App\Product;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateEditBudgetRequest;
+use App\Exports\BudgetsExport;
+use Maatwebsite\Excel\Excel;
 
 class BudgetController extends Controller{
 
@@ -94,9 +96,19 @@ class BudgetController extends Controller{
 			$product =  Product::findOrFail($productId);
 			$uniqid = Str::random(9); //Unique id to manipulate events in DOM per product
 		} catch(Exception $exception){
-    	return $exception;
+			return $exception;
 		}
 		
 		return view('budgets.product', compact('product', 'uniqid'));
+	}
+
+	public function excelExport($id){
+		$budgetToExport = Budget::findOrFail($id);
+		return (new BudgetsExport($budgetToExport))->download('presupuesto.xlsx', Excel::XLSX);
+	}
+
+	public function excelView($id){
+		$budget = Budget::findOrFail($id);
+		return view('budgets.excel', compact('budget'));
 	}
 }

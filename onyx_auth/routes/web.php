@@ -34,3 +34,5 @@ Route::get('product-list-excel', 'ProductController@exportExcel')->name('product
 Route::resource('/clients', 'ClientController');
 Route::resource('/budgets', 'BudgetController');
 Route::post('/budgets/addProduct', 'BudgetController@addProduct');
+Route::get('/budgets/excelExport/{id}', 'BudgetController@excelExport')->name('budgets.excelExport');
+Route::get('/budgets/excelView/{id}', 'BudgetController@excelView')->name('budgets.excelView');
