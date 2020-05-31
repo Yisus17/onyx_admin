@@ -51,4 +51,16 @@ function truncateText($text, $numberOfChars){
   return \Illuminate\Support\Str::limit($text, $numberOfChars, $end='...');
 }
 
+function getOnyxBusinessName(){
+  return("Onyx's Gerencia de Proyectos Audiovisuales SL");
+}
+
+function getOnyxAddress(){
+  return("Calle Belianes 1, 1-4. 28043. Madrid - España");
+}
+
+function getOnyxInfo(){
+  return("675 27 19 67 | adolfo@onyxs.es | B88095534");
+}
+
 ?>
