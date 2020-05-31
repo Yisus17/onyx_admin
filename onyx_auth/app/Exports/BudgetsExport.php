@@ -9,16 +9,15 @@ use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Events\AfterSheet;
-use \Maatwebsite\Excel\Sheet;
+use Maatwebsite\Excel\Concerns\WithDrawings;
+use PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
 
 
-class BudgetsExport implements FromView, WithEvents, ShouldAutoSize{
+class BudgetsExport implements FromView, WithEvents, ShouldAutoSize, WithDrawings{
 
 	use Exportable;
 
 	protected $budget;
-
-
 
 	public function __construct($budget = null){
 		$this->budget = $budget;
@@ -28,6 +27,16 @@ class BudgetsExport implements FromView, WithEvents, ShouldAutoSize{
 		return view('budgets.excel', [
 			'budget' => $this->budget
 		]);
+	}
+
+	public function drawings(){
+		$drawing = new Drawing();
+		$drawing->setName('Logo');
+		$drawing->setPath(public_path('/img/logo_onyx.png'));
+		$drawing->setHeight(80);
+		$drawing->setCoordinates('E1');
+
+		return $drawing;
 	}
 
 	public function registerEvents(): array{
@@ -40,37 +49,16 @@ class BudgetsExport implements FromView, WithEvents, ShouldAutoSize{
 						]
 					]
 				];
-				$event->sheet->styleCells('A10:E10', $styleArray);
-				$event->sheet->styleCells('A11:E11', $styleArray);
-				$event->sheet->styleCells('A12:E12', $styleArray);
-				$event->sheet->styleCells('A13:L13', $styleArray);
+				$event->sheet->styleCells('A11:C11', $styleArray);
+				$event->sheet->styleCells('A12:C12', $styleArray);
+				$event->sheet->styleCells('A13:C13', $styleArray);
+				$event->sheet->styleCells('A14:I14', $styleArray);
 
-				$event->sheet->styleCells('H10:L10', $styleArray);
-				$event->sheet->styleCells('H11:L11', $styleArray);
-				$event->sheet->styleCells('H12:L12', $styleArray);
+				$event->sheet->styleCells('G11:I11', $styleArray);
+				$event->sheet->styleCells('G12:I12', $styleArray);
+				$event->sheet->styleCells('G13:I13', $styleArray);
 				
 			},
 		];
 	}
-
-	/*public function headings(): array{
-		return [
-			'Cantidad',
-			'Descripcion',
-			'P/Unitario',
-			'P/Total'
-		];
-	}
-
-	public function map($budget): array{
-		return [
-			findValue(getValidityOptions(), $budget->validity),
-			$budget->description,
-			$budget->address
-		];
-	}*/
-
-	/*public function collection(){
-		return $this->budgets ?: Budget::all();
-	}*/
 }

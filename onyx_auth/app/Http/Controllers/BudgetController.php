@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\CreateEditBudgetRequest;
 use App\Exports\BudgetsExport;
 use Maatwebsite\Excel\Excel;
+use Carbon\Carbon;
 
 class BudgetController extends Controller{
 
@@ -104,7 +105,8 @@ class BudgetController extends Controller{
 
 	public function excelExport($id){
 		$budgetToExport = Budget::findOrFail($id);
-		return (new BudgetsExport($budgetToExport))->download('presupuesto.xlsx', Excel::XLSX);
+		$fileName = 'presupuesto'.$budgetToExport->id.'_'.Carbon::now()->timestamp.'.xlsx';
+		return (new BudgetsExport($budgetToExport))->download($fileName, Excel::XLSX);
 	}
 
 	public function excelView($id){
