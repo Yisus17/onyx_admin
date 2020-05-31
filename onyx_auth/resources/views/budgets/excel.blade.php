@@ -141,7 +141,6 @@
       <td colspan="1" style="font-weight: bold;text-align:right;">{{getFormattedPrice($budget->total_with_tax)}}€</td>
     </tr>
 
-  
     @if($budget->notes)
       <!-- SEPARATOR -->
       <tr>
@@ -152,12 +151,5 @@
         <td colspan="9">{{$budget->notes}}</td>
       </tr>
     @endif
-
-    
-
-
-
-
-
   </tbody>
 </table>
