@@ -74,13 +74,13 @@
       <td colspan="1" style="border: 1px solid black;">{{$budget->start_date->format('d/m/Y')}}</td>
       <td colspan="1" style="border: 1px solid black;">{{$budget->start_date->format('H:m')}}</td>
       <td colspan="3">&nbsp;</td>
-      <td colspan="1" style="border: 1px solid black;">Devolucion</td>
+      <td colspan="1" style="border: 1px solid black;">Devolución</td>
       <td colspan="1" style="border: 1px solid black;">{{$budget->return_date->format('d/m/Y')}}</td>
       <td colspan="1" style="border: 1px solid black;">{{$budget->return_date->format('H:m')}}</td>
     </tr>
 
     <tr>
-      <td colspan="9" style="border: 1px solid black;">Locacion: {{$budget->address}}</td>
+      <td colspan="9" style="border: 1px solid black;">Locación: {{$budget->address}}</td>
     </tr>
 
     <!-- SEPARATOR -->

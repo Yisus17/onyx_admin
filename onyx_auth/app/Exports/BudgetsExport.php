@@ -30,13 +30,13 @@ class BudgetsExport implements FromView, WithEvents, ShouldAutoSize, WithDrawing
 	}
 
 	public function drawings(){
-		$drawing = new Drawing();
-		$drawing->setName('Logo');
-		$drawing->setPath(public_path('/img/logo_onyx.png'));
-		$drawing->setHeight(80);
-		$drawing->setCoordinates('E1');
+		$logo = new Drawing();
+		$logo->setName('Logo');
+		$logo->setPath(public_path('/img/logo_onyx.png'));
+		$logo->setHeight(80);
+		$logo->setCoordinates('E1');
 
-		return $drawing;
+		return $logo;
 	}
 
 	public function registerEvents(): array{
