@@ -37,7 +37,7 @@
 												<a href="{{route('budgets.show', $item->id)}}" class="btn btn-primary btn-sm" title="Mostrar presupuesto"><i class="fas fa-eye" ></i></a>
 												<a href="{{route('budgets.edit', $item)}}" class="btn btn-success btn-sm disabled" title="Editar presupuesto"><i class="fas fa-edit" ></i></a>
 												<a href="{{route('budgets.excelExport', $item->id)}}" class="btn btn-success btn-sm" title="Descargar excel"><i class="fas fa-file-excel"></i></a>
-												<!--<a href="#" class="btn btn-primary btn-sm" title="Duplicar presupuesto"><i class="fas fa-copy"></i></a>-->
+												<a href="{{route('budgets.duplicate', $item->id)}}" class="btn btn-primary btn-sm" title="Duplicar presupuesto" onclick="return confirm('¿Estás seguro que deseas duplicar a este presupuesto?');"><i class="fas fa-copy"></i></a>
 												<button type="submit" class="btn btn-danger btn-sm" title="Eliminar presupuesto"><i class="fa fa-minus-circle" ></i></button>
 											</form> 
 										</td>

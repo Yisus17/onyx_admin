@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class Budget extends Model{
+	use \Bkwld\Cloner\Cloneable;
 	protected $fillable = [
 		'delivery_date', 'return_date', 'instalation_date', 
 		'start_date', 'end_date', 'uninstalation_date',
@@ -14,6 +15,8 @@ class Budget extends Model{
 	protected $dates = [
 		'delivery_date', 'return_date', 
 		'instalation_date', 'start_date', 'end_date', 'uninstalation_date'];
+
+	protected $cloneable_relations = ['products'];
 
 	public function client(){
 		return $this->belongsTo(Client::class);

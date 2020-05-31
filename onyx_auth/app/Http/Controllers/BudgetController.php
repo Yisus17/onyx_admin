@@ -74,8 +74,6 @@ class BudgetController extends Controller{
 
 	public function show($id){
 		$budget = Budget::findOrFail($id);
-
-		//dd($budget->products[0]->pivot);
 		return view('budgets.show', compact('budget'));
 	}
 
@@ -112,5 +110,13 @@ class BudgetController extends Controller{
 	public function excelView($id){
 		$budget = Budget::findOrFail($id);
 		return view('budgets.excel', compact('budget'));
+	}
+
+	public function duplicate($id){
+		$budgetToDuplicate = Budget::findOrFail($id);
+		$newBudget = $budgetToDuplicate->duplicate();
+		$newBudget->save();
+
+		return redirect()->route('budgets.show', [$newBudget->id])->with('message', 'Presupuesto duplicado exitosamente');;
 	}
 }

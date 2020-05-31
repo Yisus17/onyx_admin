@@ -5,6 +5,7 @@
 <div class="container">
 	<div class="row justify-content-center">
 		<div class="col-md-10">
+      @include('partials.session_message')
 			<div class="card">
 				<div class="card-header d-flex justify-content-between align-items-center">
           <span>Detalles del presupuesto <b>#{{$budget->id}}</b></span>
@@ -26,6 +27,12 @@
           
           <a href="{{route('budgets.edit', $budget)}}" class="btn btn-primary">Editar</a>
           <a href="/budgets" class="btn btn-secondary">Volver</a>
+          <a 
+            href="{{route('budgets.duplicate', $budget->id)}}" 
+            class="btn btn-primary float-right" 
+            onclick="return confirm('¿Estás seguro que deseas duplicar a este presupuesto?');">
+            <span><i class="fas fa-copy mr-1"></i> Duplicar</span>
+          </a>
 				</div>
 			</div>
 		</div>
