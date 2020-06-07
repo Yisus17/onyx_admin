@@ -4,13 +4,28 @@
   </div>
   
   <div class="form-group">
-    <label for="name"><span class="required-field">*</span>Nombre (Razón Social)</label>
-    <input type="text" name="name" class="form-control" value="{{isset($client) ? $client->name : old('name')}}" />
+    <label for="name"><span class="required-field">*</span>Razón Social</label>
+    <input type="text" name="business_name" class="form-control" value="{{isset($client) ? $client->business_name : old('business_name')}}" />
   </div>
 
   <div class="form-group">
-    <label for="name"><span class="required-field">*</span>Dirección</label>
-    <input type="text" name="address" class="form-control" value="{{isset($client) ? $client->address : old('address')}}" />
+    <label for="address"><span class="required-field">*</span>Dirección</label>
+    <textarea class="form-control" name="address" rows="2">{{isset($client) ? $client->address : old('address')}}</textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="postal_code">Código postal</label>
+    <input type="text" name="postal_code" class="form-control" value="{{isset($client) ? $client->postal_code : old('postal_code')}}" />
+  </div>
+
+  <div class="form-group">
+    <label for="community_id">Comunidad autónoma</label>
+    <select name="community_id" class="form-control selectpicker" data-live-search="true">
+      <option value="" selected disabled>--Selecciona una opción--</option>
+      @foreach($communities as $community)
+        <option value="{{ $community->id }}" {{ (isset($client) && $community->id == $client->community_id) || old('community_id') == $community->id ? 'selected' : '' }}>{{ $community->name }}</option>
+      @endforeach
+    </select>
   </div>
 
   <div class="form-group">
@@ -24,8 +39,28 @@
   </div>
 
   <div class="form-group">
+    <label for="name"><span class="required-field">*</span>Nombre</label>
+    <input type="text" name="name" class="form-control" value="{{isset($client) ? $client->name : old('name')}}" />
+  </div>
+
+  <div class="form-group">
+    <label for="lastname"><span class="required-field">*</span>Apellido</label>
+    <input type="text" name="lastname" class="form-control" value="{{isset($client) ? $client->lastname : old('lastname')}}" />
+  </div>
+
+  <div class="form-group">
     <label for="email"><span class="required-field">*</span>Email</label>
     <input type="text" name="email" class="form-control" value="{{isset($client) ? $client->email : old('email')}}" />
+  </div>
+
+  <div class="form-group">
+    <label for="client_type_id">Tipo</label>
+    <select name="client_type_id" class="form-control selectpicker" data-live-search="true">
+      <option value="" selected disabled>--Selecciona una opción--</option>
+      @foreach($clientTypes as $clientType)
+        <option value="{{ $clientType->id }}" {{ (isset($client) && $clientType->id == $client->client_type_id) || old('client_type_id') == $clientType->id ? 'selected' : '' }}>{{ $clientType->name }}</option>
+      @endforeach
+    </select>
   </div>
 
   <div class="form-group">

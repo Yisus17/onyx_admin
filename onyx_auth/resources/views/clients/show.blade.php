@@ -13,20 +13,44 @@
 					<table class="table table-bordered">
 						<tbody>
 							<tr>
-								<th>Nombre (Razón social) </th>
-								<td>{{$client->name}}</td>
+								<th>Razón social</th>
+								<td>{{$client->business_name}}</td>
 							</tr>
 							<tr>
 								<th>Dirección</th>
 								<td>{{$client->address}}</td>
 							</tr>
 							<tr>
+								<th>Código postal</th>
+								<td>{{$client->postal_code}}</td>
+							</tr>
+							<tr>
+								<th>Comunidad autónoma</th>
+								<td>{{isset($client->clientType) ? $client->clientType->name : ''}}</td>
+							</tr>
+							<tr>
 								<th>Teléfono</th>
 								<td>{{$client->phone}}</td>
 							</tr>
 							<tr>
+								<th>Teléfono secundario</th>
+								<td>{{$client->secondary_phone}}</td>
+							</tr>
+							<tr>
+								<th>Nombre</th>
+								<td>{{$client->name}}</td>
+							</tr>
+							<tr>
+								<th>Apellido</th>
+								<td>{{$client->lastname}}</td>
+							</tr>
+							<tr>
 								<th>Email</th>
 								<td>{{$client->email}}</td>
+							</tr>
+							<tr>
+								<th>Tipo</th>
+								<td>{{isset($client->community) ? $client->community->name : ''}}</td>
 							</tr>
 						</tbody>
 					</table>

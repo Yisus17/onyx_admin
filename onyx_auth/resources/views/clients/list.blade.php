@@ -16,7 +16,7 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                            <th scope="col">Nombre</th>
+                            <th scope="col">Razón social</th>
                             <th scope="col">Dirección</th>
                             <th scope="col">Teléfono</th>
                             <th scope="col">Email</th>
@@ -26,7 +26,7 @@
                         <tbody>
                             @foreach ($clients as $item)
                                 <tr>
-                                    <td>{{ $item->name }}</td>
+                                    <td>{{ $item->business_name }}</td>
                                     <td>{{ $item->address }}</td>
                                     <td>{{ $item->phone }}</td>
                                     <td>{{ $item->email }}</td>
