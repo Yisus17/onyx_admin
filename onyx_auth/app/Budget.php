@@ -23,8 +23,8 @@ class Budget extends Model{
 	}
 
 	public function products(){
-    return $this->belongsToMany(Product::class)->withPivot(
-			'description', 'quantity', 'factor', 'unit_price', 'discount', 'total_price');
+    return $this->belongsToMany(Product::class)->withPivot( 
+			'id','description', 'quantity', 'factor', 'unit_price', 'discount', 'total_price');
 	}
 
 	public function getTotalWithTaxAttribute(){
