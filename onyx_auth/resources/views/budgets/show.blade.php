@@ -16,13 +16,13 @@
 				<div class="card-body">
         
           <!-- Budget data -->
-          @include('budgets.partials.budget_data_table')
+          @include('budgets.partials.show.budget_data_table')
           <hr>
 
           <!-- Budget products -->
           <h5>Productos</h5>
           @foreach($budget->products as $product)
-            @include('budgets.partials.budget_products_table', ['product' => $product])
+            @include('budgets.partials.show.budget_products_table', ['product' => $product])
           @endforeach
           
           <a href="{{route('budgets.edit', $budget)}}" class="btn btn-primary">Editar</a>
