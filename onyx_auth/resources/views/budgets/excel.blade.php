@@ -23,8 +23,8 @@
 
     <!-- CLIENT DATA -->
     <tr>
-      <td colspan="1">Cliente</td>
-      <td colspan="8">{{$budget->client->name}}</td>
+      <td colspan="1">Contacto</td>
+      <td colspan="8">{{$budget->client->business_name}}</td>
     </tr>
 
     <tr>
