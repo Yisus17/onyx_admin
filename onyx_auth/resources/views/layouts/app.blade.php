@@ -54,7 +54,7 @@
                         @else
 
                             <li class="nav-item ">
-                                <a href="/home"class="nav-link" href="#" role="button">
+                                <a href="/dashboard"class="nav-link" href="#" role="button">
                                     Dashboard <span class="caret"></span>
                                 </a>
                             </li>
