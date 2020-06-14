@@ -5,6 +5,12 @@
   @include('partials.session_message')
   <div class="row justify-content-center">
     <div class="col-10 custom-form">
+      <!-- Breadcrumbs -->
+      {{ Breadcrumbs::render('budgets.edit', $budget) }}
+
+      <!-- Session messages -->
+      @include('partials.session_message')
+
       <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
           <span>Editar presupuesto por: {{auth()->user()->name}}</span>

@@ -6,6 +6,12 @@
     @include('partials.session_message')
     <div class="row justify-content-center">
 			<div class="col-md-12">
+				<!-- Breadcrumbs -->
+				{{ Breadcrumbs::render('budgets') }}
+
+				<!-- Session messages -->
+				@include('partials.session_message')
+
 				<div class="card">
 					<div class="card-header d-flex justify-content-between align-items-center">
 						<span>Listado de presupuestos</span>

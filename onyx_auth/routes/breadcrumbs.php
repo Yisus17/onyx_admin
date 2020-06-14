@@ -4,7 +4,7 @@ Breadcrumbs::for('dashboard', function ($trail) {
   $trail->push('Dashboard', route('dashboard'));
 });
 
-/********* Contactos ***********/ 
+/********* CONTACTOS ***********/ 
 
 // Dashboard > Contactos
 Breadcrumbs::for('clients', function ($trail) {
@@ -30,6 +30,32 @@ Breadcrumbs::for('clients.edit', function ($trail, $item) {
   $trail->push('Editar contacto', route('clients.edit', $item->id));
 });
 
+/********* PRESUPUESTOS ***********/ 
+
+// Dashboard > Presupuestos
+Breadcrumbs::for('budgets', function ($trail) {
+  $trail->parent('dashboard');
+  $trail->push('Presupuestos', route('budgets.index'));
+});
+
+// Dashboard > Presupuestos > Crear presupuesto
+Breadcrumbs::for('budgets.create', function ($trail) {
+  $trail->parent('budgets');
+  $trail->push('Crear presupuesto', route('budgets.create'));
+});
+
+// Dashboard > Presupuestos > Mostrar presupuesto
+Breadcrumbs::for('budgets.show', function ($trail, $item) {
+  $trail->parent('budgets');
+  $trail->push('Presupuesto #'.$item->id , route('budgets.show',$item->id));
+});
+
+// Dashboard > Presupuestos > Editar presupuesto
+Breadcrumbs::for('budgets.edit', function ($trail, $item) {
+  $trail->parent('budgets');
+  $trail->push('Editar presupuesto #'. $item->id, route('budgets.edit', $item->id));
+});
+
 /********* FACTURAS ***********/ 
 
 // Dashboard > Facturas
@@ -53,5 +79,5 @@ Breadcrumbs::for('invoices.show', function ($trail, $item) {
 // Dashboard > Facturas > Editar factura
 Breadcrumbs::for('invoices.edit', function ($trail, $item) {
   $trail->parent('invoices');
-  $trail->push('Editar factura #'. $invoice->id, route('invoices.edit', $item->id));
+  $trail->push('Editar factura #'. $item->id, route('invoices.edit', $item->id));
 });

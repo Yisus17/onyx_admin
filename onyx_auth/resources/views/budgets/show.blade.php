@@ -5,7 +5,12 @@
 <div class="container">
 	<div class="row justify-content-center">
 		<div class="col-md-10">
+      <!-- Breadcrumbs -->
+      {{ Breadcrumbs::render('budgets.show', $budget) }}
+
+      <!-- Session messages -->
       @include('partials.session_message')
+      
 			<div class="card">
 				<div class="card-header d-flex justify-content-between align-items-center">
           <span>Detalles del presupuesto <b>#{{$budget->id}}</b></span>
