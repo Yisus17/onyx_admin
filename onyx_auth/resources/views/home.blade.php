@@ -47,7 +47,7 @@
 					</div>
 
 					<!-- Invoices -->
-					<!--<div class="card">
+					<div class="card">
 						<div class="image-dashboard-card green">
 							<i class="fas fa-file-invoice-dollar"></i>
 						</div>
@@ -55,9 +55,9 @@
 						<div class="card-body">
 							<h5 class="card-title">Facturas</h5>
 							<p class="card-text">En esta sección podrás crear, editar y descargar tus facturas.</p>
-							<a href="#" class="btn btn-primary">Ir a facturas</a>
+							<a href="{{ url('/invoices') }}" class="btn btn-primary">Ir a facturas</a>
 						</div>
-					</div>-->
+					</div>
 				
 				</div>
 			</div>
