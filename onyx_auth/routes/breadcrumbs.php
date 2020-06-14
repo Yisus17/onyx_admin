@@ -30,6 +30,33 @@ Breadcrumbs::for('clients.edit', function ($trail, $item) {
   $trail->push('Editar contacto', route('clients.edit', $item->id));
 });
 
+/********* PRODUCTOS ***********/ 
+
+// Dashboard > Productos
+Breadcrumbs::for('products', function ($trail) {
+  $trail->parent('dashboard');
+  $trail->push('Productos', route('products.index'));
+});
+
+// Dashboard > Presupuestos > Crear producto
+Breadcrumbs::for('products.create', function ($trail) {
+  $trail->parent('products');
+  $trail->push('Crear producto', route('products.create'));
+});
+
+// Dashboard > Presupuestos > Mostrar producto
+Breadcrumbs::for('products.show', function ($trail, $item) {
+  $trail->parent('products');
+  $trail->push('Producto '.$item->code , route('products.show', $item->id));
+});
+
+// Dashboard > Presupuestos > Editar producto
+Breadcrumbs::for('products.edit', function ($trail, $item) {
+  $trail->parent('products');
+  $trail->push('Editar producto', route('products.edit', $item->id));
+});
+
+
 /********* PRESUPUESTOS ***********/ 
 
 // Dashboard > Presupuestos
