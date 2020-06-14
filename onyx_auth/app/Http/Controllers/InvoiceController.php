@@ -47,11 +47,11 @@ class InvoiceController extends Controller{
 		$taxBase = 0; //Base imponible
 		$products = $request->products;
 
+		if($editMode) {
+			$invoice->products()->detach();
+		}
+
 		if(isset($request->products)){
-			if($editMode) {
-				$invoice->products()->detach();
-			}
-			
 			foreach ($products as $product){
 				$totalProductPrice = calculateProductTotalPrice($product);
 				$taxBase = $taxBase + $totalProductPrice;
@@ -72,6 +72,7 @@ class InvoiceController extends Controller{
 		
 		$message = 'Factura '. ($editMode ? 'editada' : 'creada') .' exitosamente';
 		$invoice->total = $taxBase; // Add total to invoice
+		$invoice->save();
 		return redirect('invoices')->with('message', $message);
 	}
 

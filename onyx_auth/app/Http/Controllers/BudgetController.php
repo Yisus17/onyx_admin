@@ -48,11 +48,11 @@ class BudgetController extends Controller{
 		$taxBase = 0; //Base imponible
 		$products = $request->products;
 
+		if($editMode) {
+			$budget->products()->detach();
+		}
+
 		if(isset($request->products)){
-			if($editMode) {
-				$budget->products()->detach();
-			}
-			
 			foreach ($products as $product){
 				$totalProductPrice = calculateProductTotalPrice($product);
 				$taxBase = $taxBase + $totalProductPrice;
@@ -73,6 +73,7 @@ class BudgetController extends Controller{
 		
 		$message = 'Presupuesto '. ($editMode ? 'editado' : 'creado') .' exitosamente';
 		$budget->total = $taxBase; // Add total to budget
+		$budget->save();
 		return redirect('budgets')->with('message', $message);
 	}
 
