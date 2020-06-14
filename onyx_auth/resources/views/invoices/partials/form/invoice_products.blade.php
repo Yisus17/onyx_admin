@@ -1,5 +1,5 @@
 <!-- Product selection -->
-  <div class="row mb-3">
+<div class="row mb-3">
     <div class="col-12">
       <hr>
     </div>
@@ -13,32 +13,32 @@
           @endforeach
         </select>
         <div class="input-group-addon input-group-button">
-          <button type="button" id="add-budget-product" class="btn btn-primary disabled">Agregar</button>
+          <button type="button" id="add-invoice-product" class="btn btn-primary disabled">Agregar</button>
         </div>
       </div>
-      <small class="form-text text-muted">Busca productos para agregar al presupuesto</small>
+      <small class="form-text text-muted">Busca productos para agregar a la factura</small>
     </div>
   </div>
 <!-- End product selection -->
 
-<!-- Budget items -->
+<!-- Invoice items -->
   <div class="row products-container justify-content-center">
-    @if(isset($budget) && isset($budget->products))
-      @foreach($budget->products as $budget_product)
-        @include('budgets.product', ['product' => $budget_product, 'uniqid' => Str::random(9)])
+    @if(isset($invoice) && isset($invoice->products))
+      @foreach($invoice->products as $invoice_product)
+        @include('invoices.product', ['product' => $invoice_product, 'uniqid' => Str::random(9)])
       @endforeach
     @endif
   </div>
-<!-- End budget items -->
+<!-- End invoice items -->
 
 @section('scripts')
   @parent
   <script type="text/javascript">
     function checkAddBtn(){
       if($("#product-select").val()){
-        $("#add-budget-product").removeClass('disabled');
+        $("#add-invoice-product").removeClass('disabled');
       }else{
-        $("#add-budget-product").addClass('disabled');
+        $("#add-invoice-product").addClass('disabled');
       }
     }
 
@@ -52,13 +52,13 @@
       checkAddBtn();
     });
 
-    $('#add-budget-product').click(function(e){
+    $('#add-invoice-product').click(function(e){
       e.preventDefault();
       var productId = $('#product-select').val();
       if(productId){
         $.ajax({
           type:'POST',
-          url:'/budgets/addProduct',
+          url:'/invoices/addProduct',
           data:{product_id: productId},
           success:function(response){
             $('.products-container').append(response);

@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Budget extends Model{
+class Invoice extends Model{
 	protected $fillable = [
 		'delivery_date', 'return_date', 'instalation_date', 
 		'start_date', 'end_date', 'uninstalation_date',

@@ -24,6 +24,10 @@ class Product extends Model{
 
 	public function budgets(){
     return $this->belongsToMany(Budget::class);
+	}
+	
+	public function invoices(){
+    return $this->belongsToMany(Invoice::class);
   }
 
 	public function getUnitPriceAttribute(){

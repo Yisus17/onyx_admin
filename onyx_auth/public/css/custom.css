@@ -96,11 +96,11 @@ textarea{
   resize: none !important;
 }
 
-.budget-product-container .card-header{
+.product-container .card-header{
   height: 32px;
 }
 
-.budget-product-container .delete-budget-product{
+.product-container .delete-product{
   width: 20px;
   height: 20px;
   padding: 0;

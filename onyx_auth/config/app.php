@@ -174,8 +174,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        App\Providers\PHPExcelMacroServiceProvider::class,
-        Bkwld\Cloner\ServiceProvider::class,
+        App\Providers\PHPExcelMacroServiceProvider::class
 
     ],
 
