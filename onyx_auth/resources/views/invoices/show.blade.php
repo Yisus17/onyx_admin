@@ -5,6 +5,10 @@
 <div class="container">
 	<div class="row justify-content-center">
 		<div class="col-md-10">
+      <!-- Breadcrumbs -->
+			{{ Breadcrumbs::render('invoices.show', $invoice) }}
+
+      <!-- Session messages -->
       @include('partials.session_message')
 			<div class="card">
 				<div class="card-header d-flex justify-content-between align-items-center">
