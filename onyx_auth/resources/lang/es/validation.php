@@ -116,6 +116,7 @@ return [
     'uploaded'    => 'Subir :attribute ha fallado.',
     'url'         => 'El formato :attribute es inválido.',
     'uuid'        => 'El campo :attribute debe ser un UUID válido.',
+    
 
     /*
     |--------------------------------------------------------------------------
@@ -197,6 +198,17 @@ return [
         'products.*.quantity'   => 'cantidad del producto',
         'products.*.factor'   => 'factor del producto',
         'products.*.unit_price' => 'precio unitario del producto',
-        'products.*.discount' => 'descuento del producto'
+        'products.*.discount' => 'descuento del producto',
+        'client_id' => 'contacto',
+        'validity' => 'validez',
+        'delivery_date' => 'fecha de entrega',
+        'return_date' => 'fecha de devolución',
+        'instalation_date' => 'fecha de montaje',
+        'start_date' => 'fecha de inicio',
+        'end_date' => 'fecha de fin',
+        'uninstalation_date' => 'fecha de desmontaje',
+        'payment_conditions' => 'condiciones de pago',
+        'payment_method' => 'método de pago',
+        'tax_percentage' => 'IVA',
     ],
 ];

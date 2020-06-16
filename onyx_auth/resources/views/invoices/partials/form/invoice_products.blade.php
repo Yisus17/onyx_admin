@@ -4,7 +4,7 @@
       <hr>
     </div>
     <div class="form-group col-12">
-      <label for="product_id"><span class="required-field">*</span>Productos</label>
+      <label for="product_id">Productos</label>
       <div class="input-group select-add">
         <select id="product-select" class="form-control selectpicker" data-live-search="true">
           <option value="" selected disabled>--Selecciona una opción--</option>

@@ -2,7 +2,6 @@
 
 @section('content')
 <div class="container">
-  @include('partials.session_message')
   <div class="row justify-content-center">
     <div class="col-10 custom-form">
       <!-- Breadcrumbs -->

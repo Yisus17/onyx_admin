@@ -1,3 +1,7 @@
+<div class="form-group required-info">
+  <span>*Campos obligatorios</span>
+</div>
+
 <!-- Budget data -->
   @include('budgets.partials.form.budget_data')
 <!-- End budget data -->

@@ -1,9 +1,9 @@
-<div class="custom-form">
-  <div class="form-group required-info">
+<div class="custom-form row">
+  <div class="form-group required-info col-12">
     <span>*Campos obligatorios</span>
   </div>
   
-  <div class="form-group">
+  <div class="form-group col-12">
     <label for="name"><span class="required-field">*</span>Razón Social</label>
     <input 
       type="text" 
@@ -13,7 +13,7 @@
       required/>
   </div>
 
-  <div class="form-group">
+  <div class="form-group col-12">
     <label for="address"><span class="required-field">*</span>Dirección</label>
     <textarea 
       class="form-control" 
@@ -22,7 +22,7 @@
       required>{{isset($client) ? $client->address : old('address')}}</textarea>
   </div>
 
-  <div class="form-group">
+  <div class="form-group col-12 col-sm-6">
     <label for="postal_code">Código postal</label>
     <input 
       type="text" 
@@ -31,7 +31,7 @@
       value="{{isset($client) ? $client->postal_code : old('postal_code')}}"/>
   </div>
 
-  <div class="form-group">
+  <div class="form-group col-12 col-sm-6">
     <label for="community_id">Comunidad autónoma</label>
     <select name="community_id" class="form-control selectpicker" data-live-search="true">
       <option value="" selected disabled>--Selecciona una opción--</option>
@@ -41,7 +41,7 @@
     </select>
   </div>
 
-  <div class="form-group">
+  <div class="form-group col-12 col-sm-6">
     <label for="phone"><span class="required-field">*</span>Teléfono</label>
     <input 
       type="text" 
@@ -51,7 +51,7 @@
       required/>
   </div>
 
-  <div class="form-group">
+  <div class="form-group col-12 col-sm-6">
     <label for="secondary_phone">Teléfono secundario</label>
     <input 
       type="text" 
@@ -60,7 +60,7 @@
       value="{{isset($client) ? $client->secondary_phone : old('secondary_phone')}}" />
   </div>
 
-  <div class="form-group">
+  <div class="form-group col-12 col-sm-6">
     <label for="name"><span class="required-field">*</span>Nombre</label>
     <input 
       type="text" 
@@ -70,7 +70,7 @@
       required/>
   </div>
 
-  <div class="form-group">
+  <div class="form-group col-12 col-sm-6">
     <label for="lastname"><span class="required-field">*</span>Apellido</label>
     <input 
       type="text" 
@@ -80,7 +80,7 @@
       required/>
   </div>
 
-  <div class="form-group">
+  <div class="form-group col-12 col-sm-6">
     <label for="email"><span class="required-field">*</span>Email</label>
     <input 
       type="email" 
@@ -90,7 +90,7 @@
       required/>
   </div>
 
-  <div class="form-group">
+  <div class="form-group col-12 col-sm-6">
     <label for="client_type_id">Tipo</label>
     <select name="client_type_id" class="form-control selectpicker" data-live-search="true">
       <option value="" selected disabled>--Selecciona una opción--</option>
@@ -100,7 +100,7 @@
     </select>
   </div>
 
-  <div class="form-group">
+  <div class="form-group col-12">
     <button class="btn btn-primary " type="submit">Guardar</button>
     <a href="/clients" class="btn btn-secondary">Volver</a>
   </div>

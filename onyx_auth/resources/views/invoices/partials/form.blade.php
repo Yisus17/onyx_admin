@@ -1,3 +1,7 @@
+<div class="form-group required-info">
+  <span>*Campos obligatorios</span>
+</div>
+
 <!-- Invoice data -->
 @include('invoices.partials.form.invoice_data')
 <!-- End invoice data -->
