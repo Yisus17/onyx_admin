@@ -1,9 +1,9 @@
-<div class="custom-form">
-  <div class="form-group required-info">
+<div class="custom-form row">
+  <div class="form-group required-info col-12">
     <span>*Campos obligatorios</span>
   </div>
 
-  <div class="form-group">
+  <div class="form-group col-12 col-sm-4">
     <label for="code"><span class="required-field">*</span>Código</label>
     <input 
       type="text" 
@@ -13,7 +13,7 @@
       required/>
   </div>
 
-  <div class="form-group">
+  <div class="form-group col-12 col-sm-4">
     <label for="brand"><span class="required-field">*</span>Marca</label>
     <input 
       type="text" 
@@ -23,7 +23,7 @@
       required/>
   </div>
 
-  <div class="form-group">
+  <div class="form-group col-12 col-sm-4">
     <label for="model"><span class="required-field">*</span>Modelo</label>
     <input 
       type="text" 
@@ -33,7 +33,7 @@
       required/>
   </div>
 
-  <div class="form-group">
+  <div class="form-group col-12">
     <label for="description"><span class="required-field">*</span>Descripción</label>
     <input 
       type="text" 
@@ -43,7 +43,7 @@
       required/>
   </div>
 
-  <div class="form-group">
+  <div class="form-group col-12 col-sm-6">
     <label for="category_id"><span class="required-field">*</span>Rubro</label>
     <select name="category_id" class="form-control selectpicker" data-live-search="true" required>
       <option value="" selected disabled>--Selecciona una opción--</option>
@@ -53,7 +53,7 @@
     </select>
   </div>
 
-  <div class="form-group">
+  <div class="form-group col-12 col-sm-6">
     <label for="type"><span class="required-field">*</span>Tipo</label>
     <input 
       type="text" 
@@ -63,7 +63,7 @@
       required/>
   </div>
 
-  <div class="form-group">
+  <div class="form-group col-12 col-sm-6">
     <label for="serial">Serial</label>
     <input 
       type="text" 
@@ -72,7 +72,7 @@
       value="{{isset($product) ? $product->serial : old('serial')}}"/>
   </div>
 
-  <div class="form-group">
+  <div class="form-group col-12 col-sm-6">
     <label for="purchase_price"><span class="required-field">*</span>Precio de compra</label>
     <div class="input-group">
       <input 
@@ -89,7 +89,7 @@
     </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group col-12 col-sm-6">
     <label for="status"><span class="required-field">*</span>Estado</label>
     <input 
       type="text" 
@@ -99,7 +99,7 @@
       required/>
   </div>
 
-  <div class="form-group">
+  <div class="form-group col-12 col-sm-6">
     <label for="bought_by"><span class="required-field">*</span>Comprado por</label>
     <input 
       type="text" 
@@ -109,12 +109,17 @@
       required/>
   </div>
 
-  <div class="form-group">
+  <div class="form-group col-12 col-sm-6">
     <label for="purchase_date">Fecha de compra</label>
-    <input type="text" id="purchase_date" name="purchase_date" class="form-control datepicker" autocomplete="off"/>
+    <div class="input-group">
+      <input type="text" id="purchase_date" name="purchase_date" class="form-control datepicker" autocomplete="off"/>
+      <div class="input-group-append">
+        <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+      </div>
+    </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group col-12 col-sm-6">
     <label for="years_old"><span class="required-field">*</span>Años de antigüedad</label>
     <input 
       type="number" 
@@ -127,7 +132,7 @@
       required/>
   </div>
 
-  <div class="form-group">
+  <div class="form-group col-12">
     <label>Imagen</label>
 
     <div class="input-group mb-1">
@@ -158,12 +163,12 @@
     </div>
   </div>
 
-  <div class="form-group form-check">
-    <input type="checkbox" name="countable" class="form-check-input" {{isset($product) && $product->countable ? 'checked="checked"' : ''}}>
+  <div class="form-group form-check col-12">
+    <input type="checkbox" name="countable" {{isset($product) && $product->countable ? 'checked="checked"' : ''}}>
     <label class="form-check-label" for="countable">Marcar si este producto es contable</label>
   </div>
 
-  <div class="form-group">
+  <div class="form-group col-12">
     <button class="btn btn-primary " type="submit">Guardar</button>
     <a href="/products" class="btn btn-secondary">Volver</a>
   </div>
