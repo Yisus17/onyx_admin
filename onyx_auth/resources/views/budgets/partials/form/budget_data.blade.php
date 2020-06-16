@@ -1,5 +1,5 @@
 <div id="budget-data" class="row mb-2">
-  <div class="form-group col-6">
+  <div class="form-group col-12 col-sm-6">
     <label for="client_id"><span class="required-field">*</span>Contacto</label>
     <select name="client_id" class="form-control selectpicker" data-live-search="true">
       <option value="" selected disabled>--Selecciona una opción--</option>
@@ -10,7 +10,7 @@
   </div>
 
 
-  <div class="form-group col-6">
+  <div class="form-group col-12 col-sm-6">
     <label for="validity"><span class="required-field">*</span>Validez</label>
     <select name="validity" class="form-control" required>
       <option value="" selected disabled>--Selecciona una opción--</option>
@@ -24,7 +24,7 @@
     </select>
   </div>
 
-  <div class="form-group col-6">
+  <div class="form-group col-12 col-sm-6">
     <label for="address"><span class="required-field">*</span>Dirección</label>
     <textarea 
       name="address" 
@@ -33,7 +33,7 @@
       required>{{isset($budget) ? $budget->address : old('address')}}</textarea>
   </div>
 
-  <div class="form-group col-6">
+  <div class="form-group col-12 col-sm-6">
     <label for="description"><span class="required-field">*</span>Descripción del evento</label>
     <textarea 
       class="form-control" 
@@ -42,7 +42,7 @@
       required>{{isset($budget) ? $budget->description : old('description')}}</textarea>
   </div>
 
-  <div class="form-group col-6">
+  <div class="form-group col-12 col-sm-6">
     <label for="delivery_date"><span class="required-field">*</span>Entrega</label>
     <div class="input-group">
       <input type="text" id="delivery_date" name="delivery_date" class="form-control datepicker" autocomplete="off" required/>
@@ -52,7 +52,7 @@
     </div>
   </div>
 
-  <div class="form-group col-6">
+  <div class="form-group col-12 col-sm-6">
     <label for="return_date"><span class="required-field">*</span>Devolución</label>
     <div class="input-group">
       <input type="text" id="return_date" name="return_date" class="form-control datepicker" autocomplete="off" required/>
@@ -62,7 +62,7 @@
     </div>
   </div>
 
-  <div class="form-group col-6">
+  <div class="form-group col-12 col-sm-6">
     <label for="instalation_date"><span class="required-field">*</span>Montaje</label>
     <div class="input-group">
       <input type="text" id="instalation_date" name="instalation_date" class="form-control datepicker" autocomplete="off" required/>
@@ -72,7 +72,7 @@
     </div>
   </div>
 
-  <div class="form-group col-6">
+  <div class="form-group col-12 col-sm-6">
     <label for="start_date"><span class="required-field">*</span>Inicio evento</label>
     <div class="input-group">
       <input type="text" id="start_date" name="start_date" class="form-control datepicker" autocomplete="off" required/>
@@ -82,7 +82,7 @@
     </div>
   </div>
 
-  <div class="form-group col-6">
+  <div class="form-group col-12 col-sm-6">
     <label for="end_date"><span class="required-field">*</span>Fin evento</label>
     <div class="input-group">
       <input type="text" id="end_date" name="end_date" class="form-control datepicker" autocomplete="off" required/>
@@ -92,7 +92,7 @@
     </div>
   </div>
 
-  <div class="form-group col-6">
+  <div class="form-group col-12 col-sm-6">
     <label for="uninstalation_date"><span class="required-field">*</span>Desmontaje</label>
     <div class="input-group">
       <input type="text" id="uninstalation_date" name="uninstalation_date" class="form-control datepicker" autocomplete="off" required/>
@@ -102,7 +102,7 @@
     </div>
   </div>
 
-  <div class="form-group col-4">
+  <div class="form-group col-12 col-sm-4">
     <label for="payment_conditions"><span class="required-field">*</span>Condiciones de pago</label>
     <select name="payment_conditions" class="form-control" required>
       <option value="" selected disabled>--Selecciona una opción--</option>
@@ -116,7 +116,7 @@
     </select>
   </div>
 
-  <div class="form-group col-4">
+  <div class="form-group col-12 col-sm-4">
     <label for="payment_method"><span class="required-field">*</span>Método de pago</label>
     <select name="payment_method" class="form-control" required>
       <option value="" selected disabled>--Selecciona una opción--</option>
@@ -130,7 +130,7 @@
     </select>
   </div>
 
-  <div class="form-group col-4">
+  <div class="form-group col-12 col-sm-4">
     <label for="tax_percentage"><span class="required-field">*</span>IVA</label>
     <div class="input-group">
       <input 

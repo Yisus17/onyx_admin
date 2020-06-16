@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-10 custom-form">
+    <div class="col-12 col-sm-10 custom-form">
       <!-- Breadcrumbs -->
       {{ Breadcrumbs::render('budgets.edit', $budget) }}
 
