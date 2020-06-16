@@ -63,4 +63,8 @@ function getOnyxInfo(){
   return("675 27 19 67 | adolfo@onyxs.es | B88095534");
 }
 
+function getGlobalTaxPercentage(){
+  return(21);
+}
+
 ?>

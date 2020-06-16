@@ -18,9 +18,6 @@
 				</div>
 
 				<div class="card-body">
-					@include('partials.session_message')
-					@include('partials.errors')
-
 					{!! Form::model($client, ['route' => ['clients.update', $client->id], 'method' => 'PUT']) !!}
 							@include('clients.partials.form')
 					{!! Form::close() !!}

@@ -12,7 +12,7 @@
 
   <div class="form-group col-6">
     <label for="validity"><span class="required-field">*</span>Validez</label>
-    <select name="validity" class="form-control">
+    <select name="validity" class="form-control" required>
       <option value="" selected disabled>--Selecciona una opción--</option>
       @foreach(getValidityOptions() as $key => $value)
         <option 
@@ -26,18 +26,26 @@
 
   <div class="form-group col-6">
     <label for="address"><span class="required-field">*</span>Dirección</label>
-    <textarea name="address" class="form-control" rows="2">{{isset($budget) ? $budget->address : old('address')}}</textarea>
+    <textarea 
+      name="address" 
+      class="form-control" 
+      rows="2"
+      required>{{isset($budget) ? $budget->address : old('address')}}</textarea>
   </div>
 
   <div class="form-group col-6">
     <label for="description"><span class="required-field">*</span>Descripción del evento</label>
-    <textarea class="form-control" name="description" rows="2">{{isset($budget) ? $budget->description : old('description')}}</textarea>
+    <textarea 
+      class="form-control" 
+      name="description" 
+      rows="2"
+      required>{{isset($budget) ? $budget->description : old('description')}}</textarea>
   </div>
 
   <div class="form-group col-6">
     <label for="delivery_date"><span class="required-field">*</span>Entrega</label>
     <div class="input-group">
-      <input type="text" id="delivery_date" name="delivery_date" class="form-control datepicker" autocomplete="off"/>
+      <input type="text" id="delivery_date" name="delivery_date" class="form-control datepicker" autocomplete="off" required/>
       <div class="input-group-append">
         <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></span>
       </div>
@@ -47,7 +55,7 @@
   <div class="form-group col-6">
     <label for="return_date"><span class="required-field">*</span>Devolución</label>
     <div class="input-group">
-      <input type="text" id="return_date" name="return_date" class="form-control datepicker" autocomplete="off"/>
+      <input type="text" id="return_date" name="return_date" class="form-control datepicker" autocomplete="off" required/>
       <div class="input-group-append">
         <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></span>
       </div>
@@ -57,7 +65,7 @@
   <div class="form-group col-6">
     <label for="instalation_date"><span class="required-field">*</span>Montaje</label>
     <div class="input-group">
-      <input type="text" id="instalation_date" name="instalation_date" class="form-control datepicker" autocomplete="off"/>
+      <input type="text" id="instalation_date" name="instalation_date" class="form-control datepicker" autocomplete="off" required/>
       <div class="input-group-append">
         <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></span>
       </div>
@@ -67,7 +75,7 @@
   <div class="form-group col-6">
     <label for="start_date"><span class="required-field">*</span>Inicio evento</label>
     <div class="input-group">
-      <input type="text" id="start_date" name="start_date" class="form-control datepicker" autocomplete="off"/>
+      <input type="text" id="start_date" name="start_date" class="form-control datepicker" autocomplete="off" required/>
       <div class="input-group-append">
         <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></span>
       </div>
@@ -77,7 +85,7 @@
   <div class="form-group col-6">
     <label for="end_date"><span class="required-field">*</span>Fin evento</label>
     <div class="input-group">
-      <input type="text" id="end_date" name="end_date" class="form-control datepicker" autocomplete="off"/>
+      <input type="text" id="end_date" name="end_date" class="form-control datepicker" autocomplete="off" required/>
       <div class="input-group-append">
         <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></span>
       </div>
@@ -87,7 +95,7 @@
   <div class="form-group col-6">
     <label for="uninstalation_date"><span class="required-field">*</span>Desmontaje</label>
     <div class="input-group">
-      <input type="text" id="uninstalation_date" name="uninstalation_date" class="form-control datepicker" autocomplete="off"/>
+      <input type="text" id="uninstalation_date" name="uninstalation_date" class="form-control datepicker" autocomplete="off" required/>
       <div class="input-group-append">
         <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></span>
       </div>
@@ -96,7 +104,7 @@
 
   <div class="form-group col-4">
     <label for="payment_conditions"><span class="required-field">*</span>Condiciones de pago</label>
-    <select name="payment_conditions" class="form-control">
+    <select name="payment_conditions" class="form-control" required>
       <option value="" selected disabled>--Selecciona una opción--</option>
       @foreach(getPaymentConditions() as $key => $value)
         <option 
@@ -110,7 +118,7 @@
 
   <div class="form-group col-4">
     <label for="payment_method"><span class="required-field">*</span>Método de pago</label>
-    <select name="payment_method" class="form-control">
+    <select name="payment_method" class="form-control" required>
       <option value="" selected disabled>--Selecciona una opción--</option>
       @foreach(getPaymentMethods() as $key => $value)
         <option 
@@ -130,7 +138,8 @@
         name="tax_percentage" 
         class="form-control"
         min="0" max="100" step="1" 
-        value="{{isset($budget) ? $budget->tax_percentage : 21}}" />
+        value="{{isset($budget) ? $budget->tax_percentage : getGlobalTaxPercentage()}}" 
+        required/>
       <div class="input-group-append">
         <span class="input-group-text">%</span>
       </div>

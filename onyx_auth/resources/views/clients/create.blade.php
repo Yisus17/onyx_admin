@@ -16,9 +16,6 @@
 				</div>
 
 				<div class="card-body">
-					@include('partials.session_message')
-					@include('partials.errors')
-
 					{!! Form::open(['route' => 'clients.store']) !!}
 							@include('clients.partials.form')
 					{!! Form::close() !!}

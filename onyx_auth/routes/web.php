@@ -23,10 +23,10 @@ Auth::routes(['register' => false, 'reset' => false]);
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
 
-//Routes for products
+//Products
 Route::resource('/products', 'ProductController');
-Route::get('product-list-excel', 'ProductController@exportExcel')->name('products.pdf');
 
+// Clients
 Route::resource('/clients', 'ClientController');
 
 // Budgets

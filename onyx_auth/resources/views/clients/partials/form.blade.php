@@ -5,17 +5,30 @@
   
   <div class="form-group">
     <label for="name"><span class="required-field">*</span>Razón Social</label>
-    <input type="text" name="business_name" class="form-control" value="{{isset($client) ? $client->business_name : old('business_name')}}" />
+    <input 
+      type="text" 
+      name="business_name" 
+      class="form-control" 
+      value="{{isset($client) ? $client->business_name : old('business_name')}}" 
+      required/>
   </div>
 
   <div class="form-group">
     <label for="address"><span class="required-field">*</span>Dirección</label>
-    <textarea class="form-control" name="address" rows="2">{{isset($client) ? $client->address : old('address')}}</textarea>
+    <textarea 
+      class="form-control" 
+      name="address" 
+      rows="2" 
+      required>{{isset($client) ? $client->address : old('address')}}</textarea>
   </div>
 
   <div class="form-group">
     <label for="postal_code">Código postal</label>
-    <input type="text" name="postal_code" class="form-control" value="{{isset($client) ? $client->postal_code : old('postal_code')}}" />
+    <input 
+      type="text" 
+      name="postal_code" 
+      class="form-control" 
+      value="{{isset($client) ? $client->postal_code : old('postal_code')}}"/>
   </div>
 
   <div class="form-group">
@@ -30,27 +43,51 @@
 
   <div class="form-group">
     <label for="phone"><span class="required-field">*</span>Teléfono</label>
-    <input type="text" name="phone" class="form-control" value="{{isset($client) ? $client->phone : old('phone')}}" />
+    <input 
+      type="text" 
+      name="phone" 
+      class="form-control" 
+      value="{{isset($client) ? $client->phone : old('phone')}}" 
+      required/>
   </div>
 
   <div class="form-group">
     <label for="secondary_phone">Teléfono secundario</label>
-    <input type="text" name="secondary_phone" class="form-control" value="{{isset($client) ? $client->secondary_phone : old('secondary_phone')}}" />
+    <input 
+      type="text" 
+      name="secondary_phone" 
+      class="form-control" 
+      value="{{isset($client) ? $client->secondary_phone : old('secondary_phone')}}" />
   </div>
 
   <div class="form-group">
     <label for="name"><span class="required-field">*</span>Nombre</label>
-    <input type="text" name="name" class="form-control" value="{{isset($client) ? $client->name : old('name')}}" />
+    <input 
+      type="text" 
+      name="name" 
+      class="form-control" 
+      value="{{isset($client) ? $client->name : old('name')}}" 
+      required/>
   </div>
 
   <div class="form-group">
     <label for="lastname"><span class="required-field">*</span>Apellido</label>
-    <input type="text" name="lastname" class="form-control" value="{{isset($client) ? $client->lastname : old('lastname')}}" />
+    <input 
+      type="text" 
+      name="lastname" 
+      class="form-control" 
+      value="{{isset($client) ? $client->lastname : old('lastname')}}" 
+      required/>
   </div>
 
   <div class="form-group">
     <label for="email"><span class="required-field">*</span>Email</label>
-    <input type="text" name="email" class="form-control" value="{{isset($client) ? $client->email : old('email')}}" />
+    <input 
+      type="email" 
+      name="email" 
+      class="form-control" 
+      value="{{isset($client) ? $client->email : old('email')}}" 
+      required/>
   </div>
 
   <div class="form-group">
