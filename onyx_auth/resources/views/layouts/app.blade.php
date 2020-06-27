@@ -85,6 +85,48 @@
 		<script src="{{ asset('js/bootstrap-datetimepicker.js') }}"></script>
 		<script type="text/javascript">
 			$('[data-toggle="tooltip"]').tooltip();
+			var defaultDatetimepickerOptions = {
+				showClose: true,
+				locale: 'es',
+				icons: {
+					time: 'fa fa-clock',
+					date: 'fa fa-calendar',
+					up: 'fa fa-chevron-up',
+					down: 'fa fa-chevron-down',
+					previous: 'fa fa-chevron-left',
+					next: 'fa fa-chevron-right',
+					today: 'fa fa-check',
+					clear: 'fa fa-trash',
+					close: 'fa fa-times'
+				},
+				tooltips: {
+					selectTime: 'Selección de fecha/hora',
+					today: 'Marcar hoy',
+					clear: 'Limpiar',
+					close: 'Cerrar',
+					selectMonth: 'Selección de mes',
+					prevMonth: 'Mes anterior',
+					nextMonth: 'Próximo mes',
+					selectYear: 'Selecciona el año',
+					prevYear: 'Año anterior',
+					nextYear: 'Proximo año',
+					selectDecade: 'Selección de década',
+					prevDecade: 'Década anterior',
+					nextDecade: 'Próxima decada',
+					prevCentury: 'Siglo anterior',
+					nextCentury: 'Próximo siglo'
+				}
+			}
+
+			function setDateData(budgetDate, target, withFormat, isDateTime=true){
+				if (!withFormat){
+					let originFormat = isDateTime ? 'YYYY-MM-DD HH:mm' : 'YYYY-MM-DD';
+					let appFormat = isDateTime ? 'DD/MM/YYYY HH:mm' : 'DD/MM/YYYY';
+					budgetDate = moment(budgetDate, originFormat).format(appFormat);
+				}
+					
+				$(target).data("DateTimePicker").date(budgetDate);
+			}
 		</script>
 			
 			@yield('scripts')

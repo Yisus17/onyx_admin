@@ -1,4 +1,4 @@
-<div class="custom-form row">
+<div id="product-data" class="custom-form row">
   <div class="form-group required-info col-12">
     <span>*Campos obligatorios</span>
   </div>
@@ -112,7 +112,7 @@
   <div class="form-group col-12 col-sm-6">
     <label for="purchase_date">Fecha de compra</label>
     <div class="input-group">
-      <input type="text" id="purchase_date" name="purchase_date" class="form-control datepicker" autocomplete="off"/>
+      <input type="text" id="purchase_date" name="purchase_date" class="form-control datetimepicker" autocomplete="off"/>
       <div class="input-group-append">
         <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></span>
       </div>
@@ -175,15 +175,17 @@
 </div>
 
 @section('scripts')
-  <script>
-    $('#purchase_date').datepicker({
-        format: "dd/mm/yyyy",
-        autoclose: true,
-        todayHighlight: true, 
-        endDate: moment().format('DD/MM/YYYY')
+  
+  <script  type="text/javascript">
+    let todayLastTime = new Date().setHours(23,59,59,999);
+
+    $('#product-data .datetimepicker').datetimepicker({
+      ...defaultDatetimepickerOptions,
+      format: "DD/MM/YYYY",
+      maxDate: todayLastTime,
     });
 
-    $('#purchase_date').on("change", function(e) {
+    $('#purchase_date').on('dp.change', function(e) {
       var selectedDate = moment(e.target.value, 'DD/MM/YYYY');
       var yearsOfDiff = moment().diff(selectedDate, 'year');
       if (yearsOfDiff < 0){
@@ -203,33 +205,29 @@
         $('#preview_product_image').removeClass('hidden');
         $('#no_image_message').addClass('hidden');
       }
-    }
+    };
 
     $('#product_image').on('change',function(){
       readURL(this);
       var fileName = $(this).val().split('\\').pop();
       $('#product_image_name').val(fileName);
-    })
+    });
 
     $('#reset_product_image').on('click',function(){
       $('#product_image').val('');
       $('#product_image_name').val('');
       $('#preview_product_image').addClass('hidden');
       $('#no_image_message').removeClass('hidden');
-    })
+    });
 </script>
 
-  @if(isset($product) && $product->purchase_date)
-    <script>
-      var purchaseDate = moment('{{$product->purchase_date}}', 'YYYY-MM-DD').format('DD/MM/YYYY');
-      $('#purchase_date').datepicker('setDate', purchaseDate);
-    </script>
-  @elseif(old('purchase_date'))
-    <script>
-      var purchaseDate = '{{old("purchase_date")}}';
-      $('#purchase_date').datepicker('setDate', purchaseDate);
-    </script>
-  @endif
+@if(isset($product))
+  <script>
+    '{{$product->purchase_date}}' ? 
+      setDateData('{{$product->purchase_date}}', '#purchase_date', false, false) :
+      setDateData('{{old("purchase_date")}}', '#purchase_date', true, false )
+  </script>
+@endif
 
 @endsection
 
