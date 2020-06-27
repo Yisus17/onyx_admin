@@ -37,7 +37,7 @@
   <div class="form-group col-6">
     <label for="delivery_date"><span class="required-field">*</span>Entrega</label>
     <div class="input-group">
-      <input type="text" id="delivery_date" name="delivery_date" class="form-control datepicker" autocomplete="off"/>
+      <input type="text" id="delivery_date" name="delivery_date" class="form-control datetimepicker" autocomplete="off"/>
       <div class="input-group-append">
         <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></span>
       </div>
@@ -47,7 +47,7 @@
   <div class="form-group col-6">
     <label for="return_date"><span class="required-field">*</span>Devolución</label>
     <div class="input-group">
-      <input type="text" id="return_date" name="return_date" class="form-control datepicker" autocomplete="off"/>
+      <input type="text" id="return_date" name="return_date" class="form-control datetimepicker" autocomplete="off"/>
       <div class="input-group-append">
         <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></span>
       </div>
@@ -57,7 +57,7 @@
   <div class="form-group col-6">
     <label for="instalation_date"><span class="required-field">*</span>Montaje</label>
     <div class="input-group">
-      <input type="text" id="instalation_date" name="instalation_date" class="form-control datepicker" autocomplete="off"/>
+      <input type="text" id="instalation_date" name="instalation_date" class="form-control datetimepicker" autocomplete="off"/>
       <div class="input-group-append">
         <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></span>
       </div>
@@ -67,7 +67,7 @@
   <div class="form-group col-6">
     <label for="start_date"><span class="required-field">*</span>Inicio evento</label>
     <div class="input-group">
-      <input type="text" id="start_date" name="start_date" class="form-control datepicker" autocomplete="off"/>
+      <input type="text" id="start_date" name="start_date" class="form-control datetimepicker" autocomplete="off"/>
       <div class="input-group-append">
         <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></span>
       </div>
@@ -77,7 +77,7 @@
   <div class="form-group col-6">
     <label for="end_date"><span class="required-field">*</span>Fin evento</label>
     <div class="input-group">
-      <input type="text" id="end_date" name="end_date" class="form-control datepicker" autocomplete="off"/>
+      <input type="text" id="end_date" name="end_date" class="form-control datetimepicker" autocomplete="off"/>
       <div class="input-group-append">
         <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></span>
       </div>
@@ -87,7 +87,7 @@
   <div class="form-group col-6">
     <label for="uninstalation_date"><span class="required-field">*</span>Desmontaje</label>
     <div class="input-group">
-      <input type="text" id="uninstalation_date" name="uninstalation_date" class="form-control datepicker" autocomplete="off"/>
+      <input type="text" id="uninstalation_date" name="uninstalation_date" class="form-control datetimepicker" autocomplete="off"/>
       <div class="input-group-append">
         <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></span>
       </div>
@@ -146,19 +146,11 @@
 @section('scripts')
   @parent
   <script type="text/javascript">
-    $('#invoice-data .datepicker').datepicker({
-      format: "dd/mm/yyyy",
-      autoclose: true,
-      todayHighlight: true
+    $('#invoice-data .datetimepicker').datetimepicker({
+      ...defaultDatetimepickerOptions,
+      format: "DD/MM/YYYY HH:mm"
     });
-
-    function setDateData(invoiceDate, target, withFormat){
-      if (!withFormat)
-      invoiceDate = moment(invoiceDate, 'YYYY-MM-DD').format('DD/MM/YYYY');
-      $(target).datepicker('setDate', invoiceDate);
-    }
   </script>
-
 
   @if(isset($invoice))
     <script type="text/javascript">

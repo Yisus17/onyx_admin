@@ -33,40 +33,21 @@ class CreateEditInvoiceRequest extends FormRequest{
 	}
 
 	protected function formatDates(){
-		if($this->request->get('delivery_date')){
-			$this->merge([
-				'delivery_date' => Carbon::createFromFormat('d/m/Y', $this->request->get('delivery_date'))->format('Y-m-d H:m')
-			]);
-		}
+		$eventDates = [
+			'delivery_date', 
+			'return_date', 
+			'instalation_date', 
+			'start_date', 
+			'end_date',
+			'uninstalation_date'
+		];
 
-		if($this->request->get('return_date')){
-			$this->merge([
-				'return_date' => Carbon::createFromFormat('d/m/Y', $this->request->get('return_date'))->format('Y-m-d H:m')
-			]);
-		}
-
-		if($this->request->get('instalation_date')){
-			$this->merge([
-				'instalation_date' => Carbon::createFromFormat('d/m/Y', $this->request->get('instalation_date'))->format('Y-m-d H:m')
-			]);
-		}
-
-		if($this->request->get('start_date')){
-			$this->merge([
-				'start_date' => Carbon::createFromFormat('d/m/Y', $this->request->get('start_date'))->format('Y-m-d H:m')
-			]);
-		}
-
-		if($this->request->get('end_date')){
-			$this->merge([
-				'end_date' => Carbon::createFromFormat('d/m/Y', $this->request->get('end_date'))->format('Y-m-d H:m')
-			]);
-		}
-
-		if($this->request->get('uninstalation_date')){
-			$this->merge([
-				'uninstalation_date' => Carbon::createFromFormat('d/m/Y', $this->request->get('uninstalation_date'))->format('Y-m-d H:m')
-			]);
+		foreach ($eventDates as $eventDate){
+			if($this->request->get($eventDate)){
+				$this->merge([
+					$eventDate => Carbon::createFromFormat('d/m/Y H:m', $this->request->get($eventDate))->format('Y-m-d H:m')
+				]);
+			}
 		}
 	}
 }
