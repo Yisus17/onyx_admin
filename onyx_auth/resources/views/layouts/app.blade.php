@@ -17,6 +17,7 @@
 		<link href="{{ asset('css/app.css') }}" rel="stylesheet">
 		<link href="{{ asset('css/fontawesome/css/all.css')}}" rel="stylesheet"> <!--icons -->
 		<link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+		<link href="{{ asset('css/bootstrap-datetimepicker.css') }}" rel="stylesheet">
 	</head>
 	<body>
 		<div id="app">
@@ -81,6 +82,7 @@
 			</main>
 		</div>
 		<script src="{{ asset('js/app.js') }}"></script>
+		<script src="{{ asset('js/bootstrap-datetimepicker.js') }}"></script>
 		<script type="text/javascript">
 			$('[data-toggle="tooltip"]').tooltip();
 		</script>

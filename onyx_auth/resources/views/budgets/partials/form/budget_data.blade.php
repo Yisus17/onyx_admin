@@ -155,16 +155,25 @@
 @section('scripts')
   @parent
   <script type="text/javascript">
-    $('#budget-data .datepicker').datepicker({
-      format: "dd/mm/yyyy",
-      autoclose: true,
-      todayHighlight: true
+    $('#budget-data .datepicker').datetimepicker({
+      format: "DD/MM/YYYY hh:mm",
+      icons: {
+        time: 'fa fa-clock',
+        date: 'fa fa-calendar',
+        up: 'fa fa-chevron-up',
+        down: 'fa fa-chevron-down',
+        previous: 'fa fa-chevron-left',
+        next: 'fa fa-chevron-right',
+        today: 'fa fa-check',
+        clear: 'fa fa-trash',
+        close: 'fa fa-times'
+      }
     });
 
     function setDateData(budgetDate, target, withFormat){
       if (!withFormat)
         budgetDate = moment(budgetDate, 'YYYY-MM-DD').format('DD/MM/YYYY');
-      $(target).datepicker('setDate', budgetDate);
+      //$(target).datepicker('setDate', budgetDate);
     }
   </script>
 
