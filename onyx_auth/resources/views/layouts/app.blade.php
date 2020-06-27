@@ -16,8 +16,6 @@
 		<!-- Styles -->
 		<link href="{{ asset('css/app.css') }}" rel="stylesheet">
 		<link href="{{ asset('css/fontawesome/css/all.css')}}" rel="stylesheet"> <!--icons -->
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
 		<link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 	</head>
 	<body>
@@ -27,7 +25,9 @@
 					<a class="navbar-brand" href="{{ url('/') }}">
 							{{ config('app.name', 'Onyx') }}
 					</a>
-					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+					<button class="navbar-toggler" type="button" data-toggle="collapse" 
+									data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+									aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
 						<span class="navbar-toggler-icon"></span>
 					</button>
 
@@ -81,10 +81,6 @@
 			</main>
 		</div>
 		<script src="{{ asset('js/app.js') }}"></script>
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.25.3/moment.min.js"></script>
-
 		<script type="text/javascript">
 			$('[data-toggle="tooltip"]').tooltip();
 		</script>
