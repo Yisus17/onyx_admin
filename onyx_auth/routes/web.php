@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes(['register' => false, 'reset' => false]);
+Auth::routes(['register' => true, 'reset' => false]);
 
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
