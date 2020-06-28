@@ -90,30 +90,35 @@
 
     <!-- PRODUCTS -->
 
-    <tr>
-      <td colspan="1">Cantidad</td>
-      <td colspan="4">Descripción</td>
-      <td colspan="1">Factor</td>
-      <td colspan="1">Descuento</td>
-      <td colspan="1">P/Unitario</td>
-      <td colspan="1">P/Total</td>
-    </tr>
-
-    @foreach($invoice->products as $product)
-      <tr>
-        <td colspan="1" style="text-align:right;">{{$product->pivot->quantity}}</td>
-        <td colspan="4">{{$product->pivot->description}}</td>
-        <td colspan="1" style="text-align:right;">{{$product->pivot->factor}}</td>
-        <td colspan="1" style="text-align:right;">{{$product->pivot->discount}}%</td>
-        <td colspan="1" style="text-align:right;">{{getFormattedPrice($product->pivot->unit_price)}}€</td>
-        <td colspan="1" style="text-align:right;">{{getFormattedPrice($product->pivot->total_price)}}€</td>
-      </tr>
-    @endforeach
+    @if($invoice->products)
+      @foreach($invoice->products->groupBy('category_id') as $products)
+        @foreach($products as $key => $product)
+          @if($key == 0)
+            <tr>
+              <td colspan="9" style="font-weight: bold;">{{$product->category->name}}</td>
+            </tr>
+            <tr>
+              <td colspan="1">Cantidad</td>
+              <td colspan="4">Descripción</td>
+              <td colspan="1">Factor</td>
+              <td colspan="1">Descuento</td>
+              <td colspan="1">P/Unitario</td>
+              <td colspan="1">P/Total</td>
+            </tr>
+          @endif
+          <tr>
+            <td colspan="1" style="text-align:right;">{{$product->pivot->quantity}}</td>
+            <td colspan="4">{{$product->pivot->description}}</td>
+            <td colspan="1" style="text-align:right;">{{$product->pivot->factor}}</td>
+            <td colspan="1" style="text-align:right;">{{$product->pivot->discount}}%</td>
+            <td colspan="1" style="text-align:right;">{{getFormattedPrice($product->pivot->unit_price)}}€</td>
+            <td colspan="1" style="text-align:right;">{{getFormattedPrice($product->pivot->total_price)}}€</td>
+          </tr>
+        @endforeach
+      @endforeach
+    @endif
 
     <!-- SEPARATOR -->
-    <tr>
-      <td colspan="9"></td>
-    </tr>
     <tr>
       <td colspan="9"></td>
     </tr>
