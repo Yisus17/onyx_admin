@@ -7,6 +7,7 @@ use App\Product;
 use App\Category;
 use Maatwebsite\Excel\Facade\Excel;
 use App\Http\Requests\CreateEditProductRequest;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller{
 
@@ -17,6 +18,12 @@ class ProductController extends Controller{
 	public function index(){
 		$products =  Product::paginate(20);
 		return view('products.list', compact('products'));
+	}
+
+	public function deleteProductImage($imagePath){
+		if($imagePath){
+			Storage::disk('public_uploads')->delete('products/'.$imagePath);
+		}
 	}
 
 	public function create(){
@@ -37,11 +44,13 @@ class ProductController extends Controller{
 		$product->countable = (bool) request('countable');
 
 		if($request->file('image')){
+			$this->deleteProductImage($product->image_name);
 			$file = $request->file('image');
 			$file->store('products', ['disk' => 'public_uploads']);
 			$product->image_name = $file->hashName();
 			$product->image_original_name = $file->getClientOriginalName();
 		}else if(!$request->product_image_name){
+			$this->deleteProductImage($product->image_name);
 			$product->image_name = null;
 			$product->image_original_name = null;
 		}
