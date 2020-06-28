@@ -24,8 +24,16 @@ class ProductController extends Controller{
 		return view('products.create', compact('categories'));
 	}
 
-	public function store(CreateEditProductRequest $request){
-		$product = new Product($request->except(['countable', 'image']));
+	public function storeOrUpdate(CreateEditProductRequest $request, $id=null){
+		$editMode = $id != null;
+
+		if($editMode){
+			$product = Product::findOrFail($id);
+			$product->update($request->except(['countable', 'image']));
+		}else{
+			$product = new Product($request->except(['countable', 'image']));
+		}
+
 		$product->countable = (bool) request('countable');
 
 		if($request->file('image')){
@@ -33,7 +41,7 @@ class ProductController extends Controller{
 			$file->store('products', ['disk' => 'public_uploads']);
 			$product->image_name = $file->hashName();
 			$product->image_original_name = $file->getClientOriginalName();
-		}else{
+		}else if(!$request->product_image_name){
 			$product->image_name = null;
 			$product->image_original_name = null;
 		}
@@ -41,8 +49,13 @@ class ProductController extends Controller{
 		$category = Category::find($request->category_id);
 		$product->category()->associate($category);
 
+		$message = 'Producto '. ($editMode ? 'editado' : 'creado') .' exitosamente';
 		$product->save();
-		return redirect('products')->with('message', 'Producto creado exitosamente');
+		return redirect('products')->with('message', $message);
+	}
+
+	public function store(CreateEditProductRequest $request){
+		return $this->storeOrUpdate($request);
 	}
 
 	public function show($id){
@@ -57,25 +70,7 @@ class ProductController extends Controller{
 	}
 
 	public function update(CreateEditProductRequest $request, $id){
-		$productToUpdate =  Product::findOrFail($id);
-		$productToUpdate->update($request->except(['countable', 'image']));
-		$productToUpdate->countable = (bool) request('countable');
-
-		if($request->file('image')){
-			$file = $request->file('image');
-			$file->store('products', ['disk' => 'public_uploads']);
-			$productToUpdate->image_name = $file->hashName();
-			$productToUpdate->image_original_name = $file->getClientOriginalName();
-		}else{
-			$productToUpdate->image_name = null;
-			$productToUpdate->image_original_name = null;
-		}
-		
-		$category = Category::find($request->category_id);
-		$productToUpdate->category()->associate($category);
-
-		$productToUpdate->save();
-		return redirect('products')->with('message', 'Producto editado exitosamente');
+		return $this->storeOrUpdate($request, $id);
 	}
 
 	public function destroy($id){

@@ -143,7 +143,8 @@
         
       </div>
       <input 
-        id="product_image_name" 
+        id="product_image_name"
+        name="product_image_name" 
         type="text" 
         class="form-control" 
         placeholder="Selecciona un archivo"
