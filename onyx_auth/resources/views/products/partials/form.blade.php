@@ -1,31 +1,51 @@
-<div class="custom-form">
-  <div class="form-group required-info">
+<div id="product-data" class="custom-form row">
+  <div class="form-group required-info col-12">
     <span>*Campos obligatorios</span>
   </div>
 
-  <div class="form-group">
+  <div class="form-group col-12 col-sm-4">
     <label for="code"><span class="required-field">*</span>Código</label>
-    <input type="text" name="code" class="form-control" value="{{isset($product) ? $product->code : old('code')}}" />
+    <input 
+      type="text" 
+      name="code" 
+      class="form-control" 
+      value="{{isset($product) ? $product->code : old('code')}}" 
+      required/>
   </div>
 
-  <div class="form-group">
+  <div class="form-group col-12 col-sm-4">
     <label for="brand"><span class="required-field">*</span>Marca</label>
-    <input type="text" name="brand" class="form-control" value="{{isset($product) ? $product->brand : old('brand')}}" />
+    <input 
+      type="text" 
+      name="brand" 
+      class="form-control" 
+      value="{{isset($product) ? $product->brand : old('brand')}}" 
+      required/>
   </div>
 
-  <div class="form-group">
+  <div class="form-group col-12 col-sm-4">
     <label for="model"><span class="required-field">*</span>Modelo</label>
-    <input type="text" name="model" class="form-control" value="{{isset($product) ? $product->model : old('model')}}" />
+    <input 
+      type="text" 
+      name="model" 
+      class="form-control" 
+      value="{{isset($product) ? $product->model : old('model')}}" 
+      required/>
   </div>
 
-  <div class="form-group">
+  <div class="form-group col-12">
     <label for="description"><span class="required-field">*</span>Descripción</label>
-    <input type="text" name="description" class="form-control" value="{{isset($product) ? $product->description : old('description')}}"/>
+    <input 
+      type="text" 
+      name="description" 
+      class="form-control" 
+      value="{{isset($product) ? $product->description : old('description')}}"
+      required/>
   </div>
 
-  <div class="form-group">
-    <label for="category_id"><span class="required-field">*</span>Categoría</label>
-    <select name="category_id" class="form-control selectpicker" data-live-search="true">
+  <div class="form-group col-12 col-sm-6">
+    <label for="category_id"><span class="required-field">*</span>Rubro</label>
+    <select name="category_id" class="form-control selectpicker" data-live-search="true" required>
       <option value="" selected disabled>--Selecciona una opción--</option>
       @foreach($categories as $category)
         <option value="{{ $category->id }}" {{ (isset($product) && $category->id == $product->category_id) || old('category_id') == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
@@ -33,47 +53,86 @@
     </select>
   </div>
 
-  <div class="form-group">
+  <div class="form-group col-12 col-sm-6">
     <label for="type"><span class="required-field">*</span>Tipo</label>
-    <input type="text" name="type" class="form-control" value="{{isset($product) ? $product->type : old('type')}}"/>
+    <input 
+      type="text" 
+      name="type" 
+      class="form-control" 
+      value="{{isset($product) ? $product->type : old('type')}}"
+      required/>
   </div>
 
-  <div class="form-group">
+  <div class="form-group col-12 col-sm-6">
     <label for="serial">Serial</label>
-    <input type="text" name="serial" class="form-control" value="{{isset($product) ? $product->serial : old('serial')}}"/>
+    <input 
+      type="text" 
+      name="serial" 
+      class="form-control" 
+      value="{{isset($product) ? $product->serial : old('serial')}}"/>
   </div>
 
-  <div class="form-group">
+  <div class="form-group col-12 col-sm-6">
     <label for="purchase_price"><span class="required-field">*</span>Precio de compra</label>
     <div class="input-group">
-      <input type="number" name="purchase_price" class="form-control" min="0" step="0.01" value="{{isset($product) ? $product->purchase_price : old('purchase_price')}}" />
+      <input 
+        type="number" 
+        name="purchase_price"
+        class="form-control" 
+        min="0" 
+        step="0.01" 
+        value="{{isset($product) ? $product->purchase_price : old('purchase_price')}}" 
+        required/>
       <div class="input-group-append">
         <span class="input-group-text">€</span>
       </div>
     </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group col-12 col-sm-6">
     <label for="status"><span class="required-field">*</span>Estado</label>
-    <input type="text" name="status" class="form-control" value="{{isset($product) ? $product->status : old('status')}}"/>
+    <input 
+      type="text" 
+      name="status" 
+      class="form-control" 
+      value="{{isset($product) ? $product->status : old('status')}}"
+      required/>
   </div>
 
-  <div class="form-group">
+  <div class="form-group col-12 col-sm-6">
     <label for="bought_by"><span class="required-field">*</span>Comprado por</label>
-    <input type="text" name="bought_by" class="form-control" value="{{isset($product) ? $product->bought_by : old('bought_by')}}"/>
+    <input 
+      type="text" 
+      name="bought_by" 
+      class="form-control" 
+      value="{{isset($product) ? $product->bought_by : old('bought_by')}}"
+      required/>
   </div>
 
-  <div class="form-group">
+  <div class="form-group col-12 col-sm-6">
     <label for="purchase_date">Fecha de compra</label>
-    <input type="text" id="purchase_date" name="purchase_date" class="form-control datepicker" autocomplete="off"/>
+    <div class="input-group">
+      <input type="text" id="purchase_date" name="purchase_date" class="form-control datetimepicker" autocomplete="off"/>
+      <div class="input-group-append">
+        <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+      </div>
+    </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group col-12 col-sm-6">
     <label for="years_old"><span class="required-field">*</span>Años de antigüedad</label>
-    <input type="number" name="years_old" class="form-control" min="0" step="1" value="{{isset($product) ? $product->years_old : old('years_old')}}" />
+    <input 
+      type="number" 
+      name="years_old" 
+      class="form-control" 
+      min="0" 
+      step="1" 
+      value="{{isset($product) ? $product->years_old : old('years_old')}}" 
+      readonly
+      required/>
   </div>
 
-  <div class="form-group">
+  <div class="form-group col-12">
     <label>Imagen</label>
 
     <div class="input-group mb-1">
@@ -84,7 +143,8 @@
         
       </div>
       <input 
-        id="product_image_name" 
+        id="product_image_name"
+        name="product_image_name" 
         type="text" 
         class="form-control" 
         placeholder="Selecciona un archivo"
@@ -104,31 +164,37 @@
     </div>
   </div>
 
-  <div class="form-group form-check">
-    <input type="checkbox" name="countable" class="form-check-input" {{isset($product) && $product->countable ? 'checked="checked"' : ''}}>
+  <div class="form-group form-check col-12">
+    <input type="checkbox" name="countable" {{isset($product) && $product->countable ? 'checked="checked"' : ''}}>
     <label class="form-check-label" for="countable">Marcar si este producto es contable</label>
   </div>
 
-  <div class="form-group">
+  <div class="form-group col-12">
     <button class="btn btn-primary " type="submit">Guardar</button>
     <a href="/products" class="btn btn-secondary">Volver</a>
   </div>
 </div>
 
 @section('scripts')
-  @if(isset($product) && $product->purchase_date)
-    <script>
-      var purchaseDate = moment('{{$product->purchase_date}}', 'YYYY-MM-DD').format('DD/MM/YYYY');
-      $('#purchase_date').datepicker('setDate', purchaseDate);
-    </script>
-  @elseif(old('purchase_date'))
-    <script>
-      var purchaseDate = '{{old("purchase_date")}}';
-      $('#purchase_date').datepicker('setDate', purchaseDate);
-    </script>
-  @endif
+  
+  <script  type="text/javascript">
+    let todayLastTime = new Date().setHours(23,59,59,999);
 
-  <script>
+    $('#product-data .datetimepicker').datetimepicker({
+      ...defaultDatetimepickerOptions,
+      format: "DD/MM/YYYY",
+      maxDate: todayLastTime,
+    });
+
+    $('#purchase_date').on('dp.change', function(e) {
+      var selectedDate = moment(e.target.value, 'DD/MM/YYYY');
+      var yearsOfDiff = moment().diff(selectedDate, 'year');
+      if (yearsOfDiff < 0){
+        yearsOfDiff = 0;
+      }
+      $('input[name ="years_old"]').val(yearsOfDiff);
+    });
+
     function readURL(input) {
       if (input.files && input.files[0]) {
         var reader = new FileReader();
@@ -140,21 +206,29 @@
         $('#preview_product_image').removeClass('hidden');
         $('#no_image_message').addClass('hidden');
       }
-    }
+    };
 
     $('#product_image').on('change',function(){
       readURL(this);
       var fileName = $(this).val().split('\\').pop();
       $('#product_image_name').val(fileName);
-    })
+    });
 
     $('#reset_product_image').on('click',function(){
       $('#product_image').val('');
       $('#product_image_name').val('');
       $('#preview_product_image').addClass('hidden');
       $('#no_image_message').removeClass('hidden');
-    })
+    });
 </script>
+
+@if(isset($product))
+  <script>
+    '{{$product->purchase_date}}' ? 
+      setDateData('{{$product->purchase_date}}', '#purchase_date', false, false) :
+      setDateData('{{old("purchase_date")}}', '#purchase_date', true, false )
+  </script>
+@endif
 
 @endsection
 

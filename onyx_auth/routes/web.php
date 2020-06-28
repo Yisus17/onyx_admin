@@ -18,17 +18,27 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['register' => false, 'reset' => false]);
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
 
-//Routes for products
+//Products
 Route::resource('/products', 'ProductController');
-Route::get('product-list-excel', 'ProductController@exportExcel')->name('products.pdf');
 
+// Clients
 Route::resource('/clients', 'ClientController');
+
+// Budgets
+Route::resource('/budgets', 'BudgetController');
+Route::post('/budgets/addProduct', 'BudgetController@addProduct');
+Route::get('/budgets/excelExport/{id}', 'BudgetController@excelExport')->name('budgets.excelExport');
+Route::get('/budgets/excelView/{id}', 'BudgetController@excelView')->name('budgets.excelView');
+Route::get('/budgets/duplicate/{id}', 'BudgetController@duplicate')->name('budgets.duplicate');
+
+// Invoices
+Route::resource('/invoices', 'InvoiceController');
+Route::post('/invoices/addProduct', 'InvoiceController@addProduct');
+Route::get('/invoices/excelExport/{id}', 'InvoiceController@excelExport')->name('invoices.excelExport');
+Route::get('/invoices/excelView/{id}', 'InvoiceController@excelView')->name('invoices.excelView');
+Route::get('/invoices/duplicate/{id}', 'InvoiceController@duplicate')->name('invoices.duplicate');

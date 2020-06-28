@@ -2,24 +2,28 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                    <span>Editar cliente por: {{auth()->user()->name}}</span>
-                </div>
+	<div class="row justify-content-center">
+		<div class="col-md-8">
 
-                <div class="card-body">
-                    @include('partials.session_message')
-                    @include('partials.errors')
+		<!-- Breadcrumbs -->
+		{{ Breadcrumbs::render('clients.edit', $client) }}
 
-                    {!! Form::model($client, ['route' => ['clients.update', $client->id], 'method' => 'PUT']) !!}
-                        @include('clients.partials.form')
-                    {!! Form::close() !!}
-                </div>
+		<!-- Session messages -->
+		@include('partials.session_message')
 
-            </div>
-        </div>
-    </div>
+
+			<div class="card">
+				<div class="card-header d-flex justify-content-between align-items-center">
+					<span>Editar cliente por: {{auth()->user()->name}}</span>
+				</div>
+
+				<div class="card-body">
+					{!! Form::model($client, ['route' => ['clients.update', $client->id], 'method' => 'PUT']) !!}
+							@include('clients.partials.form')
+					{!! Form::close() !!}
+				</div>
+				</div>
+		</div>
+	</div>
 </div>
 @endsection
