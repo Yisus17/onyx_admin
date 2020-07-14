@@ -1,4 +1,4 @@
-# Onyx Admin :tw-1f388:
+# Onyx Admin 💻
 
 Onyx web admin is a CMS created for a basic products, invoices and budgets managment. Including file export in some differents formats
 
