@@ -13,7 +13,12 @@
 
 			<!-- Search Bar -->
 			<div class="input-group mb-3">
-				<input type="text" class="form-control" id="search-product" placeholder="Busca un producto" value="{{isset($querySearch) ? $querySearch : ''}}">
+				<input 
+					type="text" 
+					class="form-control search-bar" 
+					id="search-product" 
+					placeholder="Busca un producto" 
+					value="{{isset($querySearch) ? $querySearch : ''}}">
 				<div class="input-group-append">
 					<button class="btn btn-primary" id="submit-search-product" type="button">
 						<i class="fas fa-search"></i>
