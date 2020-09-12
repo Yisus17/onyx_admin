@@ -24,6 +24,8 @@ Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
 
 //Products
+
+Route::get('/products/search/{keyword?}', 'ProductController@searchProduct')->name('products.search');
 Route::resource('/products', 'ProductController');
 
 // Clients
