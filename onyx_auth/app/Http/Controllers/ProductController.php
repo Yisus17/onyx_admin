@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Storage;
 class ProductController extends Controller
 {
 
+	private $PAGE_SIZE = 20;
+
 	public function __construct()
 	{
 		$this->middleware('auth');
@@ -19,9 +21,10 @@ class ProductController extends Controller
 
 	public function index()
 	{
-		$products =  Product::paginate(20);
+		$products =  Product::paginate($this->PAGE_SIZE);
 		return view('products.list', compact('products'));
 	}
+
 
 	public function deleteProductImage($imagePath)
 	{
@@ -107,13 +110,17 @@ class ProductController extends Controller
 	public function searchProduct(Request $request)
 	{
 		$querySearch = $request->keyword;
-		if (strlen($querySearch) == 0) {
-			$products =  Product::paginate(20);
+		if (strlen($querySearch) == 0) { // clear search
+
+			$products =  Product::paginate($this->PAGE_SIZE);
 		} else {
-			$products = Product::where('description', 'like', '%' . $querySearch . '%')
+			$products = Product::where('description', 'LIKE', '%' . $querySearch . '%')
 				->orWhere('code', $querySearch)
 				->orWhere('model', $querySearch)
-				->paginate(20);
+				->orWhereHas('category', function ($query) use ($querySearch) {
+					$query->where('name', 'LIKE', '%' . $querySearch . '%');
+				})
+				->paginate($this->PAGE_SIZE);
 			$products->appends(array('keyword' => $querySearch));
 		}
 
