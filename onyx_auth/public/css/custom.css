@@ -77,7 +77,12 @@ input[type=number] {
   color: red;
 }
 
-.required-info{
+.guide-info{
+  padding: 0;
+}
+
+.required-info, 
+.guide-info{
   text-align: right;
 }
 
@@ -85,6 +90,16 @@ input[type=number] {
   color: red;
   font-size: 12px;
   font-style: italic;
+}
+
+.guide-info span{
+  color: #3490dc;
+  font-size: 12px;
+  font-style: italic;
+}
+
+.guide-field{
+  color: #3490dc;
 }
 
 

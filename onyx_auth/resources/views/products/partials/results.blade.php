@@ -2,10 +2,10 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th scope="col">Código</th>
-        <th scope="col">Modelo</th>
-        <th scope="col">Descripción</th>
-        <th scope="col">Rubro</th>
+        <th scope="col"><span class="guide-field">*</span>Código</th>
+        <th scope="col"><span class="guide-field">*</span>Modelo</th>
+        <th scope="col"><span class="guide-field">*</span>Descripción</th>
+        <th scope="col"><span class="guide-field">*</span>Rubro</th>
         <th scope="col">Precio de compra</th>
         <th scope="col">Fecha de compra</th>
         <th scope="col">Acciones</th>

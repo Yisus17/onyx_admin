@@ -12,18 +12,17 @@
 			@include('partials.session_message')
 
 			<!-- Search Bar -->
-			<div class="input-group mb-3">
-				<input 
-					type="text" 
-					class="form-control search-bar" 
-					id="search-product" 
-					placeholder="Busca un producto" 
-					value="{{isset($querySearch) ? $querySearch : ''}}">
+			<div class="input-group mb-1">
+				<input type="text" class="form-control search-bar" id="search-product" placeholder="Busca un producto" value="{{isset($querySearch) ? $querySearch : ''}}">
 				<div class="input-group-append">
 					<button class="btn btn-primary" id="submit-search-product" type="button">
 						<i class="fas fa-search"></i>
 					</button>
 				</div>
+			</div>
+
+			<div class="form-group guide-info col-12">
+				<span>*Campos de búsqueda</span>
 			</div>
 
 
