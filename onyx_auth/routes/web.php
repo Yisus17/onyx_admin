@@ -24,7 +24,6 @@ Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
 
 //Products
-
 Route::get('/products/search/{keyword?}', 'ProductController@searchProduct')->name('products.search');
 Route::resource('/products', 'ProductController');
 
@@ -32,6 +31,7 @@ Route::resource('/products', 'ProductController');
 Route::resource('/clients', 'ClientController');
 
 // Budgets
+Route::get('/budgets/search/{keyword?}', 'BudgetController@search')->name('budgets.search');
 Route::resource('/budgets', 'BudgetController');
 Route::post('/budgets/addProduct', 'BudgetController@addProduct');
 Route::get('/budgets/excelExport/{id}', 'BudgetController@excelExport')->name('budgets.excelExport');
