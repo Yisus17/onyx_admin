@@ -12,7 +12,6 @@ use Maatwebsite\Excel\Excel;
 use Carbon\Carbon;
 
 class InvoiceController extends Controller{
-
 	private $PAGE_SIZE = 30;
 	
 	public function __construct(){
@@ -20,7 +19,7 @@ class InvoiceController extends Controller{
 	}
 
 	public function index(){
-		$invoices =  Invoice::paginate($this->$PAGE_SIZE);
+		$invoices =  Invoice::paginate($this->PAGE_SIZE);
 		return view('invoices.list', compact('invoices'));
 	}
 

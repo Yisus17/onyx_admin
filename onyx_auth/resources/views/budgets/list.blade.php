@@ -33,7 +33,7 @@
 				</div>
 			</div>
 
-			<div class="form-group guide-info col-12">
+			<div class="form-group guide-info col-10">
 				<span>*Campos de búsqueda</span>
 			</div>
 
