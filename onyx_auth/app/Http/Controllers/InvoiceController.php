@@ -13,14 +13,14 @@ use Carbon\Carbon;
 
 class InvoiceController extends Controller{
 
-	private $PAGE_SIZE = 20;
+	private $PAGE_SIZE = 30;
 	
 	public function __construct(){
 		$this->middleware('auth');
 	}
 
 	public function index(){
-		$invoices =  Invoice::paginate(20);
+		$invoices =  Invoice::paginate($this->$PAGE_SIZE);
 		return view('invoices.list', compact('invoices'));
 	}
 

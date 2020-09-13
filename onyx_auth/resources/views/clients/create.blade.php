@@ -12,7 +12,7 @@
 
 			<div class="card">
 				<div class="card-header d-flex justify-content-between align-items-center">
-					<span>Crear cliente por: {{auth()->user()->name}}</span>
+					<span>Crear contacto por: {{auth()->user()->name}}</span>
 				</div>
 
 				<div class="card-body">

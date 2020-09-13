@@ -13,7 +13,7 @@ use Maatwebsite\Excel\Excel;
 use Carbon\Carbon;
 
 class BudgetController extends Controller{
-	private $PAGE_SIZE = 20;
+	private $PAGE_SIZE = 30;
 	
 	public function __construct(){
 		$this->middleware('auth');

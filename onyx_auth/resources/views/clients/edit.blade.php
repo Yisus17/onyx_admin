@@ -14,7 +14,7 @@
 
 			<div class="card">
 				<div class="card-header d-flex justify-content-between align-items-center">
-					<span>Editar cliente por: {{auth()->user()->name}}</span>
+					<span>Editar contacto por: {{auth()->user()->name}}</span>
 				</div>
 
 				<div class="card-body">

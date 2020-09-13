@@ -9,38 +9,30 @@ use Maatwebsite\Excel\Facade\Excel;
 use App\Http\Requests\CreateEditProductRequest;
 use Illuminate\Support\Facades\Storage;
 
-class ProductController extends Controller
-{
+class ProductController extends Controller{
+	private $PAGE_SIZE = 30;
 
-	private $PAGE_SIZE = 20;
-
-	public function __construct()
-	{
+	public function __construct(){
 		$this->middleware('auth');
 	}
 
-	public function index()
-	{
+	public function index(){
 		$products =  Product::paginate($this->PAGE_SIZE);
 		return view('products.list', compact('products'));
 	}
 
-
-	public function deleteProductImage($imagePath)
-	{
+	public function deleteProductImage($imagePath){
 		if ($imagePath) {
 			Storage::disk('public_uploads')->delete('products/' . $imagePath);
 		}
 	}
 
-	public function create()
-	{
+	public function create(){
 		$categories = Category::all();
 		return view('products.create', compact('categories'));
 	}
 
-	public function storeOrUpdate(CreateEditProductRequest $request, $id = null)
-	{
+	public function storeOrUpdate(CreateEditProductRequest $request, $id = null){
 		$editMode = $id != null;
 
 		if ($editMode) {
@@ -72,43 +64,36 @@ class ProductController extends Controller
 		return redirect('products')->with('message', $message);
 	}
 
-	public function store(CreateEditProductRequest $request)
-	{
+	public function store(CreateEditProductRequest $request){
 		return $this->storeOrUpdate($request);
 	}
 
-	public function show($id)
-	{
+	public function show($id){
 		$product =  Product::findOrFail($id);
 		return view('products.show', compact('product'));
 	}
 
-	public function edit($id)
-	{
+	public function edit($id){
 		$product =  Product::findOrFail($id);
 		$categories = Category::all();
 		return view('products.edit', compact('product', 'categories'));
 	}
 
-	public function update(CreateEditProductRequest $request, $id)
-	{
+	public function update(CreateEditProductRequest $request, $id){
 		return $this->storeOrUpdate($request, $id);
 	}
 
-	public function destroy($id)
-	{
+	public function destroy($id){
 		$productToDelete = Product::findOrFail($id);
 		$productToDelete->delete();
 		return back()->with('message', 'Producto eliminado exitosamente');
 	}
 
-	public function exportExcel(Request $request)
-	{
+	public function exportExcel(Request $request){
 		return $request;
 	}
 
-	public function search(Request $request)
-	{
+	public function search(Request $request){
 		$querySearch = $request->keyword;
 		if (strlen($querySearch) == 0) { // clear search
 

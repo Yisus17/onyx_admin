@@ -28,6 +28,7 @@ Route::get('/products/search/{keyword?}', 'ProductController@search')->name('pro
 Route::resource('/products', 'ProductController');
 
 // Clients
+Route::get('/clients/search/{keyword?}', 'ClientController@search')->name('clients.search');
 Route::resource('/clients', 'ClientController');
 
 // Budgets

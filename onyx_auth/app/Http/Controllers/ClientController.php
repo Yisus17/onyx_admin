@@ -9,13 +9,14 @@ use App\Community;
 use App\Http\Requests\CreateEditClientRequest;
 
 class ClientController extends Controller{
+	private $PAGE_SIZE = 30;
 
 	public function __construct(){
 		$this->middleware('auth');
 	}
 
 	public function index(){
-		$clients =  Client::paginate(20);
+		$clients =  Client::paginate($this->PAGE_SIZE);
 		return view('clients.list', compact('clients'));
 	}
 
@@ -48,7 +49,7 @@ class ClientController extends Controller{
 	public function destroy($id){
 		$clientToDelete = Client::findOrFail($id);
 		$clientToDelete->delete();
-		return redirect('clients')->with('message', 'Cliente eliminado exitosamente');
+		return redirect('clients')->with('message', 'Contacto eliminado exitosamente');
 	}
 
 	public function storeOrUpdate(CreateEditClientRequest $request, $id=null){
@@ -66,8 +67,29 @@ class ClientController extends Controller{
 		$client->community()->associate($community);
 
 		$client->save();
-		$message = $id == null ? 'Cliente creado exitosamente' : 'Cliente editado exitosamente';
+		$message = $id == null ? 'Contacto creado exitosamente' : 'Contacto editado exitosamente';
 
 		return redirect('clients')->with('message', $message);
+	}
+
+	public function search(Request $request){
+		$querySearch = $request->keyword;
+		if (strlen($querySearch) == 0) { // clear search
+			$clients =  Client::paginate($this->PAGE_SIZE);
+		} else {
+			$clients = Client::where('email', 'LIKE', '%' . $querySearch . '%')
+				->orWhere('business_name', 'LIKE', '%' . $querySearch . '%')
+				->orWhere('name', 'LIKE', '%' . $querySearch . '%')
+				->orWhere('lastname', 'LIKE', '%' . $querySearch . '%')
+				->orWhere('phone', $querySearch)
+				->paginate($this->PAGE_SIZE);
+			$clients->appends(array('keyword' => $querySearch));
+		}
+
+		if ($request->ajax()) {
+			return view('clients.partials.results', compact('clients'));
+		} else {
+			return view('clients.list', compact('clients', 'querySearch'));
+		}
 	}
 }
