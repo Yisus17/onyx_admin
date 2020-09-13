@@ -44,6 +44,7 @@
 				</div>
 
 				<div class="card-body">
+					@include('partials.loader') 
 					<div id="product-list-container">
 						@include('products.partials.results')
 					</div>
@@ -58,6 +59,8 @@
 <script type="text/javascript">
 	function sendSearchProduct() {
 		let keyword = $('#search-product').val();
+		$("#product-list-container").html('');
+		$(".loader-center").removeClass("hidden");
 
 		$.ajax({
 			type: "GET",
@@ -69,6 +72,7 @@
 				keyword: keyword
 			}
 		}).done(function(data) {
+			$(".loader-center").addClass("hidden");
 			$("#product-list-container").html(data);
 		});
 	}

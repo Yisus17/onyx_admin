@@ -96,7 +96,6 @@ class ProductController extends Controller{
 	public function search(Request $request){
 		$querySearch = $request->keyword;
 		if (strlen($querySearch) == 0) { // clear search
-
 			$products =  Product::paginate($this->PAGE_SIZE);
 		} else {
 			$products = Product::where('description', 'LIKE', '%' . $querySearch . '%')
