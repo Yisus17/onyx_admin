@@ -82,6 +82,7 @@ class ClientController extends Controller{
 				->orWhere('name', 'LIKE', '%' . $querySearch . '%')
 				->orWhere('lastname', 'LIKE', '%' . $querySearch . '%')
 				->orWhere('phone', $querySearch)
+				->orWhere('secondary_phone', $querySearch)
 				->paginate($this->PAGE_SIZE);
 			$clients->appends(array('keyword' => $querySearch));
 		}

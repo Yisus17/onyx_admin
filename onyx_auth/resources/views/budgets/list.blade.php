@@ -12,11 +12,23 @@
 			@include('partials.session_message')
 
 			<!-- Search Bar -->
-			<div class="input-group mb-1">
-				<input type="text" class="form-control search-bar" id="search-budget" placeholder="Busca un presupuesto" value="{{isset($querySearch) ? $querySearch : ''}}">
-				<div class="input-group-append">
-					<button class="btn btn-primary" id="submit-search-budget" type="button">
-						<i class="fas fa-search"></i>
+			<div class="row">
+				<div class="input-group col-10">
+					<input 
+						type="text" 
+						class="form-control search-bar" 
+						id="search-budget" 
+						placeholder="Busca un presupuesto" 
+						value="{{isset($querySearch) ? $querySearch : ''}}">
+					<div class="input-group-append">
+						<button class="btn btn-primary" id="submit-search-budget" type="button">
+							<i class="fas fa-search"></i>
+						</button>
+					</div>
+				</div>
+				<div class="col-2 clear-search">
+					<button class="btn btn-outline-secondary" id="clear-search-budget" type="button">
+						Limpiar
 					</button>
 				</div>
 			</div>
@@ -70,6 +82,11 @@
 	});
 
 	$("#submit-search-budget").click(function() {
+		sendSearchBudget();
+	});
+
+	$("#clear-search-budget").click(function() {
+		$('#search-budget').val('');
 		sendSearchBudget();
 	});
 </script>
