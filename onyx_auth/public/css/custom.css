@@ -180,4 +180,9 @@ textarea{
   text-align: right;
 }
 
+.loader-center{
+  text-align: center;
+  background: unset;
+}
+
 

@@ -43,7 +43,8 @@
 							<a href="/clients/create" class="btn btn-primary btn-sm">Nuevo contacto</a>
 					</div>
 
-					<div class="card-body">    
+					<div class="card-body"> 
+						@include('partials.loader')   
 						<div id="client-list-container">
 							@include('clients.partials.results')
 						</div>
@@ -57,7 +58,9 @@
 @section('scripts')
 <script type="text/javascript">
 	function sendSearchClient() {
-		let keyword = $('#search-client').val();
+		let keyword = $("#search-client").val();
+		$("#client-list-container").html("");
+		$(".loader-center").removeClass("hidden");
 
 		$.ajax({
 			type: "GET",
@@ -69,6 +72,7 @@
 				keyword: keyword
 			}
 		}).done(function(data) {
+			$(".loader-center").addClass("hidden");
 			$("#client-list-container").html(data);
 		});
 	}
