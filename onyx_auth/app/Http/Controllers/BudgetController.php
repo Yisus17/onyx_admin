@@ -157,8 +157,7 @@ class BudgetController extends Controller{
 			$budgets = Budget::where('id', 'LIKE', '%' . $querySearch . '%')
 				->orWhereHas('client', function ($query) use ($querySearch) {
 					$query
-						->where('name', 'LIKE', '%' . $querySearch . '%')
-						->orWhere('lastname', 'LIKE', '%' . $querySearch . '%');
+						->where('business_name', 'LIKE', '%' . $querySearch . '%');
 				})
 				->paginate($this->PAGE_SIZE);
 			$budgets->appends(array('keyword' => $querySearch));

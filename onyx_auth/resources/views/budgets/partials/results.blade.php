@@ -13,7 +13,7 @@
       @foreach ($budgets as $item)
       <tr>
         <td>{{ $item->id }}</td>
-        <td>{{ $item->client->name }}</td>
+        <td>{{ $item->client->business_name }}</td>
         <td>{{ $item->created_at ? $item->created_at->format('d/m/Y H:m') : ''}}</td>
         <td>{{ truncateText($item->description, 20) }}</td>
         <td>

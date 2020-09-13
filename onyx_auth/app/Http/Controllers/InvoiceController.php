@@ -156,8 +156,7 @@ class InvoiceController extends Controller{
 			$invoices = Invoice::where('id', 'LIKE', '%' . $querySearch . '%')
 				->orWhereHas('client', function ($query) use ($querySearch) {
 					$query
-						->where('name', 'LIKE', '%' . $querySearch . '%')
-						->orWhere('lastname', 'LIKE', '%' . $querySearch . '%');
+						->where('business_name', 'LIKE', '%' . $querySearch . '%');
 				})
 				->paginate($this->PAGE_SIZE);
 			$invoices->appends(array('keyword' => $querySearch));

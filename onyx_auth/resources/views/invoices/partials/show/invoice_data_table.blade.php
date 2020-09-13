@@ -7,7 +7,7 @@
     </tr>
     <tr>
       <td colspan="4">{{$invoice->created_at ? $invoice->created_at->format('d/m/Y H:m') : ''}}</td>
-      <td colspan="4">{{$invoice->client->name}}</td>
+      <td colspan="4">{{$invoice->client->business_name}}</td>
       <td colspan="4">{{$invoice->validity ? findValue(getValidityOptions(), $invoice->validity): ''}}</td>
     </tr>
 
