@@ -2,8 +2,8 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">Contacto</th>
+        <th scope="col"><span class="guide-field">*</span>#</th>
+        <th scope="col"><span class="guide-field">*</span>Contacto</th>
         <th scope="col">Fecha de creación</th>
         <th scope="col">Descripción</th>
         <th scope="col">Acciones</th>

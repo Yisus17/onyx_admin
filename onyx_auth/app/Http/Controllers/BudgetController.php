@@ -12,23 +12,19 @@ use App\Exports\BudgetsExport;
 use Maatwebsite\Excel\Excel;
 use Carbon\Carbon;
 
-class BudgetController extends Controller
-{
+class BudgetController extends Controller{
 	private $PAGE_SIZE = 20;
 	
-	public function __construct()
-	{
+	public function __construct(){
 		$this->middleware('auth');
 	}
 
-	public function index()
-	{
+	public function index(){
 		$budgets =  Budget::paginate($this->PAGE_SIZE);
 		return view('budgets.list', compact('budgets'));
 	}
 
-	public function create()
-	{
+	public function create(){
 		$clients = Client::all();
 		$products = Product::select('id', 'code', 'description')->get();
 		return view(
@@ -37,8 +33,7 @@ class BudgetController extends Controller
 		);
 	}
 
-	public function storeOrUpdate(CreateEditBudgetRequest $request, $id = null)
-	{
+	public function storeOrUpdate(CreateEditBudgetRequest $request, $id = null){
 		$editMode = $id != null;
 
 		if ($editMode) {
@@ -84,39 +79,33 @@ class BudgetController extends Controller
 		return redirect('budgets')->with('message', $message);
 	}
 
-	public function store(CreateEditBudgetRequest $request)
-	{
+	public function store(CreateEditBudgetRequest $request){
 		return $this->storeOrUpdate($request);
 	}
 
-	public function show($id)
-	{
+	public function show($id){
 		$budget = Budget::findOrFail($id);
 		return view('budgets.show', compact('budget'));
 	}
 
-	public function edit($id)
-	{
+	public function edit($id){
 		$budget =  Budget::findOrFail($id);
 		$clients = Client::all();
 		$products = Product::select('id', 'code', 'description')->get();
 		return view('budgets.edit', compact('budget', 'clients', 'products'));
 	}
 
-	public function update(CreateEditBudgetRequest $request, $id)
-	{
+	public function update(CreateEditBudgetRequest $request, $id){
 		return $this->storeOrUpdate($request, $id);
 	}
 
-	public function destroy($id)
-	{
+	public function destroy($id){
 		$budgetToDelete = Budget::findOrFail($id);
 		$budgetToDelete->delete();
 		return redirect('budgets')->with('message', 'Presupuesto eliminado exitosamente');
 	}
 
-	public function addProduct(Request $request)
-	{
+	public function addProduct(Request $request){
 		try {
 			$productId = (int)$request->product_id;
 			$product =  Product::findOrFail($productId);
@@ -128,21 +117,18 @@ class BudgetController extends Controller
 		return view('budgets.product', compact('product', 'uniqid'));
 	}
 
-	public function excelExport($id)
-	{
+	public function excelExport($id){
 		$budgetToExport = Budget::findOrFail($id);
 		$fileName = 'presupuesto' . $budgetToExport->id . '_' . Carbon::now()->timestamp . '.xlsx';
 		return (new BudgetsExport($budgetToExport))->download($fileName, Excel::XLSX);
 	}
 
-	public function excelView($id)
-	{
+	public function excelView($id){
 		$budget = Budget::findOrFail($id);
 		return view('budgets.excel', compact('budget'));
 	}
 
-	public function duplicate($id)
-	{
+	public function duplicate($id){
 		$budgetToDuplicate = Budget::findOrFail($id);
 		$newBudget = $budgetToDuplicate->replicate();
 		$newBudget->push();
@@ -163,8 +149,7 @@ class BudgetController extends Controller
 		return redirect()->route('budgets.show', [$newBudget->id])->with('message', 'Presupuesto duplicado exitosamente');
 	}
 
-	public function search(Request $request)
-	{
+	public function search(Request $request){
 		$querySearch = $request->keyword;
 		if (strlen($querySearch) == 0) { // clear search
 			$budgets =  Budget::paginate($this->PAGE_SIZE);

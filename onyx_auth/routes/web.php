@@ -24,7 +24,7 @@ Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
 
 //Products
-Route::get('/products/search/{keyword?}', 'ProductController@searchProduct')->name('products.search');
+Route::get('/products/search/{keyword?}', 'ProductController@search')->name('products.search');
 Route::resource('/products', 'ProductController');
 
 // Clients
@@ -39,6 +39,7 @@ Route::get('/budgets/excelView/{id}', 'BudgetController@excelView')->name('budge
 Route::get('/budgets/duplicate/{id}', 'BudgetController@duplicate')->name('budgets.duplicate');
 
 // Invoices
+Route::get('/invoices/search/{keyword?}', 'InvoiceController@search')->name('invoices.search');
 Route::resource('/invoices', 'InvoiceController');
 Route::post('/invoices/addProduct', 'InvoiceController@addProduct');
 Route::get('/invoices/excelExport/{id}', 'InvoiceController@excelExport')->name('invoices.excelExport');

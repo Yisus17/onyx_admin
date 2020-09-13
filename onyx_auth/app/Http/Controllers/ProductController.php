@@ -107,7 +107,7 @@ class ProductController extends Controller
 		return $request;
 	}
 
-	public function searchProduct(Request $request)
+	public function search(Request $request)
 	{
 		$querySearch = $request->keyword;
 		if (strlen($querySearch) == 0) { // clear search
