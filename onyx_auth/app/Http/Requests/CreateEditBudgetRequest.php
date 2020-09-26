@@ -29,7 +29,7 @@ class CreateEditBudgetRequest extends FormRequest{
 			'products.*.quantity' => 'required|numeric|min:1',
 			'products.*.factor' => 'required|numeric|min:1',
 			'products.*.unit_price' => 'required|numeric',
-			'products.*.discount' => 'numeric|min:0|max:100'
+			'products.*.discount' => 'nullable|numeric|min:0|max:100'
 		];
 	}
 
