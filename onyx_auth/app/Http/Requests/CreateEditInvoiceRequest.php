@@ -13,17 +13,6 @@ class CreateEditInvoiceRequest extends FormRequest{
 	public function rules(){
 		return [
 			'client_id' => 'required', 
-			'validity' => 'required', 
-			'address' => 'required', 
-			'delivery_date' => 'required', 
-			'return_date' => 'required', 
-			'instalation_date' => 'required', 
-			'start_date' => 'required', 
-			'end_date' => 'required',
-			'uninstalation_date' => 'required',
-			'payment_conditions' => 'required', 
-			'payment_method' => 'required',
-			'tax_percentage' => 'required',
 			'products.*.description' => 'required',
 			'products.*.quantity' => 'required|numeric|min:1',
 			'products.*.factor' => 'required|numeric|min:1',
