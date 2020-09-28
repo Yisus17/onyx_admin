@@ -14,16 +14,11 @@ class CreateEditProductRequest extends FormRequest{
 	public function rules(){
 		return [
 			'code' => 'required', 
-			'brand' => 'required', 
-			'model' => 'required', 
 			'description' => 'required', 
-			'type' => 'required', 
-			'purchase_price' => 'required|numeric', 
-			'status' => 'required', 
-			'bought_by' => 'required', 
+			'purchase_price' => 'nullable|numeric', 
 			'purchase_date' => 'nullable|date', 
-			'years_old' => 'required|numeric',
-			'image' => 'image',
+			'years_old' => 'nullable|numeric',
+			'image' => 'nullable|image',
 			'category_id' => 'required'
 		];
 	}
