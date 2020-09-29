@@ -33,7 +33,7 @@
 							</tr>
 							<tr>
 								<th>Comunidad autónoma</th>
-								<td>{{isset($client->clientType) ? $client->clientType->name : ''}}</td>
+								<td>{{isset($client->community) ? $client->community->name : ''}}</td>	
 							</tr>
 							<tr>
 								<th>Teléfono</th>
@@ -57,7 +57,7 @@
 							</tr>
 							<tr>
 								<th>Tipo</th>
-								<td>{{isset($client->community) ? $client->community->name : ''}}</td>
+								<td>{{isset($client->clientType) ? $client->clientType->name : ''}}</td>
 							</tr>
 						</tbody>
 					</table>

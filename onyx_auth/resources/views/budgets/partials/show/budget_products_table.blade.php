@@ -20,7 +20,7 @@
       <td colspan="3">{{$product->pivot->quantity}}</td>
       <td colspan="3">{{$product->pivot->factor}}</td>
       <td colspan="3">{{getFormattedPrice($product->pivot->unit_price)}}€</td>
-      <td colspan="3">{{$product->pivot->discount}}%</td>
+      <td colspan="3">{{$product->pivot->discount ? $product->pivot->discount . '%' : '' }}</td>
     </tr>
 
     <tr class="table-soft-header text-right">

@@ -51,32 +51,32 @@
 
     <tr>
       <td colspan="1" style="border: 1px solid black;">Entrega</td>
-      <td colspan="1" style="border: 1px solid black;">{{$budget->delivery_date->format('d/m/Y')}}</td>
-      <td colspan="1" style="border: 1px solid black;">{{$budget->delivery_date->format('H:m')}}</td>
+      <td colspan="1" style="border: 1px solid black;">{{isset($budget->delivery_date) ? $budget->delivery_date->format('d/m/Y') : ''}}</td>
+      <td colspan="1" style="border: 1px solid black;">{{isset($budget->delivery_date) ? $budget->delivery_date->format('H:m') : ''}}</td>
       <td colspan="3">&nbsp;</td>
       <td colspan="1" style="border: 1px solid black;">Fin evento</td>
-      <td colspan="1" style="border: 1px solid black;">{{$budget->end_date->format('d/m/Y')}}</td>
-      <td colspan="1" style="border: 1px solid black;">{{$budget->end_date->format('H:m')}}</td>
+      <td colspan="1" style="border: 1px solid black;">{{isset($budget->end_date) ? $budget->end_date->format('d/m/Y') : ''}}</td>
+      <td colspan="1" style="border: 1px solid black;">{{isset($budget->end_date) ? $budget->end_date->format('H:m') : ''}}</td>
     </tr>
 
     <tr>
       <td colspan="1" style="border: 1px solid black;">Montaje</td>
-      <td colspan="1" style="border: 1px solid black;">{{$budget->instalation_date->format('d/m/Y')}}</td>
-      <td colspan="1" style="border: 1px solid black;">{{$budget->instalation_date->format('H:m')}}</td>
+      <td colspan="1" style="border: 1px solid black;">{{isset($budget->instalation_date) ? $budget->instalation_date->format('d/m/Y') : ''}}</td>
+      <td colspan="1" style="border: 1px solid black;">{{isset($budget->instalation_date) ? $budget->instalation_date->format('H:m') : ''}}</td>
       <td colspan="3">&nbsp;</td>
       <td colspan="1" style="border: 1px solid black;">Desmontaje</td>
-      <td colspan="1" style="border: 1px solid black;">{{$budget->uninstalation_date->format('d/m/Y')}}</td>
-      <td colspan="1" style="border: 1px solid black;">{{$budget->uninstalation_date->format('H:m')}}</td>
+      <td colspan="1" style="border: 1px solid black;">{{isset($budget->uninstalation_date) ? $budget->uninstalation_date->format('d/m/Y') : ''}}</td>
+      <td colspan="1" style="border: 1px solid black;">{{isset($budget->uninstalation_date) ?  $budget->uninstalation_date->format('H:m') : ''}}</td>
     </tr>
 
     <tr>
       <td colspan="1" style="border: 1px solid black;">Inicio evento</td>
-      <td colspan="1" style="border: 1px solid black;">{{$budget->start_date->format('d/m/Y')}}</td>
-      <td colspan="1" style="border: 1px solid black;">{{$budget->start_date->format('H:m')}}</td>
+      <td colspan="1" style="border: 1px solid black;">{{isset($budget->start_date) ? $budget->start_date->format('d/m/Y') : ''}}</td>
+      <td colspan="1" style="border: 1px solid black;">{{isset($budget->start_date) ? $budget->start_date->format('H:m') : ''}}</td>
       <td colspan="3">&nbsp;</td>
       <td colspan="1" style="border: 1px solid black;">Devolución</td>
-      <td colspan="1" style="border: 1px solid black;">{{$budget->return_date->format('d/m/Y')}}</td>
-      <td colspan="1" style="border: 1px solid black;">{{$budget->return_date->format('H:m')}}</td>
+      <td colspan="1" style="border: 1px solid black;">{{isset($budget->return_date) ? $budget->return_date->format('d/m/Y') : ''}}</td>
+      <td colspan="1" style="border: 1px solid black;">{{isset($budget->return_date) ? $budget->return_date->format('H:m') : ''}}</td>
     </tr>
 
     <tr>

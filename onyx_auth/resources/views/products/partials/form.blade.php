@@ -14,23 +14,23 @@
   </div>
 
   <div class="form-group col-12 col-sm-4">
-    <label for="brand"><span class="required-field">*</span>Marca</label>
+    <label for="brand">Marca</label>
     <input 
       type="text" 
       name="brand" 
       class="form-control" 
       value="{{isset($product) ? $product->brand : old('brand')}}" 
-      required/>
+    />
   </div>
 
   <div class="form-group col-12 col-sm-4">
-    <label for="model"><span class="required-field">*</span>Modelo</label>
+    <label for="model">Modelo</label>
     <input 
       type="text" 
       name="model" 
       class="form-control" 
       value="{{isset($product) ? $product->model : old('model')}}" 
-      required/>
+    />
   </div>
 
   <div class="form-group col-12">
@@ -40,7 +40,8 @@
       name="description" 
       class="form-control" 
       value="{{isset($product) ? $product->description : old('description')}}"
-      required/>
+      required
+    />
   </div>
 
   <div class="form-group col-12 col-sm-6">
@@ -54,13 +55,13 @@
   </div>
 
   <div class="form-group col-12 col-sm-6">
-    <label for="type"><span class="required-field">*</span>Tipo</label>
+    <label for="type">Tipo</label>
     <input 
       type="text" 
       name="type" 
       class="form-control" 
       value="{{isset($product) ? $product->type : old('type')}}"
-      required/>
+    />
   </div>
 
   <div class="form-group col-12 col-sm-6">
@@ -73,7 +74,7 @@
   </div>
 
   <div class="form-group col-12 col-sm-6">
-    <label for="purchase_price"><span class="required-field">*</span>Precio de compra</label>
+    <label for="purchase_price">Precio de compra</label>
     <div class="input-group">
       <input 
         type="number" 
@@ -82,7 +83,7 @@
         min="0" 
         step="0.01" 
         value="{{isset($product) ? $product->purchase_price : old('purchase_price')}}" 
-        required/>
+      />
       <div class="input-group-append">
         <span class="input-group-text">€</span>
       </div>
@@ -90,23 +91,23 @@
   </div>
 
   <div class="form-group col-12 col-sm-6">
-    <label for="status"><span class="required-field">*</span>Estado</label>
+    <label for="status">Estado</label>
     <input 
       type="text" 
       name="status" 
       class="form-control" 
       value="{{isset($product) ? $product->status : old('status')}}"
-      required/>
+    />
   </div>
 
   <div class="form-group col-12 col-sm-6">
-    <label for="bought_by"><span class="required-field">*</span>Comprado por</label>
+    <label for="bought_by">Comprado por</label>
     <input 
       type="text" 
       name="bought_by" 
       class="form-control" 
       value="{{isset($product) ? $product->bought_by : old('bought_by')}}"
-      required/>
+    />
   </div>
 
   <div class="form-group col-12 col-sm-6">
@@ -120,7 +121,7 @@
   </div>
 
   <div class="form-group col-12 col-sm-6">
-    <label for="years_old"><span class="required-field">*</span>Años de antigüedad</label>
+    <label for="years_old">Años de antigüedad</label>
     <input 
       type="number" 
       name="years_old" 
@@ -129,7 +130,7 @@
       step="1" 
       value="{{isset($product) ? $product->years_old : old('years_old')}}" 
       readonly
-      required/>
+    />
   </div>
 
   <div class="form-group col-12">

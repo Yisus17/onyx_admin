@@ -19,7 +19,9 @@
             type="text" 
             name="products[{{$uniqid}}][description]" 
             class="form-control" 
-            value="{{isset($product) ? (isset($product->pivot) ? $product->pivot->description : $product->description) : old('products[$uniqid][description]')}}"/>
+            value="{{isset($product) ? (isset($product->pivot) ? $product->pivot->description : $product->description) : old('products[$uniqid][description]')}}"
+            required
+            />
         </div>
       </div>
       <!-- End product -->
@@ -33,7 +35,9 @@
             name="products[{{$uniqid}}][quantity]" 
             min="1" 
             class="form-control" 
-            value="{{isset($product) && $product->pivot ? $product->pivot->quantity : old('products[$uniqid][quantity]')}}"/>
+            value="{{isset($product) && $product->pivot ? $product->pivot->quantity : old('products[$uniqid][quantity]')}}"
+            required
+            />
         </div>
 
         <div class="form-group col-md-6 col-lg-3">
@@ -43,7 +47,9 @@
             name="products[{{$uniqid}}][factor]" 
             min="0" 
             class="form-control" 
-            value="{{isset($product) && $product->pivot ? $product->pivot->factor : old('products[$uniqid][factor]')}}"/>
+            value="{{isset($product) && $product->pivot ? $product->pivot->factor : old('products[$uniqid][factor]')}}"
+            required
+            />
         </div>
 
         <div class="form-group col-md-6 col-lg-3">
@@ -53,7 +59,9 @@
               type="text" 
               name="products[{{$uniqid}}][unit_price]" 
               class="form-control" 
-              value="{{isset($product) ? (isset($product->pivot) ? $product->pivot->unit_price : $product->unit_price) : old('products[$uniqid][unit_price]')}}"/>
+              value="{{isset($product) ? (isset($product->pivot) ? $product->pivot->unit_price : $product->unit_price) : old('products[$uniqid][unit_price]')}}"
+              required
+              />
             <div class="input-group-append">
               <span class="input-group-text">€</span>
             </div>

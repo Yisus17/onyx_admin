@@ -11,7 +11,7 @@
 
 
   <div class="form-group col-6">
-    <label for="validity"><span class="required-field">*</span>Validez</label>
+    <label for="validity">Validez</label>
     <select name="validity" class="form-control">
       <option value="" selected disabled>--Selecciona una opción--</option>
       @foreach(getValidityOptions() as $key => $value)
@@ -25,17 +25,17 @@
   </div>
 
   <div class="form-group col-6">
-    <label for="address"><span class="required-field">*</span>Dirección</label>
+    <label for="address">Dirección</label>
     <textarea name="address" class="form-control" rows="2">{{isset($invoice) ? $invoice->address : old('address')}}</textarea>
   </div>
 
   <div class="form-group col-6">
-    <label for="description"><span class="required-field">*</span>Descripción del evento</label>
+    <label for="description">Descripción del evento</label>
     <textarea class="form-control" name="description" rows="2">{{isset($invoice) ? $invoice->description : old('description')}}</textarea>
   </div>
 
   <div class="form-group col-6">
-    <label for="delivery_date"><span class="required-field">*</span>Entrega</label>
+    <label for="delivery_date">Entrega</label>
     <div class="input-group">
       <input type="text" id="delivery_date" name="delivery_date" class="form-control datetimepicker" autocomplete="off"/>
       <div class="input-group-append">
@@ -45,7 +45,7 @@
   </div>
 
   <div class="form-group col-6">
-    <label for="return_date"><span class="required-field">*</span>Devolución</label>
+    <label for="return_date">Devolución</label>
     <div class="input-group">
       <input type="text" id="return_date" name="return_date" class="form-control datetimepicker" autocomplete="off"/>
       <div class="input-group-append">
@@ -55,7 +55,7 @@
   </div>
 
   <div class="form-group col-6">
-    <label for="instalation_date"><span class="required-field">*</span>Montaje</label>
+    <label for="instalation_date">Montaje</label>
     <div class="input-group">
       <input type="text" id="instalation_date" name="instalation_date" class="form-control datetimepicker" autocomplete="off"/>
       <div class="input-group-append">
@@ -65,7 +65,7 @@
   </div>
 
   <div class="form-group col-6">
-    <label for="start_date"><span class="required-field">*</span>Inicio evento</label>
+    <label for="start_date">Inicio evento</label>
     <div class="input-group">
       <input type="text" id="start_date" name="start_date" class="form-control datetimepicker" autocomplete="off"/>
       <div class="input-group-append">
@@ -75,7 +75,7 @@
   </div>
 
   <div class="form-group col-6">
-    <label for="end_date"><span class="required-field">*</span>Fin evento</label>
+    <label for="end_date">Fin evento</label>
     <div class="input-group">
       <input type="text" id="end_date" name="end_date" class="form-control datetimepicker" autocomplete="off"/>
       <div class="input-group-append">
@@ -85,7 +85,7 @@
   </div>
 
   <div class="form-group col-6">
-    <label for="uninstalation_date"><span class="required-field">*</span>Desmontaje</label>
+    <label for="uninstalation_date">Desmontaje</label>
     <div class="input-group">
       <input type="text" id="uninstalation_date" name="uninstalation_date" class="form-control datetimepicker" autocomplete="off"/>
       <div class="input-group-append">
@@ -95,7 +95,7 @@
   </div>
 
   <div class="form-group col-4">
-    <label for="payment_conditions"><span class="required-field">*</span>Condiciones de pago</label>
+    <label for="payment_conditions">Condiciones de pago</label>
     <select name="payment_conditions" class="form-control">
       <option value="" selected disabled>--Selecciona una opción--</option>
       @foreach(getPaymentConditions() as $key => $value)
@@ -109,7 +109,7 @@
   </div>
 
   <div class="form-group col-4">
-    <label for="payment_method"><span class="required-field">*</span>Método de pago</label>
+    <label for="payment_method">Método de pago</label>
     <select name="payment_method" class="form-control">
       <option value="" selected disabled>--Selecciona una opción--</option>
       @foreach(getPaymentMethods() as $key => $value)
@@ -123,7 +123,7 @@
   </div>
 
   <div class="form-group col-4">
-    <label for="tax_percentage"><span class="required-field">*</span>IVA</label>
+    <label for="tax_percentage">IVA</label>
     <div class="input-group">
       <input 
         type="number" 

@@ -47,36 +47,36 @@
       <td colspan="9"></td>
     </tr>
 
-    <!-- BUDGET DATES AND LOCATION -->
+    <!-- INVOICE DATES AND LOCATION -->
 
     <tr>
       <td colspan="1" style="border: 1px solid black;">Entrega</td>
-      <td colspan="1" style="border: 1px solid black;">{{$invoice->delivery_date->format('d/m/Y')}}</td>
-      <td colspan="1" style="border: 1px solid black;">{{$invoice->delivery_date->format('H:m')}}</td>
+      <td colspan="1" style="border: 1px solid black;">{{isset($invoice->delivery_date) ? $invoice->delivery_date->format('d/m/Y') : ''}}</td>
+      <td colspan="1" style="border: 1px solid black;">{{isset($invoice->delivery_date) ? $invoice->delivery_date->format('H:m') : ''}}</td>
       <td colspan="3">&nbsp;</td>
       <td colspan="1" style="border: 1px solid black;">Fin evento</td>
-      <td colspan="1" style="border: 1px solid black;">{{$invoice->end_date->format('d/m/Y')}}</td>
-      <td colspan="1" style="border: 1px solid black;">{{$invoice->end_date->format('H:m')}}</td>
+      <td colspan="1" style="border: 1px solid black;">{{isset($invoice->end_date) ? $invoice->end_date->format('d/m/Y') : ''}}</td>
+      <td colspan="1" style="border: 1px solid black;">{{isset($invoice->end_date) ? $invoice->end_date->format('H:m') : ''}}</td>
     </tr>
 
     <tr>
       <td colspan="1" style="border: 1px solid black;">Montaje</td>
-      <td colspan="1" style="border: 1px solid black;">{{$invoice->instalation_date->format('d/m/Y')}}</td>
-      <td colspan="1" style="border: 1px solid black;">{{$invoice->instalation_date->format('H:m')}}</td>
+      <td colspan="1" style="border: 1px solid black;">{{isset($invoice->instalation_date) ? $invoice->instalation_date->format('d/m/Y') : ''}}</td>
+      <td colspan="1" style="border: 1px solid black;">{{isset($invoice->instalation_date) ? $invoice->instalation_date->format('H:m') : ''}}</td>
       <td colspan="3">&nbsp;</td>
       <td colspan="1" style="border: 1px solid black;">Desmontaje</td>
-      <td colspan="1" style="border: 1px solid black;">{{$invoice->uninstalation_date->format('d/m/Y')}}</td>
-      <td colspan="1" style="border: 1px solid black;">{{$invoice->uninstalation_date->format('H:m')}}</td>
+      <td colspan="1" style="border: 1px solid black;">{{isset($invoice->uninstalation_date) ? $invoice->uninstalation_date->format('d/m/Y') : ''}}</td>
+      <td colspan="1" style="border: 1px solid black;">{{isset($invoice->uninstalation_date) ?  $invoice->uninstalation_date->format('H:m') : ''}}</td>
     </tr>
 
     <tr>
       <td colspan="1" style="border: 1px solid black;">Inicio evento</td>
-      <td colspan="1" style="border: 1px solid black;">{{$invoice->start_date->format('d/m/Y')}}</td>
-      <td colspan="1" style="border: 1px solid black;">{{$invoice->start_date->format('H:m')}}</td>
+      <td colspan="1" style="border: 1px solid black;">{{isset($invoice->start_date) ? $invoice->start_date->format('d/m/Y') : ''}}</td>
+      <td colspan="1" style="border: 1px solid black;">{{isset($invoice->start_date) ? $invoice->start_date->format('H:m') : ''}}</td>
       <td colspan="3">&nbsp;</td>
       <td colspan="1" style="border: 1px solid black;">Devolución</td>
-      <td colspan="1" style="border: 1px solid black;">{{$invoice->return_date->format('d/m/Y')}}</td>
-      <td colspan="1" style="border: 1px solid black;">{{$invoice->return_date->format('H:m')}}</td>
+      <td colspan="1" style="border: 1px solid black;">{{isset($invoice->return_date) ? $invoice->return_date->format('d/m/Y') : ''}}</td>
+      <td colspan="1" style="border: 1px solid black;">{{isset($invoice->return_date) ? $invoice->return_date->format('H:m') : ''}}</td>
     </tr>
 
     <tr>
