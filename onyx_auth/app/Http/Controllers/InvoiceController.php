@@ -12,13 +12,14 @@ use Maatwebsite\Excel\Excel;
 use Carbon\Carbon;
 
 class InvoiceController extends Controller{
+	private $PAGE_SIZE = 30;
 	
 	public function __construct(){
 		$this->middleware('auth');
 	}
 
 	public function index(){
-		$invoices =  Invoice::paginate(20);
+		$invoices =  Invoice::paginate($this->PAGE_SIZE);
 		return view('invoices.list', compact('invoices'));
 	}
 
@@ -144,5 +145,26 @@ class InvoiceController extends Controller{
 			);
 		}
 		return redirect()->route('invoices.show', [$newInvoice->id])->with('message', 'Factura duplicada exitosamente');
+	}
+
+	public function search(Request $request){
+		$querySearch = $request->keyword;
+		if (strlen($querySearch) == 0) { // clear search
+			$invoices =  Invoice::paginate($this->PAGE_SIZE);
+		} else {
+			$invoices = Invoice::where('id', 'LIKE', '%' . $querySearch . '%')
+				->orWhereHas('client', function ($query) use ($querySearch) {
+					$query
+						->where('business_name', 'LIKE', '%' . $querySearch . '%');
+				})
+				->paginate($this->PAGE_SIZE);
+			$invoices->appends(array('keyword' => $querySearch));
+		}
+
+		if ($request->ajax()) {
+			return view('invoices.partials.results', compact('invoices'));
+		} else {
+			return view('invoices.list', compact('invoices', 'querySearch'));
+		}
 	}
 }

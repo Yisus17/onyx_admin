@@ -4,7 +4,7 @@
     <select name="client_id" class="form-control selectpicker" data-live-search="true">
       <option value="" selected disabled>--Selecciona una opción--</option>
       @foreach($clients as $client)
-        <option value="{{ $client->id }}" {{ (isset($invoice) && $client->id == $invoice->client_id) || old('client_id') == $client->id ? 'selected' : '' }}>{{ $client->name }}</option>
+        <option value="{{ $client->id }}" {{ (isset($invoice) && $client->id == $invoice->client_id) || old('client_id') == $client->id ? 'selected' : '' }}>{{ $client->business_name }}</option>
       @endforeach
     </select>
   </div>

@@ -77,7 +77,12 @@ input[type=number] {
   color: red;
 }
 
-.required-info{
+.guide-info{
+  padding: 0 5px 0;
+}
+
+.required-info,
+.guide-info{
   text-align: right;
 }
 
@@ -85,6 +90,16 @@ input[type=number] {
   color: red;
   font-size: 12px;
   font-style: italic;
+}
+
+.guide-info span{
+  color: #3490dc;
+  font-size: 12px;
+  font-style: italic;
+}
+
+.guide-field{
+  color: #3490dc;
 }
 
 
@@ -155,6 +170,19 @@ textarea{
 
 .dashboard-cards .card > a:hover .image-dashboard-card{
   opacity: 0.8;
+}
+
+.search-bar:focus{
+  box-shadow: 0 0 0 1px rgba(52, 144, 220, 0.25);
+}
+
+.clear-search{
+  text-align: right;
+}
+
+.loader-center{
+  text-align: center;
+  background: unset;
 }
 
 

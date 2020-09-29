@@ -14,7 +14,7 @@
 
 			<div class="card">
 				<div class="card-header d-flex justify-content-between align-items-center">
-					<span>Detalles del cliente</span>
+					<span>Detalles del contacto</span>
 				</div>
 				<div class="card-body">
 					<table class="table table-bordered">

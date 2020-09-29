@@ -25,4 +25,8 @@ class Client extends Model{
 	public function community(){
 		return $this->belongsTo(Community::class);
 	}
+
+	public function getFullnameAttribute(){
+    return $this->name . ' ' . $this->lastname;
+	}
 }

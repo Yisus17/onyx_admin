@@ -7,7 +7,7 @@
     </tr>
     <tr>
       <td colspan="4">{{$budget->created_at ? $budget->created_at->format('d/m/Y H:m') : ''}}</td>
-      <td colspan="4">{{$budget->client->name}}</td>
+      <td colspan="4">{{$budget->client->business_name}}</td>
       <td colspan="4">{{$budget->validity ? findValue(getValidityOptions(), $budget->validity): ''}}</td>
     </tr>
 
